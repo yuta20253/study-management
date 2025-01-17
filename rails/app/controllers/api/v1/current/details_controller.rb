@@ -19,7 +19,7 @@ class Api::V1::Current::DetailsController < Api::V1::BaseController
       end
     end
 
-    render json: { faculty_data: faculty_data, school_id: school_id, id: id }
+    render json: { faculty_data:, school_id:, id: }
   end
 
   private

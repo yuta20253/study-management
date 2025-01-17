@@ -6,7 +6,7 @@ class Api::V1::Current::DesiredSchoolsController < Api::V1::BaseController
 
   def index
     universities = current_user.desired_schools
-    render json: { universities: universities, universities_data: @universities_data }, adapter: nil
+    render json: { universities:, universities_data: @universities_data }, adapter: nil
   end
 
   def new
