@@ -61,7 +61,7 @@ export const FacultyAccordion: React.FC<FacultyAccordionProps> = ({
         <div className="p-4 sm:p-6">
           <div className="w-full">
             <label className="mb-4 flex items-center space-x-2">
-              <input name="select-all" type="checkbox" className="checkbox" />
+              <input name="select-all" type="checkbox" />
               <span className="text-lg">
                 <b>すべて選択</b>
               </span>
@@ -77,7 +77,6 @@ export const FacultyAccordion: React.FC<FacultyAccordionProps> = ({
                       <input
                         name={`${department}`}
                         type="checkbox"
-                        className="checkbox"
                         onChange={(e) => handleChange(e)}
                       />
                       <span className="text-sm sm:text-base">{department}</span>
