@@ -1,0 +1,66 @@
+ja:
+  activerecord:
+    attributes:
+      todo:
+        subject: 科目
+        title: タイトル
+        descripton: 本文(感想)
+        scheduled_study_time: 予定学習時間
+        actual_learning_time: 実学習時間
+        due_date: 期限
+        importance: 重要度
+        star_rating: 星評価
+  enums:
+    user:
+      gender:
+        male: 男
+        female: 女
+    todo:
+      progress: 
+        incomplete: 未完了
+        on_the_way: 途中
+        complete: 完了 
+      importance:
+        low: 低
+        medium: 中
+        high: 高
+      study_type:
+        preparation: 予習
+        lesson: 授業
+        review: 復習
+    study_hour:
+      study_type:
+        preparation: 予習
+        lesson: 授業
+        review: 復習
+  errors:
+    models:
+      todo:
+        attributes:
+          title:
+            blank: タイトルは必須です
+          user_id:
+            blank: ユーザーIDを入力してください
+          subject:
+            blank: 件名を入力してください
+          description:
+            too_long: 詳細は200文字以内で入力してください
+          star_rating:
+            blank: 評価を入力してください
+            greater_than_or_equal_to: 評価は0以上でなければなりません
+            less_than_or_equal_to: 評価は5以下でなければなりません
+          due_date:
+            past: 過去日は登録できません
+        general:
+          blank: このフィールドは必須です
+  models:
+    study_hour:
+      attributes:
+        title:
+          blank: 学習時間のタイトルを入力してください
+        actual_learning_time:
+          not_a_number: 学習時間は数字で入力してください
+
+    
+          
+

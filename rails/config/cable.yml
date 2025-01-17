@@ -1,0 +1,14 @@
+development:
+  adapter: redis
+  url: redis://localhost:6379/1
+  channel_prefix: study_management_development
+
+production:
+  adapter: redis
+  url: redis://localhost:6379/1
+  channel_prefix: study_management_production
+  redis:
+    password: <%= ENV["REDIS_PASSWORD"] %>
+    size: 1
+  allowed_request_origins:
+    - 'http://localhost:8001'

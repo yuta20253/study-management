@@ -1,0 +1,29 @@
+# require "json"
+
+class Api::V1::Current::SearchResultController < Api::V1::BaseController
+  include LoadJson
+
+  before_action :authenticate_user!
+  def index
+    universities_data = []
+    load_json(universities_data)
+    data_size = 0 # jsonデータ内にあるdataの中の要素数
+    universities_data[0].count.times do |i|
+      universities_data[0][i]["uni"]["data"].count.times do
+        data_size += 1
+      end
+    end
+
+    universities_arr = []
+
+    # puts "要素数:::#{data_size}"
+    universities_data[0].count.times do |i|
+      universities_arr.push(universities_data[0][i]["uni"]["data"])
+      universities_arr.flatten!
+    end
+    # Rails.logger.debug universities_arr.to_s
+
+    # puts "#{universities_arr}"
+    render json: universities_arr
+  end
+end
