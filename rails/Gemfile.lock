@@ -335,6 +335,7 @@ DEPENDENCIES
   rails-i18n
   redis
   rspec-rails
+  rubocop (~> 1.0)
   rubocop-faker
   rubocop-rails
   rubocop-rspec
