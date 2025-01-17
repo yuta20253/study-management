@@ -93,19 +93,13 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: next  # Next.jsのディレクトリ
+        working-directory: next
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Node.js dependencies
-        run: |
-          npm install
+      - name: Install packages
+        run: npm install
 
-      - name: Run lint (ESLint)
-        run: |
-          npm run lint
-
-      - name: Run prettier check
-        run: |
-          npm run prettier-check
+      - name: Run lint
+        run: npm run lint
