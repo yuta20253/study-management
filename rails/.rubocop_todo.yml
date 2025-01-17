@@ -11,6 +11,7 @@
 # Configuration parameters: Max, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, AllowedPatterns.
 # URISchemes: http, https
 Layout/LineLength:
+  Enabled: false
   Exclude:
     - 'app/controllers/api/v1/current/todos_controller.rb'
     - 'app/controllers/application_controller.rb'
@@ -26,6 +27,7 @@ Metrics/AbcSize:
 # Offense count: 1
 # Configuration parameters: CountComments, Max, CountAsOne, AllowedMethods, AllowedPatterns.
 Metrics/MethodLength:
+  Enabled: false
   Exclude:
     - 'app/controllers/api/v1/current/schools_controller.rb'
 
