@@ -40,7 +40,7 @@ export const UserGenderEditRadio = ({
           {...register(`${registerProps}`, { required: true })}
           onChange={(e) => changeGender(e)}
         />
-        <label htmlFor='male'>男</label>
+        <label htmlFor="male">男</label>
         <input
           id="female"
           type="radio"
@@ -49,7 +49,7 @@ export const UserGenderEditRadio = ({
           {...register(`${registerProps}`, { required: true })}
           onChange={(e) => changeGender(e)}
         />
-        <label htmlFor='female'>女</label>
+        <label htmlFor="female">女</label>
       </td>
     </tr>
   )

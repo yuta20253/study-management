@@ -1,9 +1,9 @@
 type ButtonProps = {
-    onClick: (id: number) => void
-    text: string
+  onClick: (id: number) => void
+  text: string
 }
 
-const OnClickFollowOrUnFollowButton = ({onClick, text}: ButtonProps) => {
+const OnClickFollowOrUnFollowButton = ({ onClick, text }: ButtonProps) => {
   return (
     <button
       onClick={() => onClick}
@@ -12,6 +12,6 @@ const OnClickFollowOrUnFollowButton = ({onClick, text}: ButtonProps) => {
       {text}
     </button>
   )
-} 
+}
 
 export default OnClickFollowOrUnFollowButton

@@ -25,10 +25,10 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
       {/* Accordion Header */}
       <div
         onClick={() => setOpenEntranceType(!openEntranceType)}
-        className="flex items-center justify-between border bg-slate-100 text-xl px-4 py-2 sm:px-6 sm:py-3 cursor-pointer"
+        className="flex cursor-pointer items-center justify-between border bg-slate-100 px-4 py-2 text-xl sm:px-6 sm:py-3"
       >
         <span className="w-full">{entranceExamination}</span>
-        <span className="flex items-center justify-center w-8 h-8">
+        <span className="flex size-8 items-center justify-center">
           {openEntranceType ? (
             <svg
               data-accordion-icon
@@ -70,13 +70,13 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
       {/* Accordion Body */}
       {openEntranceType && (
         <div className="mx-auto my-5 w-full sm:w-5/6">
-            <div className='mb-1'>
-              <button className="rounded bg-red-500 px-4 py-2 text-white">
-                <b>条件をクリア</b>
-              </button>
-            </div>
+          <div className="mb-1">
+            <button className="rounded bg-red-500 px-4 py-2 text-white">
+              <b>条件をクリア</b>
+            </button>
+          </div>
 
-            {/* Table */}
+          {/* Table */}
           <div className="overflow-x-auto">
             <table className="w-full table-auto border-collapse">
               <colgroup>
@@ -91,15 +91,15 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                   </th>
                   <td className="pl-10">
                     <div>
-                    <label className="block">
-                      <input
-                        name="first_exam_subjects.english"
-                        type="checkbox"
-                        onChange={(e) => handleChange(e)}
-                        className="mr-2"
-                      />
-                      <b>{foreignLanguage}</b>
-                    </label>
+                      <label className="block">
+                        <input
+                          name="first_exam_subjects.english"
+                          type="checkbox"
+                          onChange={(e) => handleChange(e)}
+                          className="mr-2"
+                        />
+                        <b>{foreignLanguage}</b>
+                      </label>
                     </div>
                   </td>
                 </tr>
@@ -111,15 +111,15 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                   </th>
                   <td className="pl-10">
                     <div>
-                    <label className="block">
-                      <input
-                        name="first_exam_subjects.math"
-                        type="checkbox"
-                        onChange={(e) => handleChange(e)}
-                        className="mr-2"
-                      />
-                      <b>{math}</b>
-                    </label>
+                      <label className="block">
+                        <input
+                          name="first_exam_subjects.math"
+                          type="checkbox"
+                          onChange={(e) => handleChange(e)}
+                          className="mr-2"
+                        />
+                        <b>{math}</b>
+                      </label>
                     </div>
                   </td>
                 </tr>
@@ -131,15 +131,15 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                   </th>
                   <td className="pl-10">
                     <div>
-                    <label className="block">
-                      <input
-                        name="first_exam_subjects.nationallang"
-                        type="checkbox"
-                        onChange={(e) => handleChange(e)}
-                        className="mr-2"
-                      />
-                      <b>{nationallang}</b>
-                    </label>
+                      <label className="block">
+                        <input
+                          name="first_exam_subjects.nationallang"
+                          type="checkbox"
+                          onChange={(e) => handleChange(e)}
+                          className="mr-2"
+                        />
+                        <b>{nationallang}</b>
+                      </label>
                     </div>
                   </td>
                 </tr>
@@ -151,15 +151,15 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                   </th>
                   <td className="pl-10">
                     <div>
-                    <label className="block">
-                      <input
-                        name="first_exam_subjects.science"
-                        type="checkbox"
-                        onChange={(e) => handleChange(e)}
-                        className="mr-2"
-                      />
-                      <b>{science}</b>
-                    </label>
+                      <label className="block">
+                        <input
+                          name="first_exam_subjects.science"
+                          type="checkbox"
+                          onChange={(e) => handleChange(e)}
+                          className="mr-2"
+                        />
+                        <b>{science}</b>
+                      </label>
                     </div>
                   </td>
                 </tr>
@@ -171,15 +171,15 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                   </th>
                   <td className="pl-10">
                     <div>
-                    <label className="block">
-                      <input
-                        name="first_exam_subjects.geographical_history_citizens"
-                        type="checkbox"
-                        onChange={(e) => handleChange(e)}
-                        className="mr-2"
-                      />
-                      <b>{geographical_history_citizens}</b>
-                    </label>
+                      <label className="block">
+                        <input
+                          name="first_exam_subjects.geographical_history_citizens"
+                          type="checkbox"
+                          onChange={(e) => handleChange(e)}
+                          className="mr-2"
+                        />
+                        <b>{geographical_history_citizens}</b>
+                      </label>
                     </div>
                   </td>
                 </tr>
@@ -190,61 +190,61 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                     <span className="text-white">その他</span>
                   </th>
                   <td className="pl-10">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                       <div>
-                      <label className="block">
-                        <input
-                          name="first_exam_subjects.information"
-                          type="checkbox"
-                          onChange={(e) => handleChange(e)}
-                          className="mr-2"
-                        />
-                        <b>{information}</b>
-                      </label>
+                        <label className="block">
+                          <input
+                            name="first_exam_subjects.information"
+                            type="checkbox"
+                            onChange={(e) => handleChange(e)}
+                            className="mr-2"
+                          />
+                          <b>{information}</b>
+                        </label>
                       </div>
                       <div>
-                      <label className="block">
-                        <input
-                          name="first_exam_subjects.essay"
-                          type="checkbox"
-                          onChange={(e) => handleChange(e)}
-                          className="mr-2"
-                        />
-                        <b>{essay}</b>
-                      </label>
+                        <label className="block">
+                          <input
+                            name="first_exam_subjects.essay"
+                            type="checkbox"
+                            onChange={(e) => handleChange(e)}
+                            className="mr-2"
+                          />
+                          <b>{essay}</b>
+                        </label>
                       </div>
                       <div>
-                      <label className="block">
-                        <input
-                          name="first_exam_subjects.practical_skills"
-                          type="checkbox"
-                          onChange={(e) => handleChange(e)}
-                          className="mr-2"
-                        />
-                        <b>{practical_skills}</b>
-                      </label>
+                        <label className="block">
+                          <input
+                            name="first_exam_subjects.practical_skills"
+                            type="checkbox"
+                            onChange={(e) => handleChange(e)}
+                            className="mr-2"
+                          />
+                          <b>{practical_skills}</b>
+                        </label>
                       </div>
                       <div>
-                      <label className="block">
-                        <input
-                          name="first_exam_subjects.comprehensive_question"
-                          type="checkbox"
-                          onChange={(e) => handleChange(e)}
-                          className="mr-2"
-                        />
-                        <b>{comprehensive_question}</b>
-                      </label>
+                        <label className="block">
+                          <input
+                            name="first_exam_subjects.comprehensive_question"
+                            type="checkbox"
+                            onChange={(e) => handleChange(e)}
+                            className="mr-2"
+                          />
+                          <b>{comprehensive_question}</b>
+                        </label>
                       </div>
                       <div>
-                      <label className="block">
-                        <input
-                          name="first_exam_subjects.certification_exam"
-                          type="checkbox"
-                          onChange={(e) => handleChange(e)}
-                          className="mr-2"
-                        />
-                        <b className="text-xs">{certification_exam}</b>
-                      </label>
+                        <label className="block">
+                          <input
+                            name="first_exam_subjects.certification_exam"
+                            type="checkbox"
+                            onChange={(e) => handleChange(e)}
+                            className="mr-2"
+                          />
+                          <b className="text-xs">{certification_exam}</b>
+                        </label>
                       </div>
                     </div>
                   </td>

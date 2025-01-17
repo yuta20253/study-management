@@ -12,10 +12,10 @@ export const InstallationCategory: React.FC<InstallationCategoryProps> = ({
     <div className="w-full">
       <div
         onClick={() => setIsActive(!isActive)}
-        className="flex items-center justify-between border bg-slate-100 text-xl px-4 py-3 sm:px-6 sm:py-4 cursor-pointer"
+        className="flex cursor-pointer items-center justify-between border bg-slate-100 px-4 py-3 text-xl sm:px-6 sm:py-4"
       >
         <span className="w-full">設置区分</span>
-        <span className="flex items-center justify-center w-8 h-8">
+        <span className="flex size-8 items-center justify-center">
           {isActive ? (
             <svg
               data-accordion-icon
@@ -56,16 +56,17 @@ export const InstallationCategory: React.FC<InstallationCategoryProps> = ({
 
       {isActive && (
         <div className="p-4 sm:p-6">
-          <div className="flex justify-center my-5">
+          <div className="my-5 flex justify-center">
             <ul className="list-disc pl-5 text-sm sm:text-base">
               <li>
-                私立大の教育学部系については [文・人文]系統の[教育]を選択してください
+                私立大の教育学部系については
+                [文・人文]系統の[教育]を選択してください
               </li>
             </ul>
           </div>
 
           <div className="mx-auto w-5/6">
-            <button className="w-full sm:w-auto mx-auto mb-4 p-2 bg-blue-500 text-white rounded-md text-center">
+            <button className="mx-auto mb-4 w-full rounded-md bg-blue-500 p-2 text-center text-white sm:w-auto">
               <b>条件をクリア</b>
             </button>
           </div>
@@ -78,7 +79,7 @@ export const InstallationCategory: React.FC<InstallationCategoryProps> = ({
               </colgroup>
               <tbody className="border border-gray-500">
                 <tr>
-                  <th className="w-60 bg-sky-500 text-white py-3 px-4 text-sm sm:text-base">
+                  <th className="w-60 bg-sky-500 px-4 py-3 text-sm text-white sm:text-base">
                     区分
                   </th>
                   <td>

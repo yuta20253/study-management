@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, useState } from 'react'
 
 export const useInputDesiredSchoolName = () => {
   const [isValid, setIsValid] = useState<boolean>(true)
@@ -8,7 +8,7 @@ export const useInputDesiredSchoolName = () => {
   }
   const handleChangeInputValue = (event: ChangeEvent<HTMLInputElement>) => {
     setIsValid(isValidJapanese(event.target.value))
-  }    
+  }
   return {
     isValid,
     setIsValid,

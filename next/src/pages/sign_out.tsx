@@ -27,30 +27,38 @@ const SignOut: NextPage = () => {
         city: '',
         address1: '',
         address2: '',
-        postal_code: ''
+        postal_code: '',
       },
       telephone: {
         id: 0,
         user_id: 0,
         phone_number: '',
-        landline_phone_number: ''
+        landline_phone_number: '',
       },
-      following_users: [      {
-        follower_id: 0,
-        followed_id: 0,
-      },],
-      follower_users: [      {
-        follower_id: 0,
-        followed_id: 0,
-      },],
-      followers: [      {
-        follower_id: 0,
-        followed_id: 0,
-      },],
-      followeds: [      {
-        follower_id: 0,
-        followed_id: 0,
-      },]
+      following_users: [
+        {
+          follower_id: 0,
+          followed_id: 0,
+        },
+      ],
+      follower_users: [
+        {
+          follower_id: 0,
+          followed_id: 0,
+        },
+      ],
+      followers: [
+        {
+          follower_id: 0,
+          followed_id: 0,
+        },
+      ],
+      followeds: [
+        {
+          follower_id: 0,
+          followed_id: 0,
+        },
+      ],
     })
     router.push('/sign_in')
   }, [router, setUser])

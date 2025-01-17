@@ -1,7 +1,10 @@
 import axios, { AxiosResponse, AxiosError } from 'axios'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { ClickProps, University } from '@/types/DesiredSchool/Modal/DesiredSchoolModalType'
+import {
+  ClickProps,
+  University,
+} from '@/types/DesiredSchool/Modal/DesiredSchoolModalType'
 
 export const CreateNewDesiredSchoolModal = ({
   universityName,
@@ -9,7 +12,7 @@ export const CreateNewDesiredSchoolModal = ({
   onClose,
 }: ClickProps) => {
   const router = useRouter()
-  const [facultyCode, setFacultyCode] = useState<number>()
+  const [, setFacultyCode] = useState<number>()
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const uniName = universityName + '大学'
@@ -39,7 +42,8 @@ export const CreateNewDesiredSchoolModal = ({
     setFacultyCode(num)
     const postData = searchFaculty(num)
 
-    const url = process.env.NEXT_PUBLIC_API_BASE_URL + '/current/desired_schools'
+    const url =
+      process.env.NEXT_PUBLIC_API_BASE_URL + '/current/desired_schools'
 
     const header = {
       'Content-Type': 'application/json',
@@ -75,8 +79,8 @@ export const CreateNewDesiredSchoolModal = ({
   }
 
   return (
-    <div className="absolute top-20 z-20 mt-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="m-2 flex w-full max-w-4xl items-center justify-center rounded-lg shadow-lg p-4 bg-white">
+    <div className="absolute top-20 z-20 mx-auto mt-10 w-full max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div className="m-2 flex w-full max-w-4xl items-center justify-center rounded-lg bg-white p-4 shadow-lg">
         <div className="w-full">
           {errorMessage && (
             <div className="my-2 text-center text-red-500">
@@ -90,27 +94,43 @@ export const CreateNewDesiredSchoolModal = ({
               </button>
             </div>
           )}
-          <table className="w-full table-auto bg-cyan-100 border-separate border-spacing-1">
+          <table className="w-full table-auto border-separate border-spacing-1 bg-cyan-100">
             <thead className="bg-sky-700">
               <tr>
-                <th className="text-white text-sm sm:text-base px-4 py-2">大学名</th>
-                <th className="text-white text-sm sm:text-base px-4 py-2">学部名</th>
-                <th className="text-white text-sm sm:text-base px-4 py-2">学科名</th>
-                <th className="text-white text-sm sm:text-base px-4 py-2">学部コード</th>
-                <th className="text-white text-sm sm:text-base px-4 py-2"></th>
+                <th className="px-4 py-2 text-sm text-white sm:text-base">
+                  大学名
+                </th>
+                <th className="px-4 py-2 text-sm text-white sm:text-base">
+                  学部名
+                </th>
+                <th className="px-4 py-2 text-sm text-white sm:text-base">
+                  学科名
+                </th>
+                <th className="px-4 py-2 text-sm text-white sm:text-base">
+                  学部コード
+                </th>
+                <th className="px-4 py-2 text-sm text-white sm:text-base"></th>
               </tr>
             </thead>
             <tbody className="overflow-y-auto">
               {selectUniversity?.uni.data.map((d, i: number) => (
                 <tr key={i} className="border-t">
-                  <td className="text-center text-sm sm:text-base py-2 px-4">{d.university}</td>
-                  <td className="text-center text-sm sm:text-base py-2 px-4">{d.faculty}</td>
-                  <td className="text-center text-sm sm:text-base py-2 px-4">{d.department}</td>
-                  <td className="text-center text-sm sm:text-base py-2 px-4">{d.faculty_of_code}</td>
-                  <td className="text-center py-2 px-4">
+                  <td className="px-4 py-2 text-center text-sm sm:text-base">
+                    {d.university}
+                  </td>
+                  <td className="px-4 py-2 text-center text-sm sm:text-base">
+                    {d.faculty}
+                  </td>
+                  <td className="px-4 py-2 text-center text-sm sm:text-base">
+                    {d.department}
+                  </td>
+                  <td className="px-4 py-2 text-center text-sm sm:text-base">
+                    {d.faculty_of_code}
+                  </td>
+                  <td className="px-4 py-2 text-center">
                     <button
                       type="button"
-                      className="rounded bg-sky-500 px-4 py-2 text-white text-sm sm:text-base"
+                      className="rounded bg-sky-500 px-4 py-2 text-sm text-white sm:text-base"
                       onClick={() => handleClick(d.faculty_of_code)}
                     >
                       登録
@@ -125,7 +145,7 @@ export const CreateNewDesiredSchoolModal = ({
       <div className="mt-4 text-right">
         <button
           onClick={onClose}
-          className="rounded bg-sky-500 px-4 py-2 text-white text-sm sm:text-base"
+          className="rounded bg-sky-500 px-4 py-2 text-sm text-white sm:text-base"
         >
           閉じる
         </button>

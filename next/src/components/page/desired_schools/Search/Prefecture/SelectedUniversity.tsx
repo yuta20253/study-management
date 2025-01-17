@@ -49,4 +49,3 @@ export const SelectUniversityList = ({
     </div>
   )
 }
-

@@ -15,8 +15,12 @@ export const UserDesiredSchoolTable: React.FC<DesiredSchools> = ({
       <table className="min-w-full table-auto">
         <thead>
           <tr className="bg-gray-100">
-            <th className="px-4 py-2 text-center text-sm sm:text-base">志望順位</th>
-            <th className="px-4 py-2 text-center text-sm sm:text-base">大学名</th>
+            <th className="px-4 py-2 text-center text-sm sm:text-base">
+              志望順位
+            </th>
+            <th className="px-4 py-2 text-center text-sm sm:text-base">
+              大学名
+            </th>
             <th className="px-4 py-2 text-center text-sm sm:text-base">学部</th>
             <th className="px-4 py-2 text-center text-sm sm:text-base">学科</th>
             <th className="px-4 py-2 text-center text-sm sm:text-base"></th>

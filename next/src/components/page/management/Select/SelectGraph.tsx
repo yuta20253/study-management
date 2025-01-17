@@ -10,7 +10,7 @@ export const SelectGraph: React.FC<SelectGraphProps> = ({
           表示グラフ変更 :
         </label>
         <select id="graph-select" onChange={(e) => handleSelectGraph(e)}>
-        <option value="">グラフを選択</option>
+          <option value="">グラフを選択</option>
           <option value={'学習タイプ別割合'}>学習タイプ別割合</option>
           <option value={'学習時間比較'}>学習時間比較</option>
           <option value={'科目別学習時間推移'}>科目別学習時間推移</option>

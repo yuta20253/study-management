@@ -26,7 +26,7 @@ export const UserBuildingEditInput = ({
   const { register, setValue } = useFormContext()
   const [postalCode, setPostalCode] = useState<string>(props || '') // 初期郵便番号
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [isAddressAutoFilled, setIsAddressAutoFilled] = useState<boolean>(false) // 住所自動補完の状態を管理
+  const [, setIsAddressAutoFilled] = useState<boolean>(false) // 住所自動補完の状態を管理
   const [addressError, setAddressError] = useState<boolean>(false) // 住所取得失敗のエラー管理
   // 郵便番号入力時に住所を自動補完する関数
   const handlePostalCodeChange = async (
@@ -34,7 +34,7 @@ export const UserBuildingEditInput = ({
   ) => {
     const enteredPostalCode = e.target.value
     setPostalCode(enteredPostalCode)
-  
+
     // 郵便番号が7桁の場合のみ自動補完を行う
     if (enteredPostalCode.length === 7) {
       setIsLoading(true)
@@ -43,7 +43,7 @@ export const UserBuildingEditInput = ({
         const response: AxiosResponse = await axios.get(
           `https://zipcloud.ibsnet.co.jp/api/search?zipcode=${enteredPostalCode}`,
         )
-  
+
         if (response.data && response.data.results) {
           const { address1, address2, address3 } = response.data.results[0]
           // 住所をフォームにセットする
@@ -64,7 +64,6 @@ export const UserBuildingEditInput = ({
         setTimeout(() => {
           setAddressError(false)
         }, 3000)
-
       } finally {
         setIsLoading(false)
       }
@@ -72,7 +71,6 @@ export const UserBuildingEditInput = ({
       setIsAddressAutoFilled(false) // 7桁未満の場合、自動補完フラグをリセット
     }
   }
-  
 
   return (
     <tr>
@@ -94,7 +92,9 @@ export const UserBuildingEditInput = ({
           data-testid="postal-code-input"
         />
         {isLoading && <p className="text-xs text-gray-500">住所を取得中...</p>}
-        {addressError && <p className="text-xs text-red-500">住所の取得に失敗しました</p>}
+        {addressError && (
+          <p className="text-xs text-red-500">住所の取得に失敗しました</p>
+        )}
         {error && <p className="text-xs text-red-500">{error.message}</p>}
       </td>
     </tr>

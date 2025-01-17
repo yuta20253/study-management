@@ -8,7 +8,7 @@ export const TodoDetail = ({ todo, setTodoDetail }: TodoDetailProps) => {
   const [, setSelectedStars] = useState<number>(0)
 
   return (
-    <div className="fixed inset-0 z-10 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 z-10 flex items-center justify-center bg-black">
       <div className="w-11/12 overflow-auto rounded-lg bg-cyan-100 p-4 sm:w-1/3">
         <div className="w-full">
           <table className="w-full">

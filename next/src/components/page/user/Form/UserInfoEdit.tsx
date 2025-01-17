@@ -52,7 +52,7 @@ export const UserInfoEdit = ({
   errors,
 }: UserInfo) => {
   return (
-    <table className="border border-slate-500 w-full">
+    <table className="w-full border border-slate-500">
       <tbody>
         <UserNameEditInput
           theme="氏名カナ"

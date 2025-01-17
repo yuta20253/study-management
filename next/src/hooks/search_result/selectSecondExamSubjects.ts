@@ -23,9 +23,7 @@ export const selectSecondExamSubjects = (
     } else {
       let arrangeKey: string
       const arrayMatchKeys: string[] = []
-      for (const [key, value] of Object.entries(
-        university.second_exam_subjects[0],
-      )) {
+      for (const [key] of Object.entries(university.second_exam_subjects[0])) {
         //1. jsonの一覧からkeyを取得してそれにkeyをつけている
         arrangeKey = exam_subjects + key
 

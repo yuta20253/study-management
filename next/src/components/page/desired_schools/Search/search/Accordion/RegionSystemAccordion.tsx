@@ -10,7 +10,6 @@ type RegionProps = {
 export const RegionSystemAccordion: React.FC<RegionProps> = ({
   region,
   prefectures,
-  checkedItems,
   setCheckedItems,
 }: RegionProps) => {
   const [isActive, setIsActive] = useState<boolean>(false)
@@ -20,10 +19,10 @@ export const RegionSystemAccordion: React.FC<RegionProps> = ({
       {/* Accordion Header */}
       <div
         onClick={() => setIsActive(!isActive)}
-        className="flex items-center justify-between border bg-sky-200 text-xl px-4 py-3 sm:px-6 sm:py-4 cursor-pointer"
+        className="flex cursor-pointer items-center justify-between border bg-sky-200 px-4 py-3 text-xl sm:px-6 sm:py-4"
       >
         <span className="w-full text-sky-600">{region}</span>
-        <span className="flex items-center justify-center w-8 h-8">
+        <span className="flex size-8 items-center justify-center">
           {isActive ? (
             <svg
               data-accordion-icon
@@ -68,7 +67,7 @@ export const RegionSystemAccordion: React.FC<RegionProps> = ({
           {prefectures.map((prefecture: string, i: number) => (
             <div
               key={i}
-              className="flex items-center justify-between border-b text-xl text-sky-600 odd:bg-sky-100 py-2"
+              className="flex items-center justify-between border-b py-2 text-xl text-sky-600 odd:bg-sky-100"
             >
               <button
                 onClick={() => setCheckedItems(prefecture)}

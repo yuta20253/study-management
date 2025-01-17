@@ -1,4 +1,3 @@
-
 type DataProps = {
   title: string
   data1?: string | number

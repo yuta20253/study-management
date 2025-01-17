@@ -1,9 +1,9 @@
-import {  useState } from 'react'
+import { useState } from 'react'
+import { usePaginationHandler } from './handleChangePagination'
+import { useStatusHandlers } from './handleChangeStatus'
+import { useFetch } from './handleUseFetch'
 import { useModal } from '@/hooks/todos/Modal/useModal'
 import { TodoProps } from '@/types/Todo'
-import { useStatusHandlers } from './handleChangeStatus'
-import { usePaginationHandler } from './handleChangePagination'
-import { useFetch } from './handleUseFetch'
 export const DataState = () => {
   const [todoDetail, setTodoDetail] = useState<TodoProps | undefined>(undefined)
   const [deleteId, setDeleteId] = useState<number | undefined>(undefined)
@@ -11,7 +11,7 @@ export const DataState = () => {
   const [status, setStatus] = useState<string>('')
   const [isDelete, setIsDelete] = useState<boolean>(false)
 
-  const { todos, setTodos, meta, setMeta, errorMessage} = useFetch()
+  const { todos, setTodos, meta, setMeta, errorMessage } = useFetch()
 
   const { handleChangePage } = usePaginationHandler()
 
@@ -21,7 +21,6 @@ export const DataState = () => {
     handleChangeStatusComplete,
     handleChangeStatusOnTheWay,
   } = useStatusHandlers(setStatus)
-
 
   return {
     todos,

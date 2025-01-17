@@ -1,11 +1,11 @@
-import Link from "next/link"
+import Link from 'next/link'
 
 type LinkButtonProps = {
-    href: string
-    text: string
+  href: string
+  text: string
 }
 
-const LinkButton = ({href, text}:LinkButtonProps) => {
+const LinkButton = ({ href, text }: LinkButtonProps) => {
   return (
     <button className="h-8 rounded bg-sky-500 px-2 py-1 ">
       <Link href={href}>
@@ -13,6 +13,6 @@ const LinkButton = ({href, text}:LinkButtonProps) => {
       </Link>
     </button>
   )
-} 
+}
 
 export default LinkButton

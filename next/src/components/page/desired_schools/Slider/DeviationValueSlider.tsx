@@ -8,9 +8,9 @@ export const DeviationValueRangeSlider = () => {
   const handleChangeValue = (event: Event, newValue: number | number[]) => {
     setDeviationValues(newValue as number[])
   }
-  
+
   return (
-    <div className="w-full sm:w-80 px-4">
+    <div className="w-full px-4 sm:w-80">
       <Slider
         value={deviationValues}
         onChange={handleChangeValue}
@@ -27,5 +27,3 @@ export const DeviationValueRangeSlider = () => {
     </div>
   )
 }
-
-

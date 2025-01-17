@@ -8,11 +8,11 @@ export const TodoDetailTable: React.FC<Todo> = ({ todo }: Todo) => {
   const [, setSelectedStars] = useState<number>(0)
 
   return (
-    <div className="mt-4 w-full items-center justify-center bg-white p-4 rounded-lg shadow-md">
-      <table className="w-full items-center justify-center bg-sky-700 rounded-t-lg">
+    <div className="mt-4 w-full items-center justify-center rounded-lg bg-white p-4 shadow-md">
+      <table className="w-full items-center justify-center rounded-t-lg bg-sky-700">
         <tbody>
           <tr>
-            <th className="h-16 w-full items-center justify-center bg-sky-700 text-center text-white text-lg sm:text-xl">
+            <th className="h-16 w-full items-center justify-center bg-sky-700 text-center text-lg text-white sm:text-xl">
               Todo情報
             </th>
           </tr>
@@ -20,42 +20,44 @@ export const TodoDetailTable: React.FC<Todo> = ({ todo }: Todo) => {
       </table>
       {todo ? (
         <div>
-          <table className="w-full mt-4">
+          <table className="mt-4 w-full">
             <tbody>
               <tr className="border-b">
-                <th className="p-2 sm:p-4 w-1/2">科目</th>
+                <th className="w-1/2 p-2 sm:p-4">科目</th>
                 <td className="p-2 sm:p-4">{todo.subject}</td>
               </tr>
               <tr className="border-b">
-                <th className="p-2 sm:p-4 w-1/2">タイトル</th>
+                <th className="w-1/2 p-2 sm:p-4">タイトル</th>
                 <td className="p-2 sm:p-4">{todo.title}</td>
               </tr>
               <tr className="border-b">
-                <th className="p-2 sm:p-4 w-1/2">学習タイプ</th>
+                <th className="w-1/2 p-2 sm:p-4">学習タイプ</th>
                 <td className="p-2 sm:p-4">{todo.study_type}</td>
               </tr>
               <tr className="border-b">
-                <th className="p-2 sm:p-4 w-1/2">状態</th>
+                <th className="w-1/2 p-2 sm:p-4">状態</th>
                 <td className="p-2 sm:p-4">{todo.progress}</td>
               </tr>
               <tr className="border-b">
-                <th className="p-2 sm:p-4 w-1/2">予定学習時間</th>
+                <th className="w-1/2 p-2 sm:p-4">予定学習時間</th>
                 <td className="p-2 sm:p-4">{todo.scheduled_study_time}時間</td>
               </tr>
               <tr className="border-b">
-                <th className="p-2 sm:p-4 w-1/2">総学習時間</th>
-                <td className="p-2 sm:p-4">{todo.total_hour ? todo.total_hour : 0}時間</td>
+                <th className="w-1/2 p-2 sm:p-4">総学習時間</th>
+                <td className="p-2 sm:p-4">
+                  {todo.total_hour ? todo.total_hour : 0}時間
+                </td>
               </tr>
               <tr className="border-b">
-                <th className="p-2 sm:p-4 w-1/2">期限</th>
+                <th className="w-1/2 p-2 sm:p-4">期限</th>
                 <td className="p-2 sm:p-4">{formatDate(todo.due_date)}</td>
               </tr>
               <tr className="border-b">
-                <th className="p-2 sm:p-4 w-1/2">重要度</th>
+                <th className="w-1/2 p-2 sm:p-4">重要度</th>
                 <td className="p-2 sm:p-4">{todo.importance}</td>
               </tr>
               <tr className="border-b">
-                <th className="p-2 sm:p-4 w-1/2">星評価</th>
+                <th className="w-1/2 p-2 sm:p-4">星評価</th>
                 <td className="flex p-2 sm:p-4">
                   <StarRating
                     totalStars={5}
@@ -65,8 +67,8 @@ export const TodoDetailTable: React.FC<Todo> = ({ todo }: Todo) => {
                 </td>
               </tr>
               <tr className="border-b">
-                <th className="p-2 sm:p-4 w-1/2">本文(感想)</th>
-                <td className="p-2 sm:p-4 h-auto">
+                <th className="w-1/2 p-2 sm:p-4">本文(感想)</th>
+                <td className="h-auto p-2 sm:p-4">
                   <p>
                     {todo.description
                       ? todo.description

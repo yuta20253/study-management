@@ -64,15 +64,15 @@ export const TodoEditActualLearningTime = ({
   return (
     <tr className="w-full">
       <th className="mt-2 h-12 w-1/2">{theme}</th>
-      <td className="h-8 w-full sm:w-1/2 md:w-1/3 p-2 sm:p-4">
-        <div className="flex items-center justify-start sm:justify-start gap-2 sm:gap-4">
+      <td className="h-8 w-full p-2 sm:w-1/2 sm:p-4 md:w-1/3">
+        <div className="flex items-center justify-start gap-2 sm:justify-start sm:gap-4">
           <input
             type="number"
             value={actualLearningTime}
             {...register(`${registerActualLearningTime}`, rules)}
             onChange={handleChange}
             onBlur={handleBlur}
-            className="w-1/2 sm:w-3/4 p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-1/2 rounded border p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 sm:w-3/4"
           />
           <span className="text-base sm:text-xl">時間</span>
         </div>

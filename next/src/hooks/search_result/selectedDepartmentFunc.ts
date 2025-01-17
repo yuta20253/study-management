@@ -1,7 +1,6 @@
 import { MutableRefObject } from 'react'
 import { selectFirstExamSubjects } from '@/hooks/search_result/selectFirstExamSubjects'
 import { selectSecondExamSubjects } from '@/hooks/search_result/selectSecondExamSubjects'
-
 import { University } from '@/types/SearchResult'
 
 type SelectedDepartmentFuncProps = {

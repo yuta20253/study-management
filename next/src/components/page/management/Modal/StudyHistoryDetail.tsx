@@ -35,9 +35,9 @@ export const StudyHistoryDetail = ({
   console.log(`TodoId:::${todo_id}`)
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-800">
       {/* モーダルコンテナ */}
-      <div className="w-full max-w-lg sm:max-w-3xl bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="w-full max-w-lg overflow-hidden rounded-lg bg-white shadow-lg sm:max-w-3xl">
         <div className="bg-sky-700 p-4">
           <p className="text-center text-lg text-white">{title}</p>
         </div>
@@ -54,13 +54,13 @@ export const StudyHistoryDetail = ({
                 {firstTodo.todo.progress === 'incomplete'
                   ? '未完了'
                   : firstTodo.todo.progress === 'on_the_way'
-                  ? '途中'
-                  : '完了'}
+                    ? '途中'
+                    : '完了'}
               </div>
             </div>
           </div>
           <div className="m-2 mb-4">
-            <table className="w-full table-auto mx-auto">
+            <table className="mx-auto w-full table-auto">
               <thead>
                 <tr>
                   <th className="px-4 py-2">
@@ -77,17 +77,24 @@ export const StudyHistoryDetail = ({
                   .map((stu, i: number) => (
                     <tr key={i} className="border-t">
                       <td className="px-4 py-2">
-                        <p className="text-center">{formatDate(stu.created_at)}</p>
+                        <p className="text-center">
+                          {formatDate(stu.created_at)}
+                        </p>
                       </td>
                       <td className="px-4 py-2">
-                        <p className="text-center">{stu.actual_learning_time}時間</p>
+                        <p className="text-center">
+                          {stu.actual_learning_time}時間
+                        </p>
                       </td>
                     </tr>
                   ))}
               </tbody>
             </table>
             <div className="float-right m-4 inline-block rounded bg-sky-500">
-              <button onClick={onClose} className="rounded px-4 py-2 text-white">
+              <button
+                onClick={onClose}
+                className="rounded px-4 py-2 text-white"
+              >
                 <p className="m-2 text-center">閉じる</p>
               </button>
             </div>

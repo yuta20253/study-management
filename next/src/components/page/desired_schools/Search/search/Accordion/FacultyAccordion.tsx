@@ -15,10 +15,10 @@ export const FacultyAccordion: React.FC<FacultyAccordionProps> = ({
     <div key={keyNum} className="mx-auto w-full sm:w-5/6">
       <div
         onClick={() => setOpenFacultySystem(!openFacultySystem)}
-        className="flex items-center justify-between border bg-slate-100 text-xl px-4 py-3 sm:px-6 sm:py-4 cursor-pointer"
+        className="flex cursor-pointer items-center justify-between border bg-slate-100 px-4 py-3 text-xl sm:px-6 sm:py-4"
       >
         <span className="w-full">{facultySystem}</span>
-        <span className="flex items-center justify-center w-8 h-8">
+        <span className="flex size-8 items-center justify-center">
           {openFacultySystem ? (
             <svg
               data-accordion-icon
@@ -60,8 +60,8 @@ export const FacultyAccordion: React.FC<FacultyAccordionProps> = ({
       {openFacultySystem && (
         <div className="p-4 sm:p-6">
           <div className="w-full">
-            <label className="flex items-center space-x-2 mb-4">
-              <input name="select-all" type="checkbox" className="form-checkbox" />
+            <label className="mb-4 flex items-center space-x-2">
+              <input name="select-all" type="checkbox" className="checkbox" />
               <span className="text-lg">
                 <b>すべて選択</b>
               </span>
@@ -69,7 +69,7 @@ export const FacultyAccordion: React.FC<FacultyAccordionProps> = ({
           </div>
 
           <div className="mt-4">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
               {departmentArr.map((department: string, i: number) => (
                 <div key={i}>
                   <div className="flex items-center space-x-2">
@@ -77,7 +77,7 @@ export const FacultyAccordion: React.FC<FacultyAccordionProps> = ({
                       <input
                         name={`${department}`}
                         type="checkbox"
-                        className="form-checkbox"
+                        className="checkbox"
                         onChange={(e) => handleChange(e)}
                       />
                       <span className="text-sm sm:text-base">{department}</span>

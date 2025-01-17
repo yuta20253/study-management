@@ -1,8 +1,8 @@
 import axios, { AxiosError } from 'axios'
 import { useEffect, useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { Subjects } from '@/const/subject'
 import { StarRating } from '@/components/page/todos/Rating/StarRating'
+import { Subjects } from '@/const/subject'
 import { TodoProps, ClickProps } from '@/types/Todo/createNewTodo/newTodo'
 
 export const CreateNewTodoModal = ({ onClose }: ClickProps) => {
@@ -44,8 +44,8 @@ export const CreateNewTodoModal = ({ onClose }: ClickProps) => {
       data.study_type === '予習'
         ? 'preparation'
         : data.study_type === '授業'
-        ? 'lesson'
-        : 'review'
+          ? 'lesson'
+          : 'review'
 
     const postData = {
       ...data,
@@ -82,8 +82,8 @@ export const CreateNewTodoModal = ({ onClose }: ClickProps) => {
   })
 
   return (
-    <div className="fixed inset-0 top-0 z-10 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="flex w-full sm:w-3/4 md:w-2/3 lg:w-1/2 items-center justify-center rounded bg-cyan-100 p-4 sm:p-6 lg:p-8 max-h-screen overflow-auto">
+    <div className="fixed inset-0 z-10 flex items-center justify-center bg-black">
+      <div className="flex max-h-screen w-full items-center justify-center overflow-auto rounded bg-cyan-100 p-4 sm:w-3/4 sm:p-6 md:w-2/3 lg:w-1/2 lg:p-8">
         <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
           <table className="w-full items-center justify-center">
             <tbody>
@@ -192,10 +192,10 @@ export const CreateNewTodoModal = ({ onClose }: ClickProps) => {
               </tr>
             </tbody>
           </table>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 py-2 sm:py-4">
+          <div className="flex flex-col items-center justify-center gap-8 py-2 sm:flex-row sm:py-4">
             <div className="w-full sm:w-auto">
               <button
-                className="w-full sm:w-auto rounded bg-sky-500 px-3 py-1 text-white"
+                className="w-full rounded bg-sky-500 px-3 py-1 text-white sm:w-auto"
                 type="submit"
               >
                 新規作成
@@ -203,7 +203,7 @@ export const CreateNewTodoModal = ({ onClose }: ClickProps) => {
             </div>
             <div className="w-full sm:w-auto">
               <button
-                className="w-full sm:w-auto rounded bg-sky-500 px-3 py-1 text-white"
+                className="w-full rounded bg-sky-500 px-3 py-1 text-white sm:w-auto"
                 onClick={onClose}
               >
                 閉じる

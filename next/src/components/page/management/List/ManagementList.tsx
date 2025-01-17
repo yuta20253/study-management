@@ -36,35 +36,43 @@ export const ManagementList: React.FC<Management> = ({
     })
 
   return (
-      <table className="w-2/3 justify-center items-center">
-        <thead>
-          <tr className="bg-sky-700">
-            <th className="py-2 px-4 text-white text-center">科目</th>
-            <th className="py-2 px-4 text-white text-center">タイトル</th>
-            <th className="py-2 px-4 text-white text-center">学習タイプ</th>
-            <th className="py-2 px-4 text-white text-center">学習時間</th>
-            <th className="py-2 px-4 text-white text-center">登録日時</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredStudyHours.map((study, i: number) => (
-            <tr key={i} className="border-t">
-              <td className="py-2 px-4 text-center">{study.subject}</td>
-              <td className="py-2 px-4 text-center" onClick={onOpen} onClickCapture={() => handleClickStudy(study)}>
-                {study.title}
-              </td>
-              <td className="py-2 px-4 text-center">
-                {study.study_type === 'preparation'
-                  ? '予習'
-                  : study.study_type === 'lesson'
+    <table className="w-2/3 items-center justify-center">
+      <thead>
+        <tr className="bg-sky-700">
+          <th className="px-4 py-2 text-center text-white">科目</th>
+          <th className="px-4 py-2 text-center text-white">タイトル</th>
+          <th className="px-4 py-2 text-center text-white">学習タイプ</th>
+          <th className="px-4 py-2 text-center text-white">学習時間</th>
+          <th className="px-4 py-2 text-center text-white">登録日時</th>
+        </tr>
+      </thead>
+      <tbody>
+        {filteredStudyHours.map((study, i: number) => (
+          <tr key={i} className="border-t">
+            <td className="px-4 py-2 text-center">{study.subject}</td>
+            <td
+              className="px-4 py-2 text-center"
+              onClick={onOpen}
+              onClickCapture={() => handleClickStudy(study)}
+            >
+              {study.title}
+            </td>
+            <td className="px-4 py-2 text-center">
+              {study.study_type === 'preparation'
+                ? '予習'
+                : study.study_type === 'lesson'
                   ? '授業'
                   : '復習'}
-              </td>
-              <td className="py-2 px-4 text-center">{study.actual_learning_time}時間</td>
-              <td className="py-2 px-4 text-center">{formatDate(study.created_at)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            </td>
+            <td className="px-4 py-2 text-center">
+              {study.actual_learning_time}時間
+            </td>
+            <td className="px-4 py-2 text-center">
+              {formatDate(study.created_at)}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   )
 }

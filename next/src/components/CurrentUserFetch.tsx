@@ -18,8 +18,8 @@ const CurrentUserFetch = () => {
             'access-token': localStorage.getItem('access-token'),
             client: localStorage.getItem('client'),
             uid: localStorage.getItem('uid'),
-            "csrf-token": localStorage.getItem('csrf-token'), 
-            auth_token:  localStorage.getItem('auth_token')
+            'csrf-token': localStorage.getItem('csrf-token'),
+            auth_token: localStorage.getItem('auth_token'),
           },
         })
         .then((res: AxiosResponse) => {

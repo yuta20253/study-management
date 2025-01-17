@@ -102,7 +102,7 @@ const SignUp: NextPage = () => {
   return (
     <div className="w-full">
       <div className="flex w-screen items-center justify-center p-4 sm:p-6">
-        <div className="w-full sm:w-96 bg-white rounded-lg shadow-lg">
+        <div className="w-full rounded-lg bg-white shadow-lg sm:w-96">
           <form onSubmit={handleSubmit(onSubmit)}>
             <table className="w-full">
               <tbody>
@@ -126,13 +126,13 @@ const SignUp: NextPage = () => {
                     <input
                       type="text"
                       placeholder="姓(カナ)"
-                      className="w-full p-2 border border-slate-300 rounded"
+                      className="w-full rounded border border-slate-300 p-2"
                       {...register('family_name_kana', { required: true })}
                     />
                     <input
                       type="text"
                       placeholder="名(カナ)"
-                      className="w-full p-2 border border-slate-300 rounded mt-2"
+                      className="mt-2 w-full rounded border border-slate-300 p-2"
                       {...register('given_name_kana', { required: true })}
                     />
                   </td>
@@ -146,13 +146,13 @@ const SignUp: NextPage = () => {
                     <input
                       type="text"
                       placeholder="姓"
-                      className="w-full p-2 border border-slate-300 rounded"
+                      className="w-full rounded border border-slate-300 p-2"
                       {...register('family_name', { required: true })}
                     />
                     <input
                       type="text"
                       placeholder="名"
-                      className="w-full p-2 border border-slate-300 rounded mt-2"
+                      className="mt-2 w-full rounded border border-slate-300 p-2"
                       {...register('given_name', { required: true })}
                     />
                   </td>
@@ -165,7 +165,7 @@ const SignUp: NextPage = () => {
                   <td className="border border-slate-500 p-2">
                     <input
                       type="date"
-                      className="w-full p-2 border border-slate-300 rounded"
+                      className="w-full rounded border border-slate-300 p-2"
                       {...register('birthday', { required: true })}
                     />
                   </td>
@@ -205,7 +205,7 @@ const SignUp: NextPage = () => {
                     <input
                       type="email"
                       placeholder="aaaaaaaa@example.com"
-                      className="w-full p-2 border border-slate-300 rounded"
+                      className="w-full rounded border border-slate-300 p-2"
                       {...register('email', { required: true })}
                     />
                   </td>
@@ -219,7 +219,7 @@ const SignUp: NextPage = () => {
                     <input
                       type="password"
                       placeholder="パスワードを入力"
-                      className="w-full p-2 border border-slate-300 rounded"
+                      className="w-full rounded border border-slate-300 p-2"
                       {...register('password', { required: true })}
                     />
                   </td>
@@ -233,7 +233,7 @@ const SignUp: NextPage = () => {
                     <input
                       type="text"
                       placeholder="郵便番号"
-                      className="w-full p-2 border border-slate-300 rounded"
+                      className="w-full rounded border border-slate-300 p-2"
                       {...register('address_attributes.postal_code')}
                     />
                   </td>
@@ -247,7 +247,7 @@ const SignUp: NextPage = () => {
                     <input
                       type="text"
                       placeholder="都道府県"
-                      className="w-full p-2 border border-slate-300 rounded"
+                      className="w-full rounded border border-slate-300 p-2"
                       {...register('address_attributes.prefecture')}
                     />
                   </td>
@@ -261,7 +261,7 @@ const SignUp: NextPage = () => {
                     <input
                       type="text"
                       placeholder="市区町村"
-                      className="w-full p-2 border border-slate-300 rounded"
+                      className="w-full rounded border border-slate-300 p-2"
                       {...register('address_attributes.city')}
                     />
                   </td>
@@ -275,7 +275,7 @@ const SignUp: NextPage = () => {
                     <input
                       type="text"
                       placeholder="町域・番地"
-                      className="w-full p-2 border border-slate-300 rounded"
+                      className="w-full rounded border border-slate-300 p-2"
                       {...register('address_attributes.address1')}
                     />
                   </td>
@@ -289,7 +289,7 @@ const SignUp: NextPage = () => {
                     <input
                       type="text"
                       placeholder="建物名など"
-                      className="w-full p-2 border border-slate-300 rounded"
+                      className="w-full rounded border border-slate-300 p-2"
                       {...register('address_attributes.address2')}
                     />
                   </td>
@@ -303,7 +303,7 @@ const SignUp: NextPage = () => {
                     <input
                       type="tel"
                       placeholder="080-xxxx-xxxx"
-                      className="w-full p-2 border border-slate-300 rounded"
+                      className="w-full rounded border border-slate-300 p-2"
                       {...register('telephone_attributes.phone_number')}
                     />
                   </td>
@@ -317,22 +317,24 @@ const SignUp: NextPage = () => {
                     <input
                       type="tel"
                       placeholder="03-xx-xxxx"
-                      className="w-full p-2 border border-slate-300 rounded"
-                      {...register('telephone_attributes.landline_phone_number')}
+                      className="w-full rounded border border-slate-300 p-2"
+                      {...register(
+                        'telephone_attributes.landline_phone_number',
+                      )}
                     />
                   </td>
                 </tr>
               </tbody>
             </table>
 
-            <div className="flex justify-center gap-4 mt-6">
+            <div className="mt-6 flex justify-center gap-4">
               <button
                 type="submit"
-                className="h-10 rounded bg-sky-600 px-6 py-2 text-white w-full sm:w-auto"
+                className="h-10 w-full rounded bg-sky-600 px-6 py-2 text-white sm:w-auto"
               >
                 登録
               </button>
-              <button className="h-10 rounded bg-sky-600 px-6 py-2 w-full sm:w-auto">
+              <button className="h-10 w-full rounded bg-sky-600 px-6 py-2 sm:w-auto">
                 <Link href="/current/home">
                   <p className="text-white">キャンセル</p>
                 </Link>
