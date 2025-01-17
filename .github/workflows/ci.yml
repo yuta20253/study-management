@@ -1,19 +1,20 @@
-# テスト(rspec)、コードルール(rubocop, eslint, prettier)のチェックを行う
 name: Continuous Integration
 
-# 当 workflow の実行タイミング
-# ブランチへの push 時
 on:
   push:
+    branches:
+      - main  # mainブランチにpushされた際にCIを実行
+  pull_request:
+    branches:
+      - main  # mainブランチへのPR時にも実行
 
-# 当 workflow が行う処理
 jobs:
   # 処理① rspec がオールグリーンであることをチェック
   rspec:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: rails
+        working-directory: rails  # Railsのディレクトリ
     services:
       mysql:
         image: mysql:8.0.32
@@ -33,15 +34,15 @@ jobs:
           ruby-version: 3.1.2
           bundler-cache: true
 
-      - name: Cache node modules
+      - name: Cache gem dependencies
         uses: actions/cache@v3
         with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-gem-
 
-      - name: Bundler and gem install
+      - name: Install gems
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3 --path vendor/bundle
@@ -60,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: rails
+        working-directory: rails  # Railsのディレクトリ
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -71,26 +72,40 @@ jobs:
           ruby-version: 3.1.2
           bundler-cache: true
 
-      - name: Bundler and gem install
+      - name: Cache gem dependencies
+        uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-
+
+      - name: Install gems
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3 --path vendor/bundle
 
       - name: Run rubocop
-        run: bundle exec rubocop　
+        run: bundle exec rubocop
 
   # 処理③ eslint(& prettier) のルール違反がないことをチェック
   eslint:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: next
+        working-directory: next  # Next.jsのディレクトリ
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install packages
-        run: npm install
+      - name: Install Node.js dependencies
+        run: |
+          npm install
 
-      - name: Run lint
-        run: npm run lint
+      - name: Run lint (ESLint)
+        run: |
+          npm run lint
+
+      - name: Run prettier check
+        run: |
+          npm run prettier-check
