@@ -8,7 +8,6 @@ AllCops:
     - "bin/**"
     - "spec/rails_helper.rb"
     - "spec/spec_helper.rb"
-  SuggestExtensions: true  # Ensure this is enabled if you want suggestions
 
 #################### Layout ################################
 Layout/ClassStructure:
