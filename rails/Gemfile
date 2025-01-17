@@ -74,8 +74,7 @@ group :development, :test do
   # rubocop を使えるようにする。
   gem "rubocop-faker"
   gem "rubocop-rails"
-  gem 'rubocop', '~> 1.0'
-  gem 'rubocop-rspec', '~> 2.0'
+  gem 'rubocop-rspec_rails'
 
   # shoulda-matchers
   gem "shoulda-matchers", "~> 6.0"
