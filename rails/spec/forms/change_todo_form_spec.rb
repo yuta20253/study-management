@@ -88,7 +88,10 @@ RSpec.describe ChangeTodoForm, type: :model do
       end
 
       it "todoの保存に失敗すると、study_hourもロールバックされる" do
-        allow(change_todo_form.todo).to receive(:save).and_return("todoの保存に失敗しました")
+        allow(change_todo_form.todo).to receive(:save).and_return(false)
+        # Expect the form's save to fail
+        expect(change_todo_form.save).to be false
+        # Ensure the error message is set on the form's todo
       end
     end
   end

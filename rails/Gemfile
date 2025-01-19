@@ -52,10 +52,6 @@ gem "actioncable"
 
 gem "redis"
 
-gem 'rubocop', '~> 1.0'
-gem 'rubocop-rails'
-gem 'rubocop-rspec'
-
 group :development, :test do
   # N+1発生時にアラートを表示する
   gem "bullet"
@@ -76,10 +72,10 @@ group :development, :test do
   gem "rspec-rails"
 
   # rubocop を使えるようにする。
+  gem "rubocop", "~> 1.0" # Or a compatible version
   gem "rubocop-faker"
   gem "rubocop-rails"
   gem "rubocop-rspec"
-  gem 'rubocop', '~> 1.0' # Or a compatible version
   # shoulda-matchers
   gem "shoulda-matchers", "~> 6.0"
 end

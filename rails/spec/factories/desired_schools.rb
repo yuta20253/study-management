@@ -10,9 +10,9 @@ FactoryBot.define do
     department_system { "法" }
     code { 10002 }
     faculty_of_code { 10056 }
-    explanation {
+    explanation do
       "司法・行政・立法という、人々に直接関わる重大な現象を多種多様な角度から学ぶ。法学総合・法律プロフェッション・政治の3類が置かれ、希望に応じていずれかに所属する。演習は、少人数で特定の課題などを報告、討論する形になっている。法律家を養成するというだけではなく、進路は多岐に広がっている。"
-    }
+    end
     capacity { "100" }
     division { "国立" }
   end

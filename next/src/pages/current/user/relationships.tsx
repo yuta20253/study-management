@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import Link from 'next/link'
 import { LoadingScreen } from '@/components/Loading'
 import LinkButton from '@/components/page/Common/LinkButton'
-import OnClickFollowOrUnFollowButton from '@/components/page/user/Button/handleOnClickFollowOrUnFollowButton'
+//import OnClickFollowOrUnFollowButton from '@/components/page/user/Button/handleOnClickFollowOrUnFollowButton'
 import RelationStatusLink from '@/components/page/user/Link/RelationStatusLink'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 import { DataState } from '@/hooks/user/RelationShips/DataState'
@@ -60,15 +60,19 @@ const Relationships: NextPage = () => {
                     </div>
                     <div className="ml-auto">
                       {followedIdsArr.includes(usr.id) ? (
-                        <OnClickFollowOrUnFollowButton
+                        <button
                           onClick={() => handleClickUnfollowUser(usr.id)}
-                          text={'フォロー解除'}
-                        />
+                          className="rounded bg-sky-400 px-3 py-1 text-white"
+                        >
+                          フォロー解除
+                        </button>
                       ) : (
-                        <OnClickFollowOrUnFollowButton
-                          onClick={() => handleClickFollowUser}
-                          text={'フォロー'}
-                        />
+                        <button
+                          onClick={() => handleClickFollowUser(usr.id)}
+                          className="rounded bg-sky-400 px-3 py-1 text-white"
+                        >
+                          フォロー
+                        </button>
                       )}
                     </div>
                   </div>

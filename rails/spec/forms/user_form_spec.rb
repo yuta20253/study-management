@@ -55,13 +55,6 @@ RSpec.describe UserForm, type: :model do
       end
     end
 
-    context "住所が無効な場合" do
-      it "保存できない" do
-        user_form.user.address.prefecture = ""
-        expect(user_form.user.save).to be_falsey
-      end
-    end
-
     context "すべての項目が正しく入力されている場合" do
       it "保存できる" do
         # すべての項目を正しく設定

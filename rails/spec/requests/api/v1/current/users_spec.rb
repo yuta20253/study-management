@@ -5,6 +5,8 @@ RSpec.describe "Api::V1::Current::Users", type: :request do
     subject { get(api_v1_current_user_path, headers:) }
 
     let(:current_user) { create(:user) }
+    let(:address) { create(:address, user: current_user) }
+    let(:telephone) { create(:telephone, user: current_user) }
     let(:headers) { current_user.create_new_auth_token }
     let(:todos) { create_list(:todo, 100, user: current_user) }
     context "ヘッダー情報が正常に送られた時" do
@@ -21,6 +23,16 @@ RSpec.describe "Api::V1::Current::Users", type: :request do
       end
     end
 
+    context "レスポンスデータの名前がcurrent_userと一致" do
+      it "姓と名が返る" do
+        subject
+        res = JSON.parse(response.body)
+        puts telephone.phone_number
+        expect(res["family_name"]).to eq current_user.family_name
+        expect(res["given_name"]).to eq current_user.given_name
+      end
+    end
+
     context "ヘッダー情報が空のままリクエストが送信された時" do
       let(:headers) { nil }
       it "unauthorized エラーが返る" do
@@ -29,24 +41,6 @@ RSpec.describe "Api::V1::Current::Users", type: :request do
         res = JSON.parse(response.body)
         expect(res["errors"]).to eq ["ログインもしくはアカウント登録してください。"]
         expect(response).to have_http_status(:unauthorized)
-      end
-    end
-  end
-
-  describe "GET api/v1/current/user" do
-    subject { get(edit_api_v1_current_user_path, headers:) }
-
-    let(:current_user) { create(:user) }
-    let(:address) { create(:address, user: current_user) }
-    let(:telephone) { create(:telephone, user: current_user) }
-    let(:headers) { current_user.create_new_auth_token }
-    describe "#edit" do
-      it "レスポンスデータの名前がcurrent_userと一致" do
-        subject
-        res = JSON.parse(response.body)
-        puts telephone.phone_number
-        expect(res["family_name"]).to eq current_user.family_name
-        expect(res["given_name"]).to eq current_user.given_name
       end
     end
   end

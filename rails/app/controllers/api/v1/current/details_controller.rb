@@ -12,7 +12,7 @@ class Api::V1::Current::DetailsController < Api::V1::BaseController
     @universities_data.each do |university|
       university.each do |univer|
         univer["uni"]["data"].each do |data|
-          if data["faculty_of_code"] === Integer(id)
+          if data["faculty_of_code"] == Integer(id)
             faculty_data = data
           end
         end

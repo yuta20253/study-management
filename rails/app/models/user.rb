@@ -18,12 +18,12 @@ class User < ApplicationRecord
   has_many :aspirations, dependent: :destroy
   has_many :desired_schools, through: :aspirations
 
-  has_many :likes_from, class_name: "Like", foreign_key: :from_user_id, dependent: :destroy
-  has_many :likes_to, class_name: "Like", foreign_key: :to_user_id, dependent: :destroy
+  has_many :likes_from, class_name: "Like", foreign_key: :from_user_id, dependent: :destroy, inverse_of: :from_user
+  has_many :likes_to, class_name: "Like", foreign_key: :to_user_id, dependent: :destroy, inverse_of: :to_user
   has_many :active_likes, through: :likes_from, source: :to_user  # 自分からのいいね
   has_many :passive_likes, through: :likes_to, source: :from_user # 相手からのいいね
 
-  has_many :room_users
+  has_many :room_users, dependent: :destroy
   has_many :rooms, through: :room_users
   has_many :messages, dependent: :destroy
 
@@ -49,8 +49,8 @@ class User < ApplicationRecord
   end
 
   # フォローをした、されたの関係
-  has_many :followers, class_name: "RelationShip", foreign_key: "follower_id", dependent: :destroy
-  has_many :followeds, class_name: "RelationShip", foreign_key: "followed_id", dependent: :destroy
+  has_many :followers, class_name: "RelationShip", foreign_key: "follower_id", dependent: :destroy, inverse_of: :follower
+  has_many :followeds, class_name: "RelationShip", foreign_key: "followed_id", dependent: :destroy, inverse_of: :followed
 
   # 一覧画面で使う
   has_many :following_users, through: :followers, source: :followed

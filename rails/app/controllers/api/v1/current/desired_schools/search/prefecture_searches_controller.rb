@@ -13,14 +13,14 @@ class Api::V1::Current::DesiredSchools::Search::PrefectureSearchesController < A
     end
 
     universities_arr = []
-    university_prefecture_Arr = []
+    university_prefecture_arr = []
     universities_name_arr = []
     universities = []
 
     # puts "要素数:::#{data_size}"
     universities_data[0].count.times do |i|
       universities_arr.push(universities_data[0][i]["uni"]["data"])
-      university_prefecture_Arr.push(universities_data[0][i]["uni"]["prefecture"])
+      university_prefecture_arr.push(universities_data[0][i]["uni"]["prefecture"])
       universities_name_arr.push(universities_data[0][i]["uni"]["school"])
       universities.push(universities_data[0][i]["uni"])
       universities_arr.flatten!

@@ -28,14 +28,6 @@ RSpec.describe "Api::V1::Current::Todos", type: :request do
         expect(response).to have_http_status(:unauthorized)
       end
     end
-  end
-
-  describe "GET api/v1/current/todos" do
-    subject { get(api_v1_current_todos_path(page:), headers:) }
-
-    let(:current_user) { create(:user) }
-    let(:headers) { current_user.create_new_auth_token }
-    let!(:todos) { create_list(:todo, 100, user: current_user) }
 
     context "ページネーションが機能している場合" do
       let(:page) { 1 }
@@ -73,12 +65,19 @@ RSpec.describe "Api::V1::Current::Todos", type: :request do
     let(:todo) { create(:todo, user: current_user) }
     let(:headers) { current_user.create_new_auth_token }
 
-    describe "#edit" do
-      it "レスポンスデータのtitleが一致" do
+    context "レスポンスデータのtitleが一致" do
+      it "正しいレスポンスが返る" do
         subject
         res = JSON.parse(response.body)
         expect(res["title"]).to eq todo.title
       end
+    end
+
+    it "Todoの詳細が返される" do
+      subject
+      res = JSON.parse(response.body)
+      expect(res["title"]).to eq todo.title
+      expect(response).to have_http_status(:ok)
     end
   end
 
@@ -87,17 +86,22 @@ RSpec.describe "Api::V1::Current::Todos", type: :request do
 
     let(:current_user) { create(:user) }
     let(:headers) { current_user.create_new_auth_token }
-
+    let(:params) {
+      { todo: FactoryBot.attributes_for(:todo, title: "ワンピース", subject: "英語", description: "", progress: :incomplete, scheduled_study_time: 10, due_date: nil,
+                                               importance: :medium, star_rating: 0, total_hour: 0, study_type: :preparation, user: current_user) }
+    }
     context "有効な値の時" do
-      let(:params) {
-        { todo: FactoryBot.attributes_for(:todo, title: "ワンピース", subject: "英語", description: "", progress: :incomplete, scheduled_study_time: 10, due_date: nil,
-                                                 importance: :medium, star_rating: 0, total_hour: 0, study_type: :preparation, user: current_user) }
-      }
-
       it "todoのtitleがparamsと一致する" do
         subject
         res = JSON.parse(response.body)
         expect(res["title"]).to eq "ワンピース"
+      end
+
+      it "Todoが正常に作成される" do
+        expect { subject }.to change { current_user.todos.count }.by(1)
+        res = JSON.parse(response.body)
+        expect(res["title"]).to eq "ワンピース"
+        expect(response).to have_http_status(:created) # 成功時に201 Createdが返されることを確認
       end
 
       it "study_hourが1つ作られる" do
@@ -118,20 +122,6 @@ RSpec.describe "Api::V1::Current::Todos", type: :request do
         expect(res["error"]).to include("タイトルを入力してください") # バリデーションエラーメッセージが含まれていることを確認
       end
     end
-
-    context "有効な値の時" do
-      let(:params) {
-        { todo: FactoryBot.attributes_for(:todo, title: "ワンピース", subject: "英語", description: "", progress: :incomplete, scheduled_study_time: 10, due_date: nil,
-                                                 importance: :medium, star_rating: 0, total_hour: 0, study_type: :preparation, user: current_user) }
-      }
-
-      it "Todoが正常に作成される" do
-        expect { subject }.to change { current_user.todos.count }.by(1)
-        res = JSON.parse(response.body)
-        expect(res["title"]).to eq "ワンピース"
-        expect(response).to have_http_status(:created) # 成功時に201 Createdが返されることを確認
-      end
-    end
   end
 
   describe "DELETE api/v1/current/todos/:id" do
@@ -150,7 +140,7 @@ RSpec.describe "Api::V1::Current::Todos", type: :request do
     end
 
     context "Todoが存在しない場合" do
-      let(:todo) { double(:todo, id: 999) } # モックで存在しないtodoを設定
+      let(:todo) { instance_double(Todo, id: 999) } # モックで存在しないtodoを設定
 
       it "404エラーが返る" do
         subject
@@ -158,21 +148,6 @@ RSpec.describe "Api::V1::Current::Todos", type: :request do
         expect(response).to have_http_status(:not_found) # 404エラーが返されることを確認
         expect(res["error"]).to eq "Todo not found" # エラーメッセージが正しいことを確認
       end
-    end
-  end
-
-  describe "GET api/v1/current/todos/:id/edit" do
-    subject { get(edit_api_v1_current_todo_path(todo.id), headers:) }
-
-    let(:current_user) { create(:user) }
-    let(:todo) { create(:todo, user: current_user) }
-    let(:headers) { current_user.create_new_auth_token }
-
-    it "Todoの詳細が返される" do
-      subject
-      res = JSON.parse(response.body)
-      expect(res["title"]).to eq todo.title
-      expect(response).to have_http_status(:ok)
     end
   end
 

@@ -32,9 +32,9 @@ RSpec.describe User, type: :model do
 
   describe "follow/unfollow" do
     it "フォローできる" do
-      expect(user.following(other_user)).to be(false)
+      expect(user.following_users.count).to eq 0
       user.follow(other_user.id)
-      expect(user.following(other_user)).to be(true)
+      expect(user.following_users.count).to eq 1
     end
 
     it "フォローできない" do

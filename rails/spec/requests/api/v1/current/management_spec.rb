@@ -44,8 +44,8 @@ RSpec.describe "Api::V1::Current::Managements", type: :request do
     end
 
     context "study_hoursのデータが正しく集計されていること" do
-      let!(:study_hour_1) { create(:study_hour, user: current_user, actual_learning_time: 2) }
-      let!(:study_hour_2) { create(:study_hour, user: current_user, actual_learning_time: 3) }
+      let!(:study_hour_first) { create(:study_hour, user: current_user, actual_learning_time: 2) }
+      let!(:study_hour_second) { create(:study_hour, user: current_user, actual_learning_time: 3) }
 
       it "study_hoursの合計が正しく計算される" do
         subject

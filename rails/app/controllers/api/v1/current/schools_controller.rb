@@ -6,9 +6,7 @@ class Api::V1::Current::SchoolsController < Api::V1::BaseController
   def show
     # JSONデータを読み込む
     universities_data = []
-    unless load_json(universities_data)
-      return render json: { error: "データの読み込みに失敗しました" }, status: :internal_server_error
-    end
+    load_univerities_json(universities_data)
 
     # 入力された学校IDと大学IDに基づいて検索
     query = params[:id]
@@ -22,32 +20,43 @@ class Api::V1::Current::SchoolsController < Api::V1::BaseController
     end
 
     unless valid_school_id?(query)
-      return render json: { error: "学校が見つかりません" }, status: :not_found
+      render json: { error: "学校が見つかりません" }, status: :not_found
     end
 
-    show_universities_data = nil
+    @show_universities_data = nil
 
     # 大学コードが一致するものを検索
-    universities_data[0].each do |university_data|
-      university_data["uni"]["data"].each do |uni|
-        if uni["code"] == query_id
-          show_universities_data = university_data
-          break
-        end
-      end
-      break if show_universities_data
-    end
-
+    find_university_code(@show_universities_data, query_id, universities_data)
     # 学校が見つからなかった場合
-    if show_universities_data.nil?
+    if @show_universities_data.nil?
       return render json: { error: "大学が見つかりません" }, status: :not_found
     end
 
     # 最終的に大学情報が見つかればそのデータを返す
-    render json: show_universities_data
+    render json: @show_universities_data
   end
 
   private
+
+    def load_univerities_json(universities_data)
+      unless load_json(universities_data)
+        render json: { error: "データの読み込みに失敗しました" }, status: :internal_server_error
+      end
+    end
+
+    def find_university_code(show_universities_data, query_id, universities_data)
+      universities_data[0].each do |university_data|
+        university_data["uni"]["data"].each do |uni|
+          if uni["code"] == query_id
+            @show_universities_data = university_data
+            break
+          end
+        end
+        break if @show_universities_data
+      end
+
+      show_universities_data
+    end
 
     def valid_school_id?(school_id)
       Rails.logger.debug "大学コードが一致しているかの確認です"
