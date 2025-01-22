@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import React from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { UserNameEditInput } from '@/components/page/user/Form/UserNameEditInput'
-import React from 'react'
 
 type TestProps = {
   theme: string
@@ -18,13 +18,16 @@ type TestProps = {
       message: string
     }
   }
-  errorFirst?: {type: string, message: string}
-  errorSecond?: {type: string, message: string}
+  errorFirst?: { type: string; message: string }
+  errorSecond?: { type: string; message: string }
 }
 
 const TestWrapper = ({
   children,
-}: { children: React.ReactNode; testProps: TestProps }) => {
+}: {
+  children: React.ReactNode
+  testProps: TestProps
+}) => {
   const method = useForm()
   return <FormProvider {...method}>{children}</FormProvider>
 }
@@ -48,7 +51,7 @@ describe('UserNameEditInput', () => {
     customRender(
       <TestWrapper testProps={testProps}>
         <UserNameEditInput {...testProps} />
-      </TestWrapper>
+      </TestWrapper>,
     )
 
     const input1 = screen.getByLabelText('氏名カナ（姓)') as HTMLInputElement
@@ -75,19 +78,20 @@ describe('UserNameEditInput', () => {
           message: 'カタカナで入力してください',
         },
       },
-      errorFirst: {type: "required", message: "入力必須です"}
-      
+      errorFirst: { type: 'required', message: '入力必須です' },
     }
 
     customRender(
       <TestWrapper testProps={testProps}>
         <UserNameEditInput {...testProps} />
-      </TestWrapper>
+      </TestWrapper>,
     )
 
     //const input = screen.getByLabelText('氏名カナ（姓)') as HTMLInputElement
     // 氏名カナ（姓）の入力欄を空にする
-     fireEvent.change(screen.getByLabelText('氏名カナ（姓)'), { target: { value: "" } })
+    fireEvent.change(screen.getByLabelText('氏名カナ（姓)'), {
+      target: { value: '' },
+    })
 
     // 「必須項目です」のエラーメッセージが表示されること
     await waitFor(() => {
@@ -111,13 +115,13 @@ describe('UserNameEditInput', () => {
           message: 'カタカナで入力してください',
         },
       },
-      errorSecond: { type: "pattern", message:"カタカナで入力してください" }
+      errorSecond: { type: 'pattern', message: 'カタカナで入力してください' },
     }
 
     customRender(
       <TestWrapper testProps={testProps}>
         <UserNameEditInput {...testProps} />
-      </TestWrapper>
+      </TestWrapper>,
     )
 
     const input = screen.getByLabelText('氏名カナ（姓)') as HTMLInputElement
@@ -126,7 +130,9 @@ describe('UserNameEditInput', () => {
 
     // 「カタカナで入力してください」のエラーメッセージが表示されること
     await waitFor(() => {
-      expect(screen.queryByText('カタカナで入力してください')).toBeInTheDocument()
+      expect(
+        screen.queryByText('カタカナで入力してください'),
+      ).toBeInTheDocument()
     })
   })
 
@@ -151,17 +157,22 @@ describe('UserNameEditInput', () => {
     customRender(
       <TestWrapper testProps={testProps}>
         <UserNameEditInput {...testProps} />
-      </TestWrapper>
+      </TestWrapper>,
     )
     // 正しいカタカナを入力する
-    fireEvent.change(screen.getByLabelText('氏名カナ（姓)'), { target: { value: 'ヤマダ' } })
-    fireEvent.change(screen.getByLabelText('氏名カナ（名)'), { target: { value: 'タロウ' } })
+    fireEvent.change(screen.getByLabelText('氏名カナ（姓)'), {
+      target: { value: 'ヤマダ' },
+    })
+    fireEvent.change(screen.getByLabelText('氏名カナ（名)'), {
+      target: { value: 'タロウ' },
+    })
 
     // エラーメッセージが表示されないこと
     await waitFor(() => {
       expect(screen.queryByText('入力必須です')).not.toBeInTheDocument()
-      expect(screen.queryByText('カタカナで入力してください')).not.toBeInTheDocument()
+      expect(
+        screen.queryByText('カタカナで入力してください'),
+      ).not.toBeInTheDocument()
     })
   })
 })
-

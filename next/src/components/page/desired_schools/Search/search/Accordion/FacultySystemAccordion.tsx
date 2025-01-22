@@ -7,7 +7,9 @@ type FacultySystemAccordionProps = {
   handleClearFacultySystem: () => void
 }
 
-export const FacultySystemAccordion: React.FC<FacultySystemAccordionProps> = ({handleClearFacultySystem}: FacultySystemAccordionProps) => {
+export const FacultySystemAccordion: React.FC<FacultySystemAccordionProps> = ({
+  handleClearFacultySystem,
+}: FacultySystemAccordionProps) => {
   const [isActive, setIsActive] = useState<boolean>(false)
 
   return (
@@ -70,7 +72,11 @@ export const FacultySystemAccordion: React.FC<FacultySystemAccordionProps> = ({h
           </div>
 
           <div className="mx-auto w-5/6">
-            <button className="mx-auto mb-4 w-full rounded-md bg-blue-500 p-2 text-center text-white sm:w-auto" type='button' onClick={handleClearFacultySystem}>
+            <button
+              className="mx-auto mb-4 w-full rounded-md bg-blue-500 p-2 text-center text-white sm:w-auto"
+              type="button"
+              onClick={handleClearFacultySystem}
+            >
               <b>条件をクリア</b>
             </button>
           </div>

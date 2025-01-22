@@ -66,16 +66,26 @@ const OptionPage: NextPage = () => {
               <div className="mb-4">
                 <CheckBoxContext.Provider
                   value={{
-                    handleChange, setCheckedItems ,checkedItems, handleClearCommonEntranceExaminationSunjects, handleClearSecondEntranceExaminationSunjects, 
+                    handleChange,
+                    setCheckedItems,
+                    checkedItems,
+                    handleClearCommonEntranceExaminationSunjects,
+                    handleClearSecondEntranceExaminationSunjects,
                   }}
                 >
-                  <FacultySystemAccordion handleClearFacultySystem={handleClearFacultySystem} />
+                  <FacultySystemAccordion
+                    handleClearFacultySystem={handleClearFacultySystem}
+                  />
                 </CheckBoxContext.Provider>
               </div>
               <div className="mb-4">
                 <CheckBoxContext.Provider
                   value={{
-                    handleChange, setCheckedItems ,checkedItems,handleClearCommonEntranceExaminationSunjects, handleClearSecondEntranceExaminationSunjects, 
+                    handleChange,
+                    setCheckedItems,
+                    checkedItems,
+                    handleClearCommonEntranceExaminationSunjects,
+                    handleClearSecondEntranceExaminationSunjects,
                   }}
                 >
                   <EntranceExaminationSubjectAndScoreAccordionySystemAccordion />

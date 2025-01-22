@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { CommonEntranceExaminationSubjectsAccordion } from './CommonEntranceExaminationSubjectsAccordion'
 import { SecondEntranceExaminationSubjectsAccordion } from './SecondEntranceExaminationSubjectsAccordion'
-import { DataState } from '@/hooks/desired_schools/Search/Option/DataState'
 
 export const EntranceExaminationSubjectAndScoreAccordionySystemAccordion =
   () => {

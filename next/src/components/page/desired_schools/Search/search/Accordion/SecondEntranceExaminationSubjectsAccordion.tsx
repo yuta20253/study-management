@@ -18,8 +18,11 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
   certification_exam, // 英語資格・検定試験
 }: SecondEntranceExaminationSubjectsAccordionProps) => {
   const [openEntranceType, setOpenEntranceType] = useState<boolean>(false)
-  const { handleChange, checkedItems ,handleClearSecondEntranceExaminationSunjects } =
-    useContext(CheckBoxContext)
+  const {
+    handleChange,
+    checkedItems,
+    handleClearSecondEntranceExaminationSunjects,
+  } = useContext(CheckBoxContext)
 
   return (
     <div className="mx-auto mb-5 w-full sm:w-5/6">
@@ -98,7 +101,9 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                           type="checkbox"
                           value="second_exam_subjects.english"
                           onChange={(e) => handleChange(e)}
-                          checked={checkedItems.includes('second_exam_subjects.english')}
+                          checked={checkedItems.includes(
+                            'second_exam_subjects.english',
+                          )}
                         />
                         <span></span>
                         <b>{foreignLanguage}</b>
@@ -118,7 +123,9 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                           type="checkbox"
                           value="second_exam_subjects.math"
                           onChange={(e) => handleChange(e)}
-                          checked={checkedItems.includes('second_exam_subjects.math')}
+                          checked={checkedItems.includes(
+                            'second_exam_subjects.math',
+                          )}
                         />
                         <span></span>
                         <b>{math}</b>
@@ -138,7 +145,9 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                           type="checkbox"
                           value="second_exam_subjects.nationallang"
                           onChange={(e) => handleChange(e)}
-                          checked={checkedItems.includes('second_exam_subjects.nationallang')}
+                          checked={checkedItems.includes(
+                            'second_exam_subjects.nationallang',
+                          )}
                         />
                         <span></span>
                         <b>{nationallang}</b>
@@ -157,8 +166,10 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                           name="second_exam_subjects.science"
                           type="checkbox"
                           value="second_exam_subjects.science"
-                          onChange={(e) => handleChange(e)}    
-                          checked={checkedItems.includes('second_exam_subjects.science')}            
+                          onChange={(e) => handleChange(e)}
+                          checked={checkedItems.includes(
+                            'second_exam_subjects.science',
+                          )}
                         />
                         <span></span>
                         <b>{science}</b>
@@ -177,8 +188,10 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                           name="second_exam_subjects.geographical_history_citizens"
                           type="checkbox"
                           value="second_exam_subjects.geographical_history_citizens"
-                          onChange={(e) => handleChange(e)}   
-                          checked={checkedItems.includes('second_exam_subjects.geographical_history_citizens')}              
+                          onChange={(e) => handleChange(e)}
+                          checked={checkedItems.includes(
+                            'second_exam_subjects.geographical_history_citizens',
+                          )}
                         />
                         <span></span>
                         <b>{geographical_history_citizens}</b>
@@ -199,7 +212,9 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                             type="checkbox"
                             value="second_exam_subjects.information"
                             onChange={(e) => handleChange(e)}
-                            checked={checkedItems.includes('second_exam_subjects.information')}
+                            checked={checkedItems.includes(
+                              'second_exam_subjects.information',
+                            )}
                           />
                           <span></span>
                           <b>{information}</b>
@@ -212,8 +227,10 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                             name="second_exam_subjects.essay"
                             type="checkbox"
                             value="second_exam_subjects.essay"
-                            onChange={(e) => handleChange(e)}           
-                            checked={checkedItems.includes('second_exam_subjects.essay')}          
+                            onChange={(e) => handleChange(e)}
+                            checked={checkedItems.includes(
+                              'second_exam_subjects.essay',
+                            )}
                           />
                           <span></span>
                           <b>{essay}</b>
@@ -226,8 +243,10 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                             name="second_exam_subjects.practical_skills"
                             type="checkbox"
                             value="second_exam_subjects.practical_skills"
-                            onChange={(e) => handleChange(e)}        
-                            checked={checkedItems.includes('second_exam_subjects.practical_skills')}    
+                            onChange={(e) => handleChange(e)}
+                            checked={checkedItems.includes(
+                              'second_exam_subjects.practical_skills',
+                            )}
                           />
                           <span></span>
                           <b>{practical_skills}</b>
@@ -239,8 +258,10 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                             name="second_exam_subjects.comprehensive_question"
                             type="checkbox"
                             value="second_exam_subjects.comprehensive_question"
-                            onChange={(e) => handleChange(e)}             
-                            checked={checkedItems.includes('second_exam_subjects.comprehensive_question')}        
+                            onChange={(e) => handleChange(e)}
+                            checked={checkedItems.includes(
+                              'second_exam_subjects.comprehensive_question',
+                            )}
                           />
                           <span></span>
                           <b>{comprehensive_question}</b>
@@ -252,8 +273,10 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                             name="second_exam_subjects.certification_exam"
                             type="checkbox"
                             value="second_exam_subjects.certification_exam"
-                            onChange={(e) => handleChange(e)}     
-                            checked={checkedItems.includes('second_exam_subjects.certification_exam')}                 
+                            onChange={(e) => handleChange(e)}
+                            checked={checkedItems.includes(
+                              'second_exam_subjects.certification_exam',
+                            )}
                           />
                           <span></span>
                           <b className="text-xs">{certification_exam}</b>

@@ -90,7 +90,7 @@ describe('EditTodo', () => {
     await waitFor(() => {
       expect(screen.getByTestId('title')).toHaveValue('テストTodo')
       expect(screen.getByTestId('description')).toHaveValue('テストの説明')
-    })    
+    })
   })
 
   it('フォームが送信されたらonSubmitを呼び出します', async () => {
