@@ -13,12 +13,12 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
   geographical_history_citizens,
   information,
   essay,
-  practical_skills, // 実技
-  comprehensive_question, // 総合問題
-  certification_exam, // 英語資格・検定試験
+  practical_skills,  //実技
+  comprehensive_question,  //総合問題
+  certification_exam,  //英語資格・検定試験
 }: CommonEntranceExaminationSubjectsAccordionProps) => {
   const [openEntranceType, setOpenEntranceType] = useState<boolean>(false)
-  const { handleChange } = useContext(CheckBoxContext)
+  const { handleChange, checkedItems ,handleClearCommonEntranceExaminationSunjects } =　useContext(CheckBoxContext)
 
   return (
     <div className="mx-auto mt-5 w-full sm:w-5/6">
@@ -34,7 +34,7 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
               data-accordion-icon
               className="shrink-0"
               aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
+              xmlns="http:www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 10 6"
             >
@@ -51,7 +51,7 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
               data-accordion-icon
               className="shrink-0 rotate-180"
               aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
+              xmlns="http:www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 10 6"
             >
@@ -71,7 +71,11 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
       {openEntranceType && (
         <div className="mx-auto my-5 w-full sm:w-5/6">
           <div className="mb-1">
-            <button className="rounded bg-red-500 px-4 py-2 text-white">
+            <button
+              className="rounded bg-red-500 px-4 py-2 text-white"
+              type="button"
+              onClick={handleClearCommonEntranceExaminationSunjects}
+            >
               <b>条件をクリア</b>
             </button>
           </div>
@@ -95,7 +99,9 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                         <input
                           name="first_exam_subjects.english"
                           type="checkbox"
+                          value="first_exam_subjects.english"
                           onChange={(e) => handleChange(e)}
+                          checked={checkedItems.includes('first_exam_subjects.english')}
                           className="mr-2"
                         />
                         <b>{foreignLanguage}</b>
@@ -115,7 +121,9 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                         <input
                           name="first_exam_subjects.math"
                           type="checkbox"
+                          value="first_exam_subjects.math"
                           onChange={(e) => handleChange(e)}
+                          checked={checkedItems.includes('first_exam_subjects.math')}
                           className="mr-2"
                         />
                         <b>{math}</b>
@@ -135,7 +143,9 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                         <input
                           name="first_exam_subjects.nationallang"
                           type="checkbox"
+                          value="first_exam_subjects.nationallang"
                           onChange={(e) => handleChange(e)}
+                          checked={checkedItems.includes('first_exam_subjects.nationallang')}
                           className="mr-2"
                         />
                         <b>{nationallang}</b>
@@ -155,7 +165,9 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                         <input
                           name="first_exam_subjects.science"
                           type="checkbox"
+                          value="first_exam_subjects.science"
                           onChange={(e) => handleChange(e)}
+                          checked={checkedItems.includes('first_exam_subjects.science')}
                           className="mr-2"
                         />
                         <b>{science}</b>
@@ -175,7 +187,9 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                         <input
                           name="first_exam_subjects.geographical_history_citizens"
                           type="checkbox"
+                          value="first_exam_subjects.geographical_history_citizens"
                           onChange={(e) => handleChange(e)}
+                          checked={checkedItems.includes('first_exam_subjects.geographical_history_citizens')}
                           className="mr-2"
                         />
                         <b>{geographical_history_citizens}</b>
@@ -196,7 +210,9 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                           <input
                             name="first_exam_subjects.information"
                             type="checkbox"
+                            value="first_exam_subjects.information"
                             onChange={(e) => handleChange(e)}
+                            checked={checkedItems.includes('first_exam_subjects.information')}
                             className="mr-2"
                           />
                           <b>{information}</b>
@@ -207,7 +223,9 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                           <input
                             name="first_exam_subjects.essay"
                             type="checkbox"
+                            value="first_exam_subjects.essay"
                             onChange={(e) => handleChange(e)}
+                            checked={checkedItems.includes('first_exam_subjects.essay')}
                             className="mr-2"
                           />
                           <b>{essay}</b>
@@ -218,7 +236,9 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                           <input
                             name="first_exam_subjects.practical_skills"
                             type="checkbox"
+                            value="first_exam_subjects.practical_skills"
                             onChange={(e) => handleChange(e)}
+                            checked={checkedItems.includes('first_exam_subjects.practical_skills')}
                             className="mr-2"
                           />
                           <b>{practical_skills}</b>
@@ -229,7 +249,9 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                           <input
                             name="first_exam_subjects.comprehensive_question"
                             type="checkbox"
+                            value="first_exam_subjects.comprehensive_question"
                             onChange={(e) => handleChange(e)}
+                            checked={checkedItems.includes('first_exam_subjects.comprehensive_question')}
                             className="mr-2"
                           />
                           <b>{comprehensive_question}</b>
@@ -240,7 +262,9 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                           <input
                             name="first_exam_subjects.certification_exam"
                             type="checkbox"
+                            value="first_exam_subjects.certification_exam"
                             onChange={(e) => handleChange(e)}
+                            checked={checkedItems.includes('first_exam_subjects.certification_exam')}
                             className="mr-2"
                           />
                           <b className="text-xs">{certification_exam}</b>
@@ -257,3 +281,4 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
     </div>
   )
 }
+

@@ -4,6 +4,7 @@ import { DeviationValue } from '@/types/DesiredSchool'
 
 export const DeviationValueAccordion = ({
   deviationValues,
+  handleClearDeviationValues,
 }: DeviationValue) => {
   const [isActive, setIsActive] = useState<boolean>(false)
   return (
@@ -58,7 +59,11 @@ export const DeviationValueAccordion = ({
         <div className="mx-auto my-5 w-full sm:w-5/6">
           <div className="w-full">
             {/* Clear button */}
-            <button className="mb-4 rounded bg-red-500 px-4 py-2 text-sm text-white sm:text-base">
+            <button
+              className="mb-4 rounded bg-red-500 px-4 py-2 text-sm text-white sm:text-base"
+              type="button"
+              onClick={handleClearDeviationValues}
+            >
               <b>条件をクリア</b>
             </button>
 

@@ -24,6 +24,8 @@ export type InstallationCategoryProps = {
   nationalSchool: string
   privateSchool: string
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void
+  handleClearInstallationCategory: () => void
+  checkedItems: string[]
 }
 
 export type SecondEntranceExaminationSubjectsAccordionProps = {

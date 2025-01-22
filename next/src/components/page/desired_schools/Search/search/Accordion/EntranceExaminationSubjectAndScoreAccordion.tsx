@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { CommonEntranceExaminationSubjectsAccordion } from './CommonEntranceExaminationSubjectsAccordion'
 import { SecondEntranceExaminationSubjectsAccordion } from './SecondEntranceExaminationSubjectsAccordion'
+import { DataState } from '@/hooks/desired_schools/Search/Option/DataState'
 
 export const EntranceExaminationSubjectAndScoreAccordionySystemAccordion =
   () => {
     const [isActive, setIsActive] = useState<boolean>(false)
+    //const { checkedItems, handleClearCommonEntranceExaminationSunjects, handleClearSecondEntranceExaminationSunjects } = DataState()
     return (
       <div className="w-full">
         <div
@@ -69,7 +71,7 @@ export const EntranceExaminationSubjectAndScoreAccordionySystemAccordion =
                 practical_skills="実技" // 実技
                 comprehensive_question="総合問題" // 総合問題
                 certification_exam="英語資格・検定試験" // 英語資格・検定試験
-              />
+    />
               <SecondEntranceExaminationSubjectsAccordion
                 entranceExamination="2次試験・個別学力検査"
                 foreignLanguage="英語"
@@ -82,6 +84,7 @@ export const EntranceExaminationSubjectAndScoreAccordionySystemAccordion =
                 practical_skills="実技" // 実技
                 comprehensive_question="総合問題" // 総合問題
                 certification_exam="英語資格・検定試験" // 英語資格・検定試験
+
               />
             </div>
           </div>

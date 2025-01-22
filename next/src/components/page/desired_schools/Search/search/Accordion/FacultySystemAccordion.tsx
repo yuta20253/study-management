@@ -1,9 +1,13 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { FacultyAccordion } from '@/components/page/desired_schools/Search/search/Accordion/FacultyAccordion'
 import { DepartmentArr } from '@/const/departmentArr'
 import { FacultySystem } from '@/const/facultySystem'
 
-export const FacultySystemAccordion = () => {
+type FacultySystemAccordionProps = {
+  handleClearFacultySystem: () => void
+}
+
+export const FacultySystemAccordion: React.FC<FacultySystemAccordionProps> = ({handleClearFacultySystem}: FacultySystemAccordionProps) => {
   const [isActive, setIsActive] = useState<boolean>(false)
 
   return (
@@ -66,7 +70,7 @@ export const FacultySystemAccordion = () => {
           </div>
 
           <div className="mx-auto w-5/6">
-            <button className="mx-auto mb-4 w-full rounded-md bg-blue-500 p-2 text-center text-white sm:w-auto">
+            <button className="mx-auto mb-4 w-full rounded-md bg-blue-500 p-2 text-center text-white sm:w-auto" type='button' onClick={handleClearFacultySystem}>
               <b>条件をクリア</b>
             </button>
           </div>
