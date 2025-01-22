@@ -71,7 +71,7 @@ export const EntranceExaminationSubjectAndScoreAccordionySystemAccordion =
                 practical_skills="実技" // 実技
                 comprehensive_question="総合問題" // 総合問題
                 certification_exam="英語資格・検定試験" // 英語資格・検定試験
-    />
+              />
               <SecondEntranceExaminationSubjectsAccordion
                 entranceExamination="2次試験・個別学力検査"
                 foreignLanguage="英語"
@@ -84,7 +84,6 @@ export const EntranceExaminationSubjectAndScoreAccordionySystemAccordion =
                 practical_skills="実技" // 実技
                 comprehensive_question="総合問題" // 総合問題
                 certification_exam="英語資格・検定試験" // 英語資格・検定試験
-
               />
             </div>
           </div>
