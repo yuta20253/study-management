@@ -21,7 +21,7 @@ export const FacultyAccordion: React.FC<FacultyAccordionProps> = ({
   },[selectAllChecked, departmentArr, setCheckedItems])
 
   const handleClickAllSelectButton = () => {
-    setSelectAllChecked(!selectAllChecked) 
+    setSelectAllChecked(!selectAllChecked)
   }
 
   return (
