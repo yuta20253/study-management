@@ -17,11 +17,17 @@ const OptionPage: NextPage = () => {
   useRequireSignedIn()
   const {
     checkedItems,
+    setCheckedItems,
     deviationValues,
     setDeviationValues,
     router,
     handleChange,
+    handleClearInstallationCategory,
+    handleClearFacultySystem,
+    handleClearCommonEntranceExaminationSunjects,
+    handleClearSecondEntranceExaminationSunjects,
     deviationValuesLists,
+    handleClearDeviationValues,
   } = DataState()
 
   const { handleSubmit } = useForm<string[]>()
@@ -51,15 +57,37 @@ const OptionPage: NextPage = () => {
                   nationalSchool="国立"
                   privateSchool="私立"
                   handleChange={handleChange}
+                  handleClearInstallationCategory={
+                    handleClearInstallationCategory
+                  }
+                  checkedItems={checkedItems}
                 />
               </div>
               <div className="mb-4">
-                <CheckBoxContext.Provider value={{ handleChange }}>
-                  <FacultySystemAccordion />
+                <CheckBoxContext.Provider
+                  value={{
+                    handleChange,
+                    setCheckedItems,
+                    checkedItems,
+                    handleClearCommonEntranceExaminationSunjects,
+                    handleClearSecondEntranceExaminationSunjects,
+                  }}
+                >
+                  <FacultySystemAccordion
+                    handleClearFacultySystem={handleClearFacultySystem}
+                  />
                 </CheckBoxContext.Provider>
               </div>
               <div className="mb-4">
-                <CheckBoxContext.Provider value={{ handleChange }}>
+                <CheckBoxContext.Provider
+                  value={{
+                    handleChange,
+                    setCheckedItems,
+                    checkedItems,
+                    handleClearCommonEntranceExaminationSunjects,
+                    handleClearSecondEntranceExaminationSunjects,
+                  }}
+                >
                   <EntranceExaminationSubjectAndScoreAccordionySystemAccordion />
                 </CheckBoxContext.Provider>
               </div>
@@ -67,7 +95,10 @@ const OptionPage: NextPage = () => {
                 <SliderContext.Provider
                   value={{ deviationValues, setDeviationValues }}
                 >
-                  <DeviationValueAccordion deviationValues={deviationValues} />
+                  <DeviationValueAccordion
+                    deviationValues={deviationValues}
+                    handleClearDeviationValues={handleClearDeviationValues}
+                  />
                 </SliderContext.Provider>
               </div>
             </div>

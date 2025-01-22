@@ -116,10 +116,10 @@
           null,
           null,
           1,
-          11,
-          11,
-          11,
-          11,
+          13,
+          13,
+          13,
+          13,
           null,
           null,
           1,
@@ -273,8 +273,8 @@
           null,
           null,
           1,
-          18,
-          18,
+          20,
+          20,
           null,
           null,
           1,
@@ -1009,6 +1009,15 @@
           null
         ]
       },
+      "/myapp/app/controllers/api/v1/current/desired_schools/search/map_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/myapp/app/controllers/api/v1/current/desired_schools/search/option_controller.rb": {
         "lines": [
           0,
@@ -1022,6 +1031,27 @@
           0,
           null,
           null,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/myapp/app/controllers/api/v1/current/desired_schools/search/prefecture_search_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/myapp/app/controllers/api/v1/current/desired_schools/search_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
           0,
           0
         ],
@@ -1318,6 +1348,6 @@
         }
       }
     },
-    "timestamp": 1737278946
+    "timestamp": 1737562912
   }
 }

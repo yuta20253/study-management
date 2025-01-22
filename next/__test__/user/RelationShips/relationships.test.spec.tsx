@@ -2,8 +2,8 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import Relationships from '../../../src/pages/current/user/relationships'
-import { DataState } from '@/hooks/user/RelationShips/DataState'
 import { useUserState } from '@/hooks/useGlobalState'
+import { DataState } from '@/hooks/user/RelationShips/DataState'
 
 // Mock necessary hooks
 jest.mock('@/hooks/useGlobalState', () => ({

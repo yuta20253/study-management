@@ -78,4 +78,5 @@ export type UniversityPrefecture = {
 
 export type DeviationValue = {
   deviationValues: number[]
+  handleClearDeviationValues: () => void
 }

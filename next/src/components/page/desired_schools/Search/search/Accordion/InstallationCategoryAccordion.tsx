@@ -5,6 +5,8 @@ export const InstallationCategory: React.FC<InstallationCategoryProps> = ({
   nationalSchool,
   privateSchool,
   handleChange,
+  handleClearInstallationCategory,
+  checkedItems, // checkedItemsもpropsとして受け取る
 }: InstallationCategoryProps) => {
   const [isActive, setIsActive] = useState<boolean>(false)
 
@@ -66,7 +68,11 @@ export const InstallationCategory: React.FC<InstallationCategoryProps> = ({
           </div>
 
           <div className="mx-auto w-5/6">
-            <button className="mx-auto mb-4 w-full rounded-md bg-blue-500 p-2 text-center text-white sm:w-auto">
+            <button
+              type="button"
+              className="mx-auto mb-4 w-full rounded-md bg-blue-500 p-2 text-center text-white sm:w-auto"
+              onClick={handleClearInstallationCategory}
+            >
               <b>条件をクリア</b>
             </button>
           </div>
@@ -89,7 +95,9 @@ export const InstallationCategory: React.FC<InstallationCategoryProps> = ({
                           <input
                             name="国立"
                             type="checkbox"
+                            value="国立"
                             onChange={(e) => handleChange(e)}
+                            checked={checkedItems.includes('国立')}
                             className="mr-2"
                           />
                           <span></span>
@@ -101,7 +109,9 @@ export const InstallationCategory: React.FC<InstallationCategoryProps> = ({
                           <input
                             name="私立"
                             type="checkbox"
+                            value="私立"
                             onChange={(e) => handleChange(e)}
+                            checked={checkedItems.includes('私立')}
                             className="mr-2"
                           />
                           <span></span>

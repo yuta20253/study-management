@@ -5,6 +5,7 @@ import { SecondEntranceExaminationSubjectsAccordion } from './SecondEntranceExam
 export const EntranceExaminationSubjectAndScoreAccordionySystemAccordion =
   () => {
     const [isActive, setIsActive] = useState<boolean>(false)
+    //const { checkedItems, handleClearCommonEntranceExaminationSunjects, handleClearSecondEntranceExaminationSunjects } = DataState()
     return (
       <div className="w-full">
         <div

@@ -18,7 +18,11 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
   certification_exam, // 英語資格・検定試験
 }: SecondEntranceExaminationSubjectsAccordionProps) => {
   const [openEntranceType, setOpenEntranceType] = useState<boolean>(false)
-  const { handleChange } = useContext(CheckBoxContext)
+  const {
+    handleChange,
+    checkedItems,
+    handleClearSecondEntranceExaminationSunjects,
+  } = useContext(CheckBoxContext)
 
   return (
     <div className="mx-auto mb-5 w-full sm:w-5/6">
@@ -66,12 +70,14 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
           )}
         </span>
       </div>
-
-      {/* Accordion Body */}
       {openEntranceType && (
         <div className="mx-auto my-5 w-full sm:w-5/6">
           <div className="mb-1">
-            <button className="rounded bg-red-500 px-4 py-2 text-white">
+            <button
+              className="rounded bg-red-500 px-4 py-2 text-white"
+              type="button"
+              onClick={handleClearSecondEntranceExaminationSunjects}
+            >
               <b>条件をクリア</b>
             </button>
           </div>
@@ -83,7 +89,6 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                 <col className="w-2/3" />
               </colgroup>
               <tbody className="border border-gray-500">
-                {/* Foreign Language */}
                 <tr>
                   <th className="mr-10 border border-gray-500 bg-sky-500">
                     <span className="text-white">外国語</span>
@@ -94,7 +99,11 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                         <input
                           name="second_exam_subjects.english"
                           type="checkbox"
+                          value="second_exam_subjects.english"
                           onChange={(e) => handleChange(e)}
+                          checked={checkedItems.includes(
+                            'second_exam_subjects.english',
+                          )}
                         />
                         <span></span>
                         <b>{foreignLanguage}</b>
@@ -102,8 +111,6 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                     </div>
                   </td>
                 </tr>
-
-                {/* Math */}
                 <tr>
                   <th className="mr-10 border border-gray-500 bg-sky-500">
                     <span className="text-white">数学</span>
@@ -114,7 +121,11 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                         <input
                           name="second_exam_subjects.math"
                           type="checkbox"
+                          value="second_exam_subjects.math"
                           onChange={(e) => handleChange(e)}
+                          checked={checkedItems.includes(
+                            'second_exam_subjects.math',
+                          )}
                         />
                         <span></span>
                         <b>{math}</b>
@@ -122,8 +133,6 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                     </div>
                   </td>
                 </tr>
-
-                {/* National Language */}
                 <tr>
                   <th className="mr-10 border border-gray-500 bg-sky-500">
                     <span className="text-white">国語</span>
@@ -134,7 +143,11 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                         <input
                           name="second_exam_subjects.nationallang"
                           type="checkbox"
+                          value="second_exam_subjects.nationallang"
                           onChange={(e) => handleChange(e)}
+                          checked={checkedItems.includes(
+                            'second_exam_subjects.nationallang',
+                          )}
                         />
                         <span></span>
                         <b>{nationallang}</b>
@@ -142,8 +155,6 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                     </div>
                   </td>
                 </tr>
-
-                {/* Science */}
                 <tr>
                   <th className="mr-10 border border-gray-500 bg-sky-500">
                     <span className="text-white">理科</span>
@@ -154,7 +165,11 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                         <input
                           name="second_exam_subjects.science"
                           type="checkbox"
+                          value="second_exam_subjects.science"
                           onChange={(e) => handleChange(e)}
+                          checked={checkedItems.includes(
+                            'second_exam_subjects.science',
+                          )}
                         />
                         <span></span>
                         <b>{science}</b>
@@ -162,8 +177,6 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                     </div>
                   </td>
                 </tr>
-
-                {/* Geographical History & Civics */}
                 <tr>
                   <th className="mr-10 border border-gray-500 bg-sky-500">
                     <span className="text-white">地歴・公民</span>
@@ -174,7 +187,11 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                         <input
                           name="second_exam_subjects.geographical_history_citizens"
                           type="checkbox"
+                          value="second_exam_subjects.geographical_history_citizens"
                           onChange={(e) => handleChange(e)}
+                          checked={checkedItems.includes(
+                            'second_exam_subjects.geographical_history_citizens',
+                          )}
                         />
                         <span></span>
                         <b>{geographical_history_citizens}</b>
@@ -182,73 +199,84 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
                     </div>
                   </td>
                 </tr>
-
-                {/* Other Subjects */}
                 <tr>
                   <th className="mr-10 border border-gray-500 bg-sky-500">
                     <span className="text-white">その他</span>
                   </th>
                   <td className="pl-10">
                     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                      {/* Information */}
                       <div>
                         <label>
                           <input
                             name="second_exam_subjects.information"
                             type="checkbox"
+                            value="second_exam_subjects.information"
                             onChange={(e) => handleChange(e)}
+                            checked={checkedItems.includes(
+                              'second_exam_subjects.information',
+                            )}
                           />
                           <span></span>
                           <b>{information}</b>
                         </label>
                       </div>
 
-                      {/* Essay */}
                       <div>
                         <label>
                           <input
                             name="second_exam_subjects.essay"
                             type="checkbox"
+                            value="second_exam_subjects.essay"
                             onChange={(e) => handleChange(e)}
+                            checked={checkedItems.includes(
+                              'second_exam_subjects.essay',
+                            )}
                           />
                           <span></span>
                           <b>{essay}</b>
                         </label>
                       </div>
 
-                      {/* Practical Skills */}
                       <div>
                         <label>
                           <input
                             name="second_exam_subjects.practical_skills"
                             type="checkbox"
+                            value="second_exam_subjects.practical_skills"
                             onChange={(e) => handleChange(e)}
+                            checked={checkedItems.includes(
+                              'second_exam_subjects.practical_skills',
+                            )}
                           />
                           <span></span>
                           <b>{practical_skills}</b>
                         </label>
                       </div>
-
-                      {/* Comprehensive Question */}
                       <div>
                         <label>
                           <input
                             name="second_exam_subjects.comprehensive_question"
                             type="checkbox"
+                            value="second_exam_subjects.comprehensive_question"
                             onChange={(e) => handleChange(e)}
+                            checked={checkedItems.includes(
+                              'second_exam_subjects.comprehensive_question',
+                            )}
                           />
                           <span></span>
                           <b>{comprehensive_question}</b>
                         </label>
                       </div>
-
-                      {/* Certification Exam */}
                       <div>
                         <label>
                           <input
                             name="second_exam_subjects.certification_exam"
                             type="checkbox"
+                            value="second_exam_subjects.certification_exam"
                             onChange={(e) => handleChange(e)}
+                            checked={checkedItems.includes(
+                              'second_exam_subjects.certification_exam',
+                            )}
                           />
                           <span></span>
                           <b className="text-xs">{certification_exam}</b>

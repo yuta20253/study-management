@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { FacultyAccordionProps } from '@/types/DesiredSchool/Accordion/Accordion'
 import { CheckBoxContext } from '@/types/DesiredSchool/Context/option'
 
@@ -9,7 +9,23 @@ export const FacultyAccordion: React.FC<FacultyAccordionProps> = ({
 }: FacultyAccordionProps) => {
   const [openFacultySystem, setOpenFacultySystem] = useState(false)
 
-  const { handleChange } = useContext(CheckBoxContext)
+  const { handleChange, checkedItems, setCheckedItems } =
+    useContext(CheckBoxContext)
+  const [selectAllChecked, setSelectAllChecked] = useState(false)
+
+  useEffect(() => {
+    if (selectAllChecked) {
+      setCheckedItems(departmentArr)
+    } else {
+      setCheckedItems((prev) =>
+        prev.filter((item) => !departmentArr.includes(item)),
+      )
+    }
+  }, [selectAllChecked, departmentArr, setCheckedItems])
+
+  const handleClickAllSelectButton = () => {
+    setSelectAllChecked(!selectAllChecked)
+  }
 
   return (
     <div key={keyNum} className="mx-auto w-full sm:w-5/6">
@@ -61,7 +77,11 @@ export const FacultyAccordion: React.FC<FacultyAccordionProps> = ({
         <div className="p-4 sm:p-6">
           <div className="w-full">
             <label className="mb-4 flex items-center space-x-2">
-              <input name="select-all" type="checkbox" />
+              <input
+                name="select-all"
+                type="checkbox"
+                onChange={handleClickAllSelectButton}
+              />
               <span className="text-lg">
                 <b>すべて選択</b>
               </span>
@@ -77,7 +97,9 @@ export const FacultyAccordion: React.FC<FacultyAccordionProps> = ({
                       <input
                         name={`${department}`}
                         type="checkbox"
+                        value={`${department}`}
                         onChange={(e) => handleChange(e)}
+                        checked={checkedItems.includes(`${department}`)}
                       />
                       <span className="text-sm sm:text-base">{department}</span>
                     </label>

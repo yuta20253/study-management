@@ -9,8 +9,15 @@ FactoryBot.define do
     given_name_kana { person.last.katakana }
     gender { :male }
     birthday { Faker::Date.birthday }
-    # sequence(:email) {|n| "#{n}_" + Faker::Internet.email }
     password { Faker::Internet.password(min_length: 10) }
     confirmed_at { Time.current }
+
+    # Create associated address and telephone
+    after(:build) do |user_form|
+      user = user_form.user
+      # Create address and telephone with valid data
+      user.address ||= build(:address, user:)
+      user.telephone ||= build(:telephone, user:)
+    end
   end
 end
