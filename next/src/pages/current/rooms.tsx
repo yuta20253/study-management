@@ -28,7 +28,6 @@ const Rooms: NextPage = () => {
   console.log('rooms', rooms)
 
   // 既にルームに登録されているユーザーを除外する
-
   const usersToDisplay = users.filter((usr) => {
     if (rooms.length === 0) {
       return <LoadingScreen />
@@ -36,8 +35,9 @@ const Rooms: NextPage = () => {
     return (
       usr.id !== user.id &&
       !rooms.some((room) => {
-        if (!room) {
-          return <LoadingScreen />
+        // Make sure room and room.other_user are defined
+        if (!room || !room.other_user) {
+          return false; // Avoid further processing if the room or other_user is undefined
         }
         return (
           room.other_user.family_name + room.other_user.given_name ===
