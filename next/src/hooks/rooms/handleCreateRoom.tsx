@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { Dispatch, SetStateAction, useEffect } from 'react'
-import { NextRouter, useRouter } from 'next/router'
+import { Dispatch, SetStateAction } from 'react'
+import { useRouter } from 'next/router'
 
 type RoomProps = {
   id: number
