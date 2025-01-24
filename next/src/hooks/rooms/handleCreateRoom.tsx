@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { Dispatch, SetStateAction } from 'react'
 import { useRouter } from 'next/router'
+import { Dispatch, SetStateAction } from 'react'
 
 type RoomProps = {
   id: number
@@ -25,7 +25,7 @@ export const useCreateRoom = (
   setMessage: Dispatch<SetStateAction<string | null>>,
   setRooms: Dispatch<SetStateAction<RoomProps[]>>,
   router: ReturnType<typeof useRouter>,
-  message: string | null
+  message: string | null,
 ) => {
   console.log('message', message)
   // ユーザー情報とルーム情報を取得
@@ -70,4 +70,3 @@ export const useCreateRoom = (
     createRoom,
   }
 }
-
