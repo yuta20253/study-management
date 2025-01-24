@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useRouter } from 'next/router'
 import { Dispatch, SetStateAction } from 'react'
 
 type RoomProps = {
@@ -23,7 +24,10 @@ export const useCreateRoom = (
   user: UsersProps,
   setMessage: Dispatch<SetStateAction<string | null>>,
   setRooms: Dispatch<SetStateAction<RoomProps[]>>,
+  router: ReturnType<typeof useRouter>,
+  message: string | null,
 ) => {
+  console.log('message', message)
   // ユーザー情報とルーム情報を取得
   const createRoom = async (
     user_id: number,
@@ -45,10 +49,15 @@ export const useCreateRoom = (
 
     try {
       const res = await axios.post(url, data, { headers: headers })
+      console.log(res.data)
       if (res.data.status === 200) {
-        setRooms((prevRooms) => [...prevRooms, res.data.rooms]) // 新しく作成されたチャットルームを追加
+        setRooms((prevRooms) => [...prevRooms, res.data.chat_room]) // 新しく作成されたチャットルームを追加
         setMessage('チャットルームが作成されました！')
-        window.location.reload()
+        console.log('message', message)
+        // ここで 500ms 後にページ遷移を行う
+        setTimeout(() => {
+          router.push('/current/rooms')
+        }, 500)
       } else {
         setMessage(res.data.message || '作成に失敗しました')
       }
