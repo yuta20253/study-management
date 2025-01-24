@@ -47,7 +47,7 @@ const Rooms: NextPage = () => {
     )
   })
 
-  rooms.forEach((room) => console.log(room))
+  //rooms.forEach((room) => console.log(room))
 
   return (
     <>
