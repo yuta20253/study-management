@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import { ErrorToFetchData } from '@/components/ErrorToFetchData'
 import LinkButton from '@/components/page/Common/LinkButton'
 import { ScoreOfExam } from '@/components/page/schools/faculty/score_of_exam'
 import { DataState } from '@/hooks/schools/Edit/DataState'
@@ -7,15 +8,7 @@ import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 const FacultyDetails: NextPage = () => {
   useRequireSignedIn()
   const { facultyData, school_id } = DataState()
-  if (!facultyData) {
-    return (
-      <div className="flex h-screen w-screen items-center justify-center">
-        <div className="text-xl sm:text-2xl md:text-3xl">
-          データの取得に失敗しました
-        </div>
-      </div>
-    )
-  }
+  if (!facultyData) return <ErrorToFetchData />
 
   return (
     <div className="w-full">

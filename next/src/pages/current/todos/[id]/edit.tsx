@@ -1,18 +1,12 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import {
-  useForm,
-  SubmitHandler,
-  FormProvider,
-  SubmitErrorHandler,
-} from 'react-hook-form'
+import { FormProvider } from 'react-hook-form'
 import { LoadingScreen } from '@/components/Loading'
 import { TodoEditThemeTable } from '@/components/page/todos/Form/TodoEditThemeTiitle'
 import { TodoInfoEdit } from '@/components/page/todos/Form/TodoInfoEdit'
 import { DataState } from '@/hooks/todos/Edit/DataState'
-import { onSubmitHandler } from '@/hooks/todos/Edit/handleOnSubmit'
+import { useHandleSubmit } from '@/hooks/todos/Edit/useHandleSubmit'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
-import { EditTodoProps } from '@/types/Todo'
 
 const EditTodo: NextPage = () => {
   useRequireSignedIn()
@@ -42,38 +36,23 @@ const EditTodo: NextPage = () => {
     handleChangeHours,
   } = DataState()
 
-  const methods = useForm<EditTodoProps>({
-    defaultValues: todo,
-  })
-
-  const {
-    handleSubmit,
-    formState: { errors },
-  } = methods
-
-  const onSubmit: SubmitHandler<EditTodoProps> = (data) => {
-    onSubmitHandler(
+  const { methods, handleSubmit, onSubmit, handleOnError, errors } =
+    useHandleSubmit(
       id,
-      todo,
       title,
       scheduledStudyTime,
+      subject,
       progress,
       importance,
-      studyType,
+      actualLearningTime,
       totalHour,
+      studyType,
       selectedStars,
       dueDate,
       description,
-      subject,
-      actualLearningTime,
+      todo,
       router,
-      data,
     )
-  }
-
-  const handleOnError: SubmitErrorHandler<EditTodoProps> = (errors) => {
-    console.log('error', errors)
-  }
 
   if (!todo || Object.keys(todo).length === 0) {
     return <LoadingScreen />

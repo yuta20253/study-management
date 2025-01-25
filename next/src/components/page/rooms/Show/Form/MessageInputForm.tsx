@@ -1,10 +1,5 @@
 import React from 'react'
-
-type MessageInputProps = {
-  messageContent: string
-  setMessageContent: (content: string) => void
-  sendMessage: (e: React.FormEvent) => void
-}
+import { MessageInputProps } from '@/types/Room/Show/Form/index'
 
 export const MessageInputForm: React.FC<MessageInputProps> = ({
   messageContent,

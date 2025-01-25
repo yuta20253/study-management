@@ -1,24 +1,7 @@
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { Dispatch, SetStateAction } from 'react'
-
-type RoomProps = {
-  id: number
-  chat_room: {
-    id: number
-  }
-  other_user: {
-    family_name: string
-    given_name: string
-    id: number
-  }
-}
-
-type UsersProps = {
-  id: number
-  family_name: string
-  given_name: string
-}
+import { UsersProps, RoomProps } from '@/types/Room'
 
 export const useCreateRoom = (
   user: UsersProps,

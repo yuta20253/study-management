@@ -1,38 +1,18 @@
 import { NextPage } from 'next'
 import Link from 'next/link'
-import {
-  useForm,
-  SubmitHandler,
-  FormProvider,
-  SubmitErrorHandler,
-} from 'react-hook-form'
+import { FormProvider } from 'react-hook-form'
 import { LoadingScreen } from '@/components/Loading'
 import { UserEditTitle } from '@/components/page/user/Form/UserEditTitle'
 import { UserInfoEdit } from '@/components/page/user/Form/UserInfoEdit'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 import { DataState } from '@/hooks/user/Edit/DataState'
-import { onSubmitHandler } from '@/hooks/user/Edit/handleOnSubmit'
-import { EditUserProps } from '@/types/User'
+import { useHandleSubmit } from '@/hooks/user/Edit/useHandleSubmit'
 
 const EditUser: NextPage = () => {
   useRequireSignedIn()
   const { user, setUser, router, selected, setSelected, age } = DataState()
-  const methods = useForm<EditUserProps>({
-    defaultValues: user,
-  })
-
-  const {
-    handleSubmit,
-    formState: { errors },
-  } = methods
-
-  const handleOnSubmit: SubmitHandler<EditUserProps> = (data) => {
-    onSubmitHandler(user, setUser, router, data)
-  }
-
-  const handleOnError: SubmitErrorHandler<EditUserProps> = (errors) => {
-    console.log('error', errors)
-  }
+  const { handleSubmit, handleOnSubmit, handleOnError, methods, errors } =
+    useHandleSubmit(user, setUser, router)
 
   if (!user || !age) {
     return <LoadingScreen />

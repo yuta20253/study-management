@@ -1,23 +1,7 @@
 import Link from 'next/link'
-
-type RoomProps = {
-  id: number
-  chat_room: {
-    id: number
-  }
-  other_user: {
-    family_name: string
-    given_name: string
-    id: number
-  }
-}
-
-type RoomListProps = {
-  rooms: RoomProps[]
-}
+import { RoomListProps } from '@/types/Room'
 
 export const RoomList = ({ rooms }: RoomListProps) => {
-  console.log(rooms) // Log rooms to see if chat_room is present
   return (
     <ul className="space-y-4">
       {rooms.map((room, i: number) => (

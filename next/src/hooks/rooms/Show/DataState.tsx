@@ -5,7 +5,6 @@ export const DataState = () => {
   console.log('messages', messages)
 
   return {
-    //otherUser,
     user,
     room,
     messages,

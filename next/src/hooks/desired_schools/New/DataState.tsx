@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useModal } from '../../todos/Modal/useModal'
 import { useFetch } from './handleUseFetch'
+import { useChangeInputValueHandler } from './useChangeInputValueHandler'
 
 export const DataState = () => {
   const { user, jsonUniversity, setJsonUniversity, router } = useFetch()
@@ -12,18 +13,22 @@ export const DataState = () => {
     return japaneseRegex.test(text)
   }
 
+  const { handleChangeInputValue } = useChangeInputValueHandler(
+    setInput,
+    setIsValid,
+    isValidJapanese,
+  )
+
   return {
     user,
     jsonUniversity,
     setJsonUniversity,
     input,
-    setInput,
     isOpen,
     onOpen,
     onClose,
     router,
     isValid,
-    setIsValid,
-    isValidJapanese,
+    handleChangeInputValue,
   }
 }
