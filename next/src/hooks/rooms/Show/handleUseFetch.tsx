@@ -2,16 +2,7 @@ import axios, { AxiosError, AxiosResponse } from 'axios'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useUserState } from '@/hooks/useGlobalState'
-
-type RoomProps = {
-  id: number
-  name: string
-}
-
-type MessageProps = {
-  content: string
-  user_id: number
-}
+import { MessageProps, RoomProps } from '@/types/Room/Show'
 
 export const useFetch = () => {
   const [user] = useUserState()

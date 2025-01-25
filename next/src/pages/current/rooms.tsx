@@ -4,6 +4,8 @@ import { LoadingScreen } from '@/components/Loading'
 import { RoomList } from '@/components/page/rooms/List/RoomList'
 import { UserList } from '@/components/page/rooms/List/UserList'
 import { NoUserDisplay } from '@/components/page/rooms/NoUser'
+import { useHandleRegister } from '@/hooks/rooms/useHandleRegister'
+import { usersToDisplayHandler } from '@/hooks/rooms/usersToDisplay'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 const Rooms: NextPage = () => {
@@ -13,13 +15,7 @@ const Rooms: NextPage = () => {
   console.log(users)
   console.log(rooms)
 
-  const handleRegister = (
-    user_id: number,
-    firstName: string,
-    secondName: string,
-  ) => {
-    createRoom(user_id, firstName, secondName)
-  }
+  const { handleRegister } = useHandleRegister(createRoom)
 
   if (!rooms || rooms === undefined) {
     return <LoadingScreen />
@@ -28,26 +24,7 @@ const Rooms: NextPage = () => {
   console.log('rooms', rooms)
 
   // 既にルームに登録されているユーザーを除外する
-  const usersToDisplay = users.filter((usr) => {
-    if (rooms.length === 0) {
-      return <LoadingScreen />
-    }
-    return (
-      usr.id !== user.id &&
-      !rooms.some((room) => {
-        // Make sure room and room.other_user are defined
-        if (!room || !room.other_user) {
-          return false // Avoid further processing if the room or other_user is undefined
-        }
-        return (
-          room.other_user.family_name + room.other_user.given_name ===
-          `${usr.family_name}${usr.given_name}`
-        )
-      })
-    )
-  })
-
-  //rooms.forEach((room) => console.log(room))
+  const { usersToDisplay } = usersToDisplayHandler(users, rooms, user)
 
   return (
     <>

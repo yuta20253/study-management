@@ -1,5 +1,6 @@
 import { NextPage } from 'next'
 import Link from 'next/link'
+import { ErrorToFetchData } from '@/components/ErrorToFetchData'
 import { SchoolDataTable } from '@/components/page/schools/SchoolId/DataTable/SchoolDataTable'
 import { DataState } from '@/hooks/schools/DataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
@@ -8,15 +9,7 @@ const ShowUniversityData: NextPage = () => {
   useRequireSignedIn()
   const { university, school_id } = DataState()
 
-  if (!university) {
-    return (
-      <div className="flex h-screen w-screen items-center justify-center">
-        <div className="text-xl sm:text-2xl md:text-3xl">
-          データの取得に失敗しました
-        </div>
-      </div>
-    )
-  }
+  if (!university) return <ErrorToFetchData />
 
   const showUniversity = university['uni']['school']
   const universityLength: number = university['uni']['data'].length

@@ -1,18 +1,5 @@
-type MessageProps = {
-  content: string
-  user_id: number
-}
+import { MessageProps, MessagesListProps } from '@/types/Room/Show/List'
 
-type UsersProps = {
-  id: number
-  family_name: string
-  given_name: string
-}
-
-type MessagesListProps = {
-  messages: MessageProps[]
-  user: UsersProps
-}
 export const MessagesList = ({ messages, user }: MessagesListProps) => (
   <div className="flex grow items-center justify-center border-slate-500 bg-slate-200 p-4 ">
     <div className="w-full max-w-2xl space-y-4">

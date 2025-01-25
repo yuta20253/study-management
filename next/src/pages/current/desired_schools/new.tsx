@@ -1,5 +1,4 @@
 import { NextPage } from 'next'
-import { ChangeEvent } from 'react'
 import { LoadingScreen } from '@/components/Loading'
 import { CreateNewDesiredSchoolModal } from '@/components/page/desired_schools/Modal/createNewDesiredSchool'
 import { NewRegistrationDesiredSchoolTable } from '@/components/page/desired_schools/Table/NewRegistrationDesiredSchoolTable'
@@ -11,26 +10,15 @@ const NewDesiredSchool: NextPage = () => {
   const {
     jsonUniversity,
     input,
-    setInput,
     isOpen,
     onOpen,
     onClose,
     isValid,
-    setIsValid,
-    isValidJapanese,
+    handleChangeInputValue,
   } = DataState()
 
   if (!jsonUniversity) {
     return <LoadingScreen />
-  }
-
-  console.log(jsonUniversity)
-
-  const handleChangeInputValue = (event: ChangeEvent<HTMLInputElement>) => {
-    setInput(event.target.value)
-    setIsValid(isValidJapanese(event.target.value))
-
-    console.log(input)
   }
 
   return (

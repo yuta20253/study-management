@@ -1,24 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from 'axios'
 import { useEffect, useState } from 'react'
 import { useUserState } from '../useGlobalState'
-
-type RoomProps = {
-  id: number
-  chat_room: {
-    id: number
-  }
-  other_user: {
-    family_name: string
-    given_name: string
-    id: number
-  }
-}
-
-type UsersProps = {
-  id: number
-  family_name: string
-  given_name: string
-}
+import { RoomProps, UsersProps } from '@/types/Room'
 
 export const useFetch = () => {
   const [user] = useUserState()
