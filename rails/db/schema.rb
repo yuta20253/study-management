@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_08_215013) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_26_135446) do
   create_table "addresses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false, comment: "ユーザーへの外部キー"
     t.string "prefecture", null: false, comment: "都道府県"
@@ -109,7 +109,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_08_215013) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.index ["landline_phone_number"], name: "index_telephones_on_landline_phone_number", unique: true
     t.index ["phone_number"], name: "index_telephones_on_phone_number", unique: true
     t.index ["user_id"], name: "index_telephones_on_user_id"
   end
