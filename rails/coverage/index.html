@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2025-01-22T16:21:53+00:00">2025-01-22T16:21:53+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2025-01-26T14:03:41+00:00">2025-01-26T14:03:41+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -22,14 +22,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  66.32%
+  65.45%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         6.14
+         6.06
        </span>
     </span> hits/line
     )
@@ -38,15 +38,15 @@
   <a name="AllFiles"></a>
 
   <div>
-    <b>52</b> files in total.
+    <b>53</b> files in total.
   </div>
 
   <div class="t-line-summary">
-    <b>674</b> relevant lines,
+    <b>683</b> relevant lines,
     <span class="green"><b>447</b> lines covered</span> and
-    <span class="red"><b>227</b> lines missed. </span>
+    <span class="red"><b>236</b> lines missed. </span>
     (<span class="red">
-  66.32%
+  65.45%
 </span>
 )
   </div>
@@ -275,6 +275,17 @@
             <td class="cell--number">3</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
+            
+          </tr>
+        
+          <tr class="t-file">
+            <td class="strong t-file__name"><a href="#b11bd0be5d63f82e9f93044ec7e6655f2ac68945" class="src_link" title="app/controllers/api/v1/user/confirmations_controller.rb">app/controllers/api/v1/user/confirmations_controller.rb</a></td>
+            <td class="red strong cell--number t-file__coverage">0.00 %</td>
+            <td class="cell--number">10</td>
+            <td class="cell--number">9</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">9</td>
+            <td class="cell--number">0.00</td>
             
           </tr>
         
@@ -653,14 +664,14 @@
     <span class="group_name">Controllers</span>
     (<span class="covered_percent">
       <span class="red">
-  68.55%
+  66.76%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         5.83
+         5.68
        </span>
     </span> hits/line
     )
@@ -669,15 +680,15 @@
   <a name="Controllers"></a>
 
   <div>
-    <b>23</b> files in total.
+    <b>24</b> files in total.
   </div>
 
   <div class="t-line-summary">
-    <b>337</b> relevant lines,
+    <b>346</b> relevant lines,
     <span class="green"><b>231</b> lines covered</span> and
-    <span class="red"><b>106</b> lines missed. </span>
+    <span class="red"><b>115</b> lines missed. </span>
     (<span class="red">
-  68.55%
+  66.76%
 </span>
 )
   </div>
@@ -906,6 +917,17 @@
             <td class="cell--number">3</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
+            
+          </tr>
+        
+          <tr class="t-file">
+            <td class="strong t-file__name"><a href="#b11bd0be5d63f82e9f93044ec7e6655f2ac68945" class="src_link" title="app/controllers/api/v1/user/confirmations_controller.rb">app/controllers/api/v1/user/confirmations_controller.rb</a></td>
+            <td class="red strong cell--number t-file__coverage">0.00 %</td>
+            <td class="cell--number">10</td>
+            <td class="cell--number">9</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">9</td>
+            <td class="cell--number">0.00</td>
             
           </tr>
         
@@ -7490,6 +7512,137 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="5">
+            
+
+            
+
+            <code class="ruby">end</code>
+          </li>
+        </div>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="b11bd0be5d63f82e9f93044ec7e6655f2ac68945">
+  <div class="header">
+    <h3>app/controllers/api/v1/user/confirmations_controller.rb</h3>
+    <h4>
+      <span class="red">
+  0.0%
+</span>
+
+      lines covered
+    </h4>
+
+    
+
+    <div class="t-line-summary">
+      <b>9</b> relevant lines.
+      <span class="green"><b>0</b> lines covered</span> and
+      <span class="red"><b>9</b> lines missed.</span>
+    </div>
+
+    
+
+  </div>
+
+  <pre>
+    <ol>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="1">
+            
+
+            
+
+            <code class="ruby">class Api::V1::User::ConfirmationsController &lt; Api::V1::BaseController</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="2">
+            
+
+            
+
+            <code class="ruby">  def update</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="3">
+            
+
+            
+
+            <code class="ruby">    user = User.find_by(confirmation_token: params[:confirmation_token])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="4">
+            
+
+            
+
+            <code class="ruby">    return render json: { message: &quot;ユーザーが見つかりません&quot; }, status: :not_found if user.nil?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="5">
+            
+
+            
+
+            <code class="ruby">    return render json: { message: &quot;ユーザーはすでに確認済みです&quot; }, status: :bad_request if user.confirmed?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="6">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="7">
+            
+
+            
+
+            <code class="ruby">    user.update!(confirmed_at: Time.current)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="8">
+            
+
+            
+
+            <code class="ruby">    render json: { message: &quot;ユーザーの確認が成功しました&quot; }, status: :ok</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="9">
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="10">
             
 
             

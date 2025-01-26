@@ -1142,6 +1142,22 @@
         "branches": {
         }
       },
+      "/myapp/app/controllers/api/v1/user/confirmations_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/myapp/app/forms/concerns/string_normalizer.rb": {
         "lines": [
           0,
@@ -1348,6 +1364,6 @@
         }
       }
     },
-    "timestamp": 1737562912
+    "timestamp": 1737900220
   }
 }
