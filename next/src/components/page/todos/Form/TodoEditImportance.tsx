@@ -1,19 +1,12 @@
-import { Dispatch, SetStateAction } from 'react'
 import { useFormContext } from 'react-hook-form'
-
-type DataStringProps = {
-  theme: string
-  props: string
-  registerImportance: string
-  setImportance: Dispatch<SetStateAction<string>>
-}
+import { ImportanceProps } from '@/types/Todo/Form/form'
 
 export const TodoEditImportance = ({
   theme,
   props,
   registerImportance,
   setImportance,
-}: DataStringProps) => {
+}: ImportanceProps) => {
   const { register } = useFormContext()
   return (
     <tr className="w-full">

@@ -1,10 +1,5 @@
-import { ChangeEvent } from 'react'
 import { ChangesInStudytTimeBySubject } from '@/components/page/management/Select/ChangesInStudytTimeBySubject'
-type ChangesInStudytTimeBySubjectBlockProps = {
-  subjectName: string
-  selectSubject: JSX.Element[]
-  handleSelectSubjectName: (event: ChangeEvent<HTMLSelectElement>) => void
-}
+import { ChangesInStudytTimeBySubjectBlockProps } from '@/types/Management/Block/block'
 
 export const ChangesInStudytTimeBySubjectBlock = ({
   subjectName,

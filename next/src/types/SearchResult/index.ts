@@ -1,3 +1,5 @@
+import { MutableRefObject } from 'react'
+
 export type University = {
   code: number
   region: string
@@ -37,4 +39,35 @@ export type University = {
       certification_exam: string //英語資格・検定試験
     },
   ]
+}
+
+export type DisplayMixUniversitiesProps = {
+  toDisplayMixArr: University[]
+  firstTrueOrFalse: MutableRefObject<number | undefined>
+  secondTrueOrFalse: MutableRefObject<number | undefined>
+  finalCommonSelectedUniversities: University[]
+  finalSecondSelectedUniversities: University[]
+}
+
+export type DepartmentSystemProps = {
+  afterDevisionUniversity: University[]
+  checkedItemsArr: string[]
+  semiFinalUniversitis: University[]
+  altArr: University[]
+}
+
+export type SelectedDepartmentFuncProps = {
+  displayUniversities: University[]
+  deviationValuesList: string[]
+}
+
+export type DivisionProps = {
+  jsonUniversity: University[]
+  checkedItemsArr: string[]
+  afterDevisionUniversity: University[]
+}
+
+export type ListProps = {
+  displayUniversities: University[]
+  deviationValuesList: string[]
 }

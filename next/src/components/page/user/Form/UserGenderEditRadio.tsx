@@ -1,12 +1,6 @@
-import { ChangeEvent, Dispatch, SetStateAction } from 'react'
+import { ChangeEvent } from 'react'
 import { useFormContext } from 'react-hook-form'
-type GenderProps = {
-  theme: string
-  gender: string
-  registerProps: string
-  selected: string
-  setSelected: Dispatch<SetStateAction<string>>
-}
+import { GenderProps } from '@/types/User/Form/form'
 
 export const UserGenderEditRadio = ({
   theme,

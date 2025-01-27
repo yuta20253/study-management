@@ -1,13 +1,21 @@
 import type { NextPage } from 'next'
 import { LoadingScreen } from '@/components/Loading'
+import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import { TodoDetailTable } from '@/components/page/todos/Table/TodoDetailTable'
 import { DataState } from '@/hooks/todos/Show/DataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 const TodoDetail: NextPage = () => {
   useRequireSignedIn()
-  const { todo, id } = DataState()
-  if (!todo || !id) {
+  const { todo, error } = DataState()
+
+  // エラーがあればエラーメッセージを表示
+  if (error) {
+    return (
+      <ErrorTemplate error={error} href="/current/todos" text={'Todo一覧へ'} />
+    )
+  }
+  if (!todo) {
     return <LoadingScreen />
   }
 

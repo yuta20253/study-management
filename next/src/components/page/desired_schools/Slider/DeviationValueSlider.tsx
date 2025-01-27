@@ -1,6 +1,6 @@
 import { Slider } from '@mui/material'
 import { useContext } from 'react'
-import { SliderContext } from '@/types/DesiredSchool/Context/option'
+import { SliderContext } from '@/types/DesiredSchool/Context/option_context'
 
 export const DeviationValueRangeSlider = () => {
   const { deviationValues, setDeviationValues } = useContext(SliderContext)

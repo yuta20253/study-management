@@ -1,11 +1,5 @@
-import { Dispatch, SetStateAction, useState } from 'react'
-
-type RegionProps = {
-  region: string
-  prefectures: string[]
-  checkedItems: string
-  setCheckedItems: Dispatch<SetStateAction<string>>
-}
+import { useState } from 'react'
+import { RegionProps } from '@/types/DesiredSchool/Accordion/Accordion'
 
 export const RegionSystemAccordion: React.FC<RegionProps> = ({
   region,

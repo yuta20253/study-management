@@ -38,7 +38,6 @@ export const useCreateRoom = (
         setMessage('チャットルームが作成されました！')
         console.log('message', message)
         // ここで 500ms 後にページ遷移を行う
-        console.log(router) // routerが正常に初期化されているか確認
         setTimeout(() => {
           console.log('Redirecting to /current/home')
           router.push('/current/home')

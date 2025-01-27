@@ -1,9 +1,6 @@
-type DataProps = {
-  title: string
-  data1: string | number
-}
+import { ScoreOfExamInfoTrProps } from '@/types/Schools/Faculty/table'
 
-export const ScoreOfExamInfoTr = ({ title, data1 }: DataProps) => {
+export const ScoreOfExamInfoTr = ({ title, data1 }: ScoreOfExamInfoTrProps) => {
   return (
     <>
       <tr className="flex">

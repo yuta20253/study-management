@@ -1,8 +1,8 @@
 import axios, { AxiosError } from 'axios'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
-import { DeleteTodoProps } from '@/types/Todo/Button/todoButtonType'
-import { TodoDeleteContext } from '@/types/Todo/Context/todo'
+import { DeleteTodoProps } from '@/types/Todo/Button/button'
+import { TodoDeleteContext } from '@/types/Todo/Context/todo_context'
 export const UseDeleteTodoButton = ({
   id,
   isDelete,

@@ -48,12 +48,30 @@ RSpec.describe "Api::V1::Current::Todos", type: :request do
     let(:todo) { create(:todo, user: current_user) }
     let(:headers) { current_user.create_new_auth_token }
 
-    describe "#show" do
-      it "レスポンスデータのtitleが一致" do
+    context "適切なidを設定" do
+      it "正しいレスポンスが返る" do
+        subject
+        res = JSON.parse(response.body)
+        expect(response).to have_http_status(:ok)
+        expect(res["title"]).to eq todo.title
+      end
+    end
+
+    context "存在しないidを設定" do
+      let(:todo) { instance_double(Todo, id: 999) }
+      it "404エラーが返る" do
+        subject
+        res = JSON.parse(response.body)
+        expect(response).to have_http_status(:not_found)
+        expect(res["error"]).to eq "Todoが見つかりません"
+      end
+    end
+
+    context "レスポンスデータのtitleが一致" do
+      it "titleとレスポンスが一致する" do
         subject
         res = JSON.parse(response.body)
         expect(res["title"]).to eq todo.title
-        expect(response).to have_http_status(:ok)
       end
     end
   end
@@ -146,7 +164,7 @@ RSpec.describe "Api::V1::Current::Todos", type: :request do
         subject
         res = JSON.parse(response.body)
         expect(response).to have_http_status(:not_found) # 404エラーが返されることを確認
-        expect(res["error"]).to eq "Todo not found" # エラーメッセージが正しいことを確認
+        expect(res["error"]).to eq "Todoが見つかりません" # エラーメッセージが正しいことを確認
       end
     end
   end

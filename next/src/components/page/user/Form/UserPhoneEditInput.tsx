@@ -1,17 +1,5 @@
-import { FieldError, useFormContext } from 'react-hook-form'
-type PhoneProps = {
-  theme: string
-  props: string
-  registerProps: string
-  rules?: {
-    required: string
-    pattern?: {
-      value: RegExp
-      message: string
-    }
-  }
-  error?: FieldError
-}
+import { useFormContext } from 'react-hook-form'
+import { PhoneProps } from '@/types/User/Form/form'
 
 export const UserPhoneEditInput = ({
   theme,
@@ -21,7 +9,6 @@ export const UserPhoneEditInput = ({
   error,
 }: PhoneProps) => {
   const { register } = useFormContext()
-  //console.log(registerProps)
 
   return (
     <tr>

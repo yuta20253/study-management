@@ -1,28 +1,4 @@
-import { ChangeEvent } from 'react'
-import {
-  SelectGraphProps,
-  SelectSubjectProps,
-  SelectPeriodProps,
-  SelectStudyTypeProps,
-} from '@/types/Management/selectType'
-
-type SelectDisplayGraphProps = {
-  SelectGraph: React.FC<SelectGraphProps> // Changed to React.FC for component type
-  SelectSubject: React.FC<SelectSubjectProps>
-  SelectPeriod: React.FC<SelectPeriodProps>
-  SelectStudyType: React.FC<SelectStudyTypeProps>
-  handleSelectGraph: (event: ChangeEvent<HTMLSelectElement>) => void
-  handleSelectSubject: (event: ChangeEvent<HTMLSelectElement>) => void
-  handleChangeDisplayPeriod: (event: ChangeEvent<HTMLSelectElement>) => void
-  handleCreatePeriod: (event: ChangeEvent<HTMLSelectElement>) => void
-  handleChangeStudyType: (event: ChangeEvent<HTMLSelectElement>) => void
-  subjectName: string
-  selectSubject: JSX.Element[] // Array of JSX elements, could be adjusted
-  displiedPeriod: string
-  selectPeriodLists: JSX.Element[] // Array of JSX elements
-  studyType: string
-  selectStudyType: JSX.Element[] // Array of JSX elements
-}
+import { SelectDisplayGraphProps } from '@/types/Management/List/list'
 
 export const SelectDisplayGraph: React.FC<SelectDisplayGraphProps> = ({
   SelectGraph,

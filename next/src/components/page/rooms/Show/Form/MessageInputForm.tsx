@@ -1,5 +1,5 @@
 import React from 'react'
-import { MessageInputProps } from '@/types/Room/Show/Form/index'
+import { MessageInputProps } from '@/types/Room/Show/Form/form'
 
 export const MessageInputForm: React.FC<MessageInputProps> = ({
   messageContent,

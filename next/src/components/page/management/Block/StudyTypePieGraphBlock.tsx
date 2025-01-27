@@ -1,9 +1,6 @@
 import StudyTypePieGraph from '@/components/page/management/Graph/studyTypePie'
-import { StudyHoursProps } from '@/types/Management'
-type StudyTypePieGraphBlockProps = {
-  title: string
-  studyHours: StudyHoursProps[]
-}
+import { StudyTypePieGraphBlockProps } from '@/types/Management/Block/block'
+
 export const StudyTypePieGraphBlock = ({
   title,
   studyHours,

@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
-import Link from 'next/link'
 import { LoadingScreen } from '@/components/Loading'
+import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import LinkButton from '@/components/page/Common/LinkButton'
 import { ChangesInStudytTimeBySubjectBlock } from '@/components/page/management/Block/ChangesInStudytTimeBySubjectBlock'
 import { SelectedItemsListsBlock } from '@/components/page/management/Block/SelectedItemsListsBlock'
@@ -53,20 +53,11 @@ const Management: NextPage = () => {
 
   if (errorMessage) {
     return (
-      <div className="flex h-screen w-screen flex-col items-center justify-center">
-        <div className="text-center text-red-500">
-          <h1 className="text-xl">エラー</h1>
-          <p>{errorMessage}</p>
-        </div>
-        <div className="mt-4 flex items-center justify-center">
-          <Link
-            href="/current/home"
-            className="rounded bg-sky-500 px-6 py-2 text-base text-white sm:text-lg"
-          >
-            ホームへ
-          </Link>
-        </div>
-      </div>
+      <ErrorTemplate
+        error={errorMessage}
+        href={'/current/home'}
+        text={'ホームへ'}
+      />
     )
   }
 

@@ -1,9 +1,6 @@
-type DataProps = {
-  title: string
-  data1: string | number
-}
+import { TodoInfoTrProps } from '@/types/Todo/TableRow/tableRow'
 
-export const TodoInfoTr = ({ title, data1 }: DataProps) => {
+export const TodoInfoTr = ({ title, data1 }: TodoInfoTrProps) => {
   return (
     <>
       <tr className="h-7 w-full flex-col items-center justify-center">

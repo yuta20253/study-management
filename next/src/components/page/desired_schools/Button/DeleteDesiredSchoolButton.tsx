@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { useClickDeleteFetch } from '../../../../hooks/desired_schools/handleDeleteFetch'
-import { DeleteDesiredSchoolProps } from '@/types/DesiredSchool/Button/DesiredSchoolButtonType'
-import { DesiredSchoolDeleteContext } from '@/types/DesiredSchool/Context/desired_school'
+import { DeleteDesiredSchoolProps } from '@/types/DesiredSchool/Button/button'
+import { DesiredSchoolDeleteContext } from '@/types/DesiredSchool/Context/desired_school_context'
 
 export const DeleteButton: React.FC<DeleteDesiredSchoolProps> = ({
   id,

@@ -1,11 +1,5 @@
 import SubjectStudyTimeLine from '@/components/page/management/Graph/subjectStudyTimeLine'
-import { StudyHoursProps } from '@/types/Management'
-type SubjectStudyTimeLineBlockProps = {
-  studyData: StudyHoursProps[]
-  title: string
-  subjectName: string
-  sentlabels: string[]
-}
+import { SubjectStudyTimeLineBlockProps } from '@/types/Management/Block/block'
 
 export const SubjectStudyTimeLineBlock = ({
   studyData,

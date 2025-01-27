@@ -1,9 +1,6 @@
-import { Faculty } from '@/types/Schools/Faculty/faculty'
-type DataProps = {
-  faculty: Faculty
-}
+import { FacultyProps } from '@/types/Schools/Faculty/faculty'
 
-export const SecondSubjectEtcTd = ({ faculty }: DataProps) => {
+export const SecondSubjectEtcTd = ({ faculty }: FacultyProps) => {
   return (
     <>
       {faculty.faculty_data.second_exam_subjects[0]['practical_skills'] ? (

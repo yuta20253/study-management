@@ -1,13 +1,5 @@
-import { Dispatch, SetStateAction } from 'react'
 import StudyPieGraph from '@/components/page/management/Graph/studyPie'
-import { StudyHoursProps } from '@/types/Management'
-type StudyPieGraphBlockProps = {
-  studyHours: StudyHoursProps[]
-  title: string
-  secondModalOpen: boolean
-  setSecondModalOpen: Dispatch<SetStateAction<boolean>>
-  setForModalSubject: Dispatch<SetStateAction<string>>
-}
+import { StudyPieGraphBlockProps } from '@/types/Management/Block/block'
 
 export const StudyPieGraphBlock = ({
   studyHours,

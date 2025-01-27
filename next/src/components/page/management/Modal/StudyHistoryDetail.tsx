@@ -1,25 +1,5 @@
+import { StudyHistoryProps } from '@/types/Management/Modal/modal'
 import { formatDate } from '@/utils/formatDate'
-
-type StudyHours = {
-  title: string
-  subject: string
-  study_type: string
-  actual_learning_time: number
-  created_at: Date
-  todo_id: number
-  todo: {
-    id: number
-    title: string
-    progress: string
-  }
-}
-
-type StudyHistoryProps = {
-  studyLists: StudyHours[]
-  title: string
-  todo_id: number
-  onClose: () => void
-}
 
 export const StudyHistoryDetail = ({
   studyLists,

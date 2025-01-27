@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import Link from 'next/link'
 import { SchoolDataTableProps } from '@/types/Schools/Table/SchoolDataTable'
 
@@ -6,7 +5,7 @@ export const SchoolDataTable: React.FC<SchoolDataTableProps> = ({
   university,
   universityLength,
   school_id,
-}) => {
+}: SchoolDataTableProps) => {
   return (
     <div className="m-auto w-full items-center justify-center">
       <table className="m-auto w-full">

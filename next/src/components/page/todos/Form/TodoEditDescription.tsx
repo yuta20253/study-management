@@ -1,16 +1,5 @@
-import { Dispatch, SetStateAction } from 'react'
-import { FieldError, useFormContext } from 'react-hook-form'
-
-type DataStringProps = {
-  theme: string
-  props: string
-  registerDescription: string
-  setDescription: Dispatch<SetStateAction<string>>
-  rules?: {
-    maxLength: { value: number; message: string }
-  }
-  error?: FieldError
-}
+import { useFormContext } from 'react-hook-form'
+import { DescriptionProps } from '@/types/Todo/Form/form'
 
 export const TodoEditDescription = ({
   theme,
@@ -19,10 +8,8 @@ export const TodoEditDescription = ({
   setDescription,
   rules,
   error,
-}: DataStringProps) => {
+}: DescriptionProps) => {
   const { register } = useFormContext()
-
-  //const descriptionId = `${registerDescription}-textarea`
 
   return (
     <tr className="w-full">

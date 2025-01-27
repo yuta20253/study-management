@@ -26,7 +26,6 @@ export const useFetch = () => {
           setUniversities(res.data.universities)
         })
         .catch((e: AxiosError<{ error: string }>) => {
-          // エラーハンドリング
           if (e.response) {
             const status = e.response.status
             const message =

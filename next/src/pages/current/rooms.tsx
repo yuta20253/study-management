@@ -11,18 +11,11 @@ import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 const Rooms: NextPage = () => {
   useRequireSignedIn()
   const { user, rooms, users, createRoom, message } = DataState()
-
-  console.log(users)
-  console.log(rooms)
-
   const { handleRegister } = useHandleRegister(createRoom)
 
   if (!rooms || rooms === undefined) {
     return <LoadingScreen />
   }
-
-  console.log('rooms', rooms)
-
   // 既にルームに登録されているユーザーを除外する
   const { usersToDisplay } = usersToDisplayHandler(users, rooms, user)
 

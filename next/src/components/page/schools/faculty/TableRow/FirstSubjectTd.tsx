@@ -1,10 +1,6 @@
-import { Faculty } from '@/types/Schools/Faculty/faculty'
+import { FacultyProps } from '@/types/Schools/Faculty/table'
 
-type DataProps = {
-  faculty: Faculty
-}
-
-export const FirstSubjectTd = ({ faculty }: DataProps) => {
+export const FirstSubjectTd = ({ faculty }: FacultyProps) => {
   return (
     <>
       <td className="w-1/6 justify-center border-l-0 border-r border-gray-500 text-center">

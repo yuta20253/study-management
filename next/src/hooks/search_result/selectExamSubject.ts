@@ -1,31 +1,4 @@
-import { MutableRefObject } from 'react'
-import { University } from '@/types/SearchResult'
-
-type ExamSubjectProps = {
-  checkedItemsArr: string[]
-  firstTrueOrFalse: MutableRefObject<number | undefined>
-  secondTrueOrFalse: MutableRefObject<number | undefined>
-  selectFirstExamSubjects(
-    universities: University[],
-    checkedSubjects: string[],
-    selectableUniversities: string[],
-    returnUniversities: University[] | undefined,
-    exam_subjects: string,
-  ): University[]
-  selectSecondExamSubjects(
-    universities: University[],
-    checkedSubjects: string[],
-    selectableUniversities: string[],
-    returnUniversities: University[] | undefined,
-    exam_subjects: string,
-  ): University[]
-  finalCommonSelectedUniversities: University[]
-  finalSecondSelectedUniversities: University[]
-  altArr: University[]
-  selectableUniversities: string[]
-  returnUniversities: University[]
-  semiFinalUniversitis: University[]
-}
+import { ExamSubjectProps } from '@/types/SearchResult/Exam'
 
 export const selectExamSubject = ({
   checkedItemsArr,

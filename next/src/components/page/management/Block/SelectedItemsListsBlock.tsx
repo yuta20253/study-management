@@ -1,22 +1,8 @@
-import { ChangeEvent } from 'react'
 import { SelectGraph } from '@/components/page/management/Select/SelectGraph'
 import { SelectPeriod } from '@/components/page/management/Select/SelectPeriod'
 import { SelectStudyType } from '@/components/page/management/Select/SelectStudyType'
 import { SelectSubject } from '@/components/page/management/Select/SelectSubject'
-
-type SelectedItemsListsBlockProps = {
-  handleSelectGraph: (event: ChangeEvent<HTMLSelectElement>) => void
-  subjectName: string
-  handleSelectSubject: (event: ChangeEvent<HTMLSelectElement>) => void
-  selectSubject: JSX.Element[]
-  displiedPeriod: string
-  selectPeriodLists: JSX.Element[]
-  handleChangeDisplayPeriod: (event: ChangeEvent<HTMLSelectElement>) => void
-  handleCreatePeriod: (event: ChangeEvent<HTMLSelectElement>) => void
-  studyType: string
-  handleChangeStudyType: (event: ChangeEvent<HTMLSelectElement>) => void
-  selectStudyType: JSX.Element[]
-}
+import { SelectedItemsListsBlockProps } from '@/types/Management/Block/block'
 
 export const SelectedItemsListsBlock = ({
   handleSelectGraph,

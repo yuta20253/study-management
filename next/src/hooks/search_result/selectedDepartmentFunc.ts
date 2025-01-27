@@ -1,17 +1,12 @@
 import { MutableRefObject } from 'react'
 import { selectFirstExamSubjects } from '@/hooks/search_result/selectFirstExamSubjects'
 import { selectSecondExamSubjects } from '@/hooks/search_result/selectSecondExamSubjects'
-import { University } from '@/types/SearchResult'
+import { SelectedDepartmentFuncProps, University } from '@/types/SearchResult'
 
-type SelectedDepartmentFuncProps = {
-  displayUniversities: University[]
-  deviationValuesList: string[]
-}
 export const selectedDepartmentFunc = (
   jsonUniversity: University[],
   checkedItems: string | undefined,
   deviationValuesArr: string,
-  universities: University[] | undefined,
   firstTrueOrFalse: MutableRefObject<number | undefined>,
   secondTrueOrFalse: MutableRefObject<number | undefined>,
   selectableUniversities: string[],
@@ -43,8 +38,6 @@ export const selectedDepartmentFunc = (
     console.log(deviationValuesList)
     console.log(deviationValuesList.length)
   }
-
-  if (!universities) return
 
   const altArr: University[] = []
   const semiFinalUniversitis: University[] = []

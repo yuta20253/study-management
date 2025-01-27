@@ -1,9 +1,4 @@
-type HandleProps = {
-  handleChangeStatusAll: () => void
-  handleChangeStatusIncomplete: () => void
-  handleChangeStatusOnTheWay: () => void
-  handleChangeStatusComplete: () => void
-}
+import { HandleProps } from '@/types/Todo/Button/button'
 
 export const SelectTodoStatus = ({
   handleChangeStatusAll,

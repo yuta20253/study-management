@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import { CommonEntranceExaminationSubjectsAccordionProps } from '@/types/DesiredSchool/Accordion/Accordion'
-import { CheckBoxContext } from '@/types/DesiredSchool/Context/option'
+import { CheckBoxContext } from '@/types/DesiredSchool/Context/option_context'
 
 export const CommonEntranceExaminationSubjectsAccordion: React.FC<
   CommonEntranceExaminationSubjectsAccordionProps

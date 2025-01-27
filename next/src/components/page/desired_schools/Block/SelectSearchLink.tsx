@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { SelectSearchLinkProps } from '@/types/DesiredSchool/Link/DesiredSchoolLinkType'
+import { SelectSearchLinkProps } from '@/types/DesiredSchool/Link/link'
 
 export const SelectSearchLink = ({ theme, href }: SelectSearchLinkProps) => {
   return (

@@ -1,7 +1,6 @@
 import Link from 'next/link'
-type IdProps = {
-  id: string
-}
+import { IdProps } from '@/types/Todo/Link/link'
+
 export const EditAndReturnLink = ({ id }: IdProps) => {
   return (
     <>

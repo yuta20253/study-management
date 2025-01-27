@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
-import Link from 'next/link'
 import { LoadingScreen } from '@/components/Loading'
+import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import LinkButton from '@/components/page/Common/LinkButton'
 import { DepartmentSearchResultData } from '@/components/page/searchResult/TableRow/DepartmentSearchResultData'
 import { Head } from '@/components/page/searchResult/TableRow/Head'
@@ -51,20 +51,13 @@ const SearchResult: NextPage = () => {
 
   // universitiesが無い場合はエラー画面を表示
   if (!universities) {
+    const error: string = '大学情報が取得できませんでした'
     return (
-      <div className="flex h-screen w-screen flex-col items-center justify-center ">
-        <div className="text-center text-red-500">
-          <h1 className="text-xl">大学情報が取得できませんでした</h1>
-          <div className="mt-4 flex items-center justify-center">
-            <Link
-              href="/current/desired_schools/search/option"
-              className="rounded bg-sky-500 px-6 py-2 text-base text-white sm:text-lg"
-            >
-              各種検索へ
-            </Link>
-          </div>
-        </div>
-      </div>
+      <ErrorTemplate
+        error={error}
+        href={'/current/desired_schools/search/option'}
+        text={'各種検索へ'}
+      />
     )
   }
 
@@ -114,19 +107,11 @@ const SearchResult: NextPage = () => {
 
   if (displayUniversities.length === 0) {
     return (
-      <div className="flex h-screen w-screen flex-col items-center justify-center">
-        <div className="text-center text-red-500">
-          <h1 className="text-xl">該当する大学が見つかりませんでした</h1>
-          <div className="mt-4 flex items-center justify-center">
-            <Link
-              href="/current/desired_schools/search/option"
-              className="rounded bg-sky-500 px-6 py-2 text-base text-white sm:text-lg"
-            >
-              再試行する
-            </Link>
-          </div>
-        </div>
-      </div>
+      <ErrorTemplate
+        error={'該当する大学が見つかりませんでした'}
+        href={'/current/desired_schools/search/option'}
+        text={'再試行'}
+      />
     )
   }
 

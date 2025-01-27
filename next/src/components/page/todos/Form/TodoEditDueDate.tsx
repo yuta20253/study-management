@@ -1,15 +1,7 @@
-import { Dispatch, SetStateAction } from 'react'
-import { FieldError, useFormContext } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
+import { DueDateProps } from '@/types/Todo/Form/form'
 import { dueDateFormat } from '@/utils/formatDate'
 import {} from '@/validations/todos/validation'
-
-type DataStringProps = {
-  theme: string
-  props: string
-  setDueDate: Dispatch<SetStateAction<string>>
-  registerDueDate: string
-  error?: FieldError
-}
 
 export const TodoEditDueDate = ({
   theme,
@@ -17,7 +9,7 @@ export const TodoEditDueDate = ({
   setDueDate,
   registerDueDate,
   error,
-}: DataStringProps) => {
+}: DueDateProps) => {
   const { register } = useFormContext()
   const today = new Date().toISOString().split('T')[0]
   return (

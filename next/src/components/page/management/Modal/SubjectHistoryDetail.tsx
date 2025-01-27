@@ -1,19 +1,6 @@
-import { Dispatch, SetStateAction } from 'react'
+import { SubjectHistoryProps } from '@/types/Management/Modal/modal'
 import { formatDate } from '@/utils/formatDate'
 
-type StudyHoursProps = {
-  title: string
-  subject: string
-  study_type: string
-  actual_learning_time: number
-  created_at: Date
-}
-
-type SubjectHistoryProps = {
-  subjectLists: StudyHoursProps[]
-  subject: string
-  setSecondModalOpen: Dispatch<SetStateAction<boolean>>
-}
 export const SubjectHistoryDetail = ({
   subjectLists,
   subject,

@@ -1,11 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-
-type IconLinkProps = {
-  Icon: React.ElementType
-  href: string
-  text: string
-}
+import { IconLinkProps } from '@/types/Home'
 
 const IconLink: React.FC<IconLinkProps> = ({ Icon, href, text }) => {
   return (

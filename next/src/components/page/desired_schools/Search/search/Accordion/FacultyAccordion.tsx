@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { FacultyAccordionProps } from '@/types/DesiredSchool/Accordion/Accordion'
-import { CheckBoxContext } from '@/types/DesiredSchool/Context/option'
+import { CheckBoxContext } from '@/types/DesiredSchool/Context/option_context'
 
 export const FacultyAccordion: React.FC<FacultyAccordionProps> = ({
   facultySystem,

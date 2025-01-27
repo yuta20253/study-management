@@ -1,10 +1,5 @@
 import { useFormContext } from 'react-hook-form'
-
-type EmailProps = {
-  theme: string
-  email: string
-  registerProps: string
-}
+import { EmailProps } from '@/types/User/Form/form'
 
 export const UserEmailEditInput = ({
   theme,

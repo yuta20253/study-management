@@ -13,9 +13,8 @@ export const usersToDisplayHandler = (
     return (
       usr.id !== user.id &&
       !rooms.some((room) => {
-        // Make sure room and room.other_user are defined
         if (!room || !room.other_user) {
-          return false // Avoid further processing if the room or other_user is undefined
+          return false
         }
         return (
           room.other_user.family_name + room.other_user.given_name ===

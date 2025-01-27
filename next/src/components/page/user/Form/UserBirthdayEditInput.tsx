@@ -1,10 +1,5 @@
-import { FieldError, useFormContext } from 'react-hook-form'
-type BirthdayProps = {
-  theme: string
-  date: string
-  registerProps: string
-  error?: FieldError
-}
+import { useFormContext } from 'react-hook-form'
+import { BirthdayProps } from '@/types/User/Form/form'
 
 export const UserBirthdayEditInput = ({
   theme,

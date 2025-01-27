@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, Dispatch, SetStateAction } from 'react'
 
 export type CommonEntranceExaminationSubjectsAccordionProps = {
   entranceExamination: string
@@ -44,4 +44,15 @@ export type SecondEntranceExaminationSubjectsAccordionProps = {
 
 export type DeviationValueAccordionProps = {
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void
+}
+
+export type FacultySystemAccordionProps = {
+  handleClearFacultySystem: () => void
+}
+
+export type RegionProps = {
+  region: string
+  prefectures: string[]
+  checkedItems: string
+  setCheckedItems: Dispatch<SetStateAction<string>>
 }
