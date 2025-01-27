@@ -1,8 +1,5 @@
 import React from 'react'
-
-type ChatHeaderProps = {
-  roomName: string | undefined
-}
+import { ChatHeaderProps } from '@/types/Room/Show'
 
 export const ChatHeader: React.FC<ChatHeaderProps> = ({ roomName }) => (
   <div className="flex-none bg-blue-500 p-4 text-white">

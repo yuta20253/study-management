@@ -1,3 +1,5 @@
+import { MutableRefObject } from 'react'
+
 export type University = {
   code: number
   region: string
@@ -37,4 +39,30 @@ export type University = {
       certification_exam: string //英語資格・検定試験
     },
   ]
+}
+
+export type ExamSubjectProps = {
+  checkedItemsArr: string[]
+  firstTrueOrFalse: MutableRefObject<number | undefined>
+  secondTrueOrFalse: MutableRefObject<number | undefined>
+  selectFirstExamSubjects(
+    universities: University[],
+    checkedSubjects: string[],
+    selectableUniversities: string[],
+    returnUniversities: University[] | undefined,
+    exam_subjects: string,
+  ): University[]
+  selectSecondExamSubjects(
+    universities: University[],
+    checkedSubjects: string[],
+    selectableUniversities: string[],
+    returnUniversities: University[] | undefined,
+    exam_subjects: string,
+  ): University[]
+  finalCommonSelectedUniversities: University[]
+  finalSecondSelectedUniversities: University[]
+  altArr: University[]
+  selectableUniversities: string[]
+  returnUniversities: University[]
+  semiFinalUniversitis: University[]
 }

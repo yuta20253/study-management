@@ -8,7 +8,7 @@ import { DataState } from '@/hooks/desired_schools/DataState'
 import { onSubmitHandler } from '@/hooks/desired_schools/handleOnSubmit'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 import { DesiredSchoolProps } from '@/types/DesiredSchool'
-import { DesiredSchoolDeleteContext } from '@/types/DesiredSchool/Context/desired_school'
+import { DesiredSchoolDeleteContext } from '@/types/DesiredSchool/Context/desired_school_context'
 
 const DesiredSchools: NextPage = () => {
   useRequireSignedIn()

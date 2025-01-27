@@ -1,11 +1,4 @@
-type FollowsUserInfoProps = {
-  first?: string | number
-  second?: string | number
-  third?: string | number
-  four?: string | number
-  five?: string | number
-  six?: string | number
-}
+import { FollowsUserInfoProps } from '@/types/Follows'
 
 export const FollowsUserInfo = ({
   first,

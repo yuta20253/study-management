@@ -1,7 +1,5 @@
-type SubjectProps = {
-  theme: string
-  props: string
-}
+import { SubjectProps } from '@/types/Todo/Form/form'
+
 export const TodoEditSubject = ({ theme, props }: SubjectProps) => {
   return (
     <tr className="w-full">

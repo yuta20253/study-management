@@ -1,22 +1,6 @@
-import { FieldError, useFormContext } from 'react-hook-form'
-type NameProps = {
-  theme: string
-  first: string
-  last: string
-  label_first: string
-  label_second: string
-  registerFirstProps: string
-  registerSecondProps: string
-  rules?: {
-    required: string
-    pattern?: {
-      value: RegExp
-      message: string
-    }
-  }
-  errorFirst?: FieldError
-  errorSecond?: FieldError
-}
+import { useFormContext } from 'react-hook-form'
+import { NameProps } from '@/types/User/Form/form'
+
 export const UserNameEditInput = ({
   theme,
   first,

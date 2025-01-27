@@ -49,7 +49,7 @@ class Api::V1::Current::TodosController < Api::V1::BaseController
       @todo = current_user.todos.find_by(id: params[:id])
       Rails.logger.debug "set_todoです"
       if @todo.nil?
-        render json: { error: "Todo not found" }, status: :not_found
+        render json: { error: "Todoが見つかりません" }, status: :not_found
       end
     end
 

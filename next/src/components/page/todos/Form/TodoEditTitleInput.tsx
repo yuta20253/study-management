@@ -1,17 +1,6 @@
-import { Dispatch, SetStateAction } from 'react'
-import { FieldError, useFormContext } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
+import { TitleProps } from '@/types/Todo/Form/form'
 import { titleRules } from '@/validations/todos/validation'
-
-type TitleProps = {
-  theme: string
-  title: string
-  setTitle: Dispatch<SetStateAction<string>>
-  registerTitle: string
-  rules?: {
-    required: string
-  }
-  error?: FieldError
-}
 
 export const TodoEditTitle = ({
   theme,

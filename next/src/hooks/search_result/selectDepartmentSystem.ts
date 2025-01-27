@@ -1,12 +1,5 @@
 import { DepartmentArr } from '@/const/departmentArr'
-import { University } from '@/types/SearchResult'
-
-type DepartmentSystemProps = {
-  afterDevisionUniversity: University[]
-  checkedItemsArr: string[]
-  semiFinalUniversitis: University[]
-  altArr: University[]
-}
+import { DepartmentSystemProps } from '@/types/SearchResult'
 
 export const selectDepartmentSystem = ({
   afterDevisionUniversity,

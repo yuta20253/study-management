@@ -12,12 +12,3 @@ export type StudyHoursProps = {
     user_id: number
   }
 }
-
-export type Management = {
-  studyHours: StudyHoursProps[] | undefined
-  selectedSubject: string
-  selectedPeriod: Date
-  studyType: string
-  onOpen: () => void
-  handleClickStudy: (study: StudyHoursProps) => void
-}

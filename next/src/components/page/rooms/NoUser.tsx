@@ -1,18 +1,4 @@
-type UsersProps = {
-  id: number
-  family_name: string
-  given_name: string
-}
-
-type NoUserDisplayProps = {
-  users: UsersProps[]
-  user: UsersProps
-  handleRegister: (
-    user_id: number,
-    firstName: string,
-    secondName: string,
-  ) => void
-}
+import { NoUserDisplayProps } from '@/types/Room'
 
 export const NoUserDisplay = ({
   users,

@@ -11,7 +11,10 @@ import { TodoDetail } from '@/components/page/todos/TodoDetail'
 import { DataState } from '@/hooks/todos/DataState'
 
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
-import { TodoDeleteContext, TodoDetailContext } from '@/types/Todo/Context/todo'
+import {
+  TodoDeleteContext,
+  TodoDetailContext,
+} from '@/types/Todo/Context/todo_context'
 
 const Todos: NextPage = () => {
   useRequireSignedIn()

@@ -1,11 +1,9 @@
-import { Dispatch, SetStateAction } from 'react'
-import { FieldErrors } from 'react-hook-form'
 import { UserBirthdayEditInput } from './UserBirthdayEditInput'
 import { UserBuildingEditInput } from './UserBuildingEditInput'
 import { UserGenderEditRadio } from './UserGenderEditRadio'
 import { UserNameEditInput } from './UserNameEditInput'
 import { UserPhoneEditInput } from './UserPhoneEditInput'
-import { EditUserProps } from '@/types/User'
+import { UserInfo } from '@/types/User/Form/form'
 import {
   nameKanaRules,
   nameRules,
@@ -13,25 +11,6 @@ import {
   buildingRule,
   phoneNumberRules,
 } from '@/validations/user/validation'
-
-type UserInfo = {
-  family_name_kana: string
-  given_name_kana: string
-  family_name: string
-  given_name: string
-  birthday: Date
-  gender: string
-  selected: string
-  setSelected: Dispatch<SetStateAction<string>>
-  postal_code: string
-  prefecture: string
-  city: string
-  address1: string
-  address2: string
-  phone_number: string
-  landline_phone_number: string
-  errors: FieldErrors<EditUserProps>
-}
 
 export const UserInfoEdit = ({
   family_name_kana,

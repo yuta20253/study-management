@@ -1,9 +1,6 @@
-type ButtonProps = {
-  onOpen: () => void
-  text: string
-}
+import { ModalOpenButtonProps } from '@/types/Todo/Button/button'
 
-const ModalOpenButton = ({ onOpen, text }: ButtonProps) => {
+const ModalOpenButton = ({ onOpen, text }: ModalOpenButtonProps) => {
   return (
     <button
       onClick={onOpen}

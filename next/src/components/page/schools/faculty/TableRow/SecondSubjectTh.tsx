@@ -1,9 +1,6 @@
-type DataProps = {
-  title: string
-  style?: string
-}
+import { SecondSubjectThProps } from '@/types/Schools/Faculty/table'
 
-export const SecondSubjectTh = ({ title }: DataProps) => {
+export const SecondSubjectTh = ({ title }: SecondSubjectThProps) => {
   return (
     <>
       <th className="w-1/6 border-0 border-gray-500 bg-sky-500 text-white">
@@ -13,7 +10,10 @@ export const SecondSubjectTh = ({ title }: DataProps) => {
   )
 }
 
-export const SecondSubjectThWithSpan = ({ title, style }: DataProps) => {
+export const SecondSubjectThWithSpan = ({
+  title,
+  style,
+}: SecondSubjectThProps) => {
   return (
     <>
       <th className="w-1/6 border-0 border-gray-500 bg-sky-500 text-white">

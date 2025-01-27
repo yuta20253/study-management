@@ -1,13 +1,4 @@
-import { MutableRefObject } from 'react'
-import { University } from '@/types/SearchResult'
-
-type DisplayMixUniversitiesProps = {
-  toDisplayMixArr: University[]
-  firstTrueOrFalse: MutableRefObject<number | undefined>
-  secondTrueOrFalse: MutableRefObject<number | undefined>
-  finalCommonSelectedUniversities: University[]
-  finalSecondSelectedUniversities: University[]
-}
+import { DisplayMixUniversitiesProps } from '@/types/SearchResult'
 
 export const displayMixUniversities = ({
   toDisplayMixArr,

@@ -1,4 +1,4 @@
-import { Management } from '@/types/Management'
+import { Management } from '@/types/Management/List/list'
 import { formatDate } from '@/utils/formatDate'
 
 export const ManagementList: React.FC<Management> = ({

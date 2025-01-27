@@ -1,20 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 import { useState } from 'react'
-import { FieldError, useFormContext } from 'react-hook-form'
-
-type BuildingProps = {
-  theme: string
-  props: string
-  registerProps: string
-  rules?: {
-    required: string
-    pattern?: {
-      value: RegExp
-      message: string
-    }
-  }
-  error?: FieldError
-}
+import { useFormContext } from 'react-hook-form'
+import { BuildingProps } from '@/types/User/Form/form'
 
 export const UserBuildingEditInput = ({
   theme,

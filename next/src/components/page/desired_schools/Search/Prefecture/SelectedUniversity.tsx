@@ -1,10 +1,7 @@
 import Link from 'next/link'
 import { UniversityPrefecture } from '@/types/DesiredSchool'
+import { SelectUniversityListProps } from '@/types/DesiredSchool/Search/selectUniversityType'
 
-type SelectUniversityListProps = {
-  checkedItems: string
-  universities: UniversityPrefecture[]
-}
 export const SelectUniversityList = ({
   checkedItems,
   universities,

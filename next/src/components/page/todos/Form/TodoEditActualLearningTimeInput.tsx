@@ -1,20 +1,5 @@
-import { Dispatch, SetStateAction } from 'react'
-import { FieldError, useFormContext } from 'react-hook-form'
-type ActualLearningTimeProps = {
-  theme: string
-  actualLearningTime: string
-  registerActualLearningTime: string
-  setScheduledStudyTime: Dispatch<SetStateAction<string>>
-  setActualLearningTime: Dispatch<React.SetStateAction<string>>
-  setTotalHour: Dispatch<SetStateAction<number>>
-  handleChangeHours: (event: string) => void
-  rules?: {
-    required: string
-    min: { value: number; message: string } // Add min validation
-    max: { value: number; message: string } // Add max validation
-  }
-  error?: FieldError
-}
+import { useFormContext } from 'react-hook-form'
+import { ActualLearningTimeProps } from '@/types/Todo/Form/form'
 
 export const TodoEditActualLearningTime = ({
   theme,

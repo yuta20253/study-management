@@ -1,10 +1,4 @@
-import { University } from '@/types/SearchResult'
-
-type DivisionProps = {
-  jsonUniversity: University[]
-  checkedItemsArr: string[]
-  afterDevisionUniversity: University[]
-}
+import { DivisionProps } from '@/types/SearchResult'
 
 export const selectDivision = ({
   jsonUniversity,

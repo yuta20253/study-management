@@ -1,5 +1,3 @@
-//これ残す
-// alternativeの箇所120行目が機能はしているぽいがそもそもループが多分3回くらいしていて(useEffect使っていないのに)結果、その間に慶應とかが素通りしてしまっている
 import { University } from '@/types/SearchResult/Exam'
 
 export const selectFirstExamSubjects = (

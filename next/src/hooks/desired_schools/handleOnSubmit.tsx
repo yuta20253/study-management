@@ -11,7 +11,6 @@ export const onSubmitHandler = (
 ) => {
   const submitUniversity = data.university + '大学'
 
-  // Optimized logic for finding matching university
   const foundUniversity = jsonUniversity
     .flat()
     .find((uni) => uni.uni.school === submitUniversity)
@@ -22,7 +21,6 @@ export const onSubmitHandler = (
     const postCode = foundUniversity.uni.data[0].code
 
     const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/current/schools/${postCode}`
-    console.log('Submitting URL:', url) // Log the URL to be used
     const headers = {
       'Content-Type': 'application/json',
       'access-token': localStorage.getItem('access-token'),
@@ -34,7 +32,6 @@ export const onSubmitHandler = (
     axios
       .get(url, { headers, data: d })
       .then(() => {
-        console.log('Redirecting to:', `/current/schools/${postCode}`) // Log the redirect URL
         router.push(`/current/schools/${postCode}`)
       })
       .catch((e: AxiosError<{ error: string }>) => {

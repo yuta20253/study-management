@@ -4,7 +4,7 @@ import { DeleteButton } from '@/components/page/desired_schools/Button/DeleteDes
 import {
   DesiredSchoolProps,
   DesiredSchools,
-} from '@/types/DesiredSchool/Table/DesiredSchoolTable'
+} from '@/types/DesiredSchool/Table/table'
 
 export const UserDesiredSchoolTable: React.FC<DesiredSchools> = ({
   universities,

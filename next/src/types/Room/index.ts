@@ -28,3 +28,13 @@ export type UserListProps = {
 export type RoomListProps = {
   rooms: RoomProps[]
 }
+
+export type NoUserDisplayProps = {
+  users: UsersProps[]
+  user: UsersProps
+  handleRegister: (
+    user_id: number,
+    firstName: string,
+    secondName: string,
+  ) => void
+}

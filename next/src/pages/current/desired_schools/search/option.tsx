@@ -11,7 +11,7 @@ import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 import {
   CheckBoxContext,
   SliderContext,
-} from '@/types/DesiredSchool/Context/option'
+} from '@/types/DesiredSchool/Context/option_context'
 
 const OptionPage: NextPage = () => {
   useRequireSignedIn()

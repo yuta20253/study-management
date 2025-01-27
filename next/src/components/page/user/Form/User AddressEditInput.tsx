@@ -1,12 +1,5 @@
-// src/components/form/UserAddressInput.tsx
-import { useFormContext, FieldError } from 'react-hook-form'
-
-type AddressProps = {
-  theme: string
-  value: string
-  registerProps: string
-  error?: FieldError
-}
+import { useFormContext } from 'react-hook-form'
+import { AddressProps } from '@/types/User/Form/form'
 
 export const UserAddressInput = ({
   theme,

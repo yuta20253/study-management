@@ -1,7 +1,4 @@
-type ButtonProps = {
-  onClick: (id: number) => void
-  text: string
-}
+import { ButtonProps } from '@/types/User/Button/button'
 
 const OnClickFollowOrUnFollowButton = ({ onClick, text }: ButtonProps) => {
   return (

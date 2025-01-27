@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -7,6 +6,7 @@ import { ChatHeader } from '@/components/page/rooms/Show/ChatHeader'
 import { MessageInputForm } from '@/components/page/rooms/Show/Form/MessageInputForm'
 import { MessagesList } from '@/components/page/rooms/Show/List/MessagesList'
 import { DataState } from '@/hooks/rooms/Show/DataState'
+import { useSendMessage } from '@/hooks/rooms/Show/sendMessage'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 const RoomDetail: NextPage = () => {
@@ -19,40 +19,13 @@ const RoomDetail: NextPage = () => {
 
   const router = useRouter()
   const { id } = router.query
-
-  // メッセージ送信関数
-  const sendMessage = async (e: React.FormEvent) => {
-    e.preventDefault() // フォーム送信をキャンセル
-
-    if (!messageContent.trim()) {
-      return // 空メッセージは送信しない
-    }
-
-    const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/current/rooms/${id}/messages`
-    const headers = {
-      'Content-Type': 'application/json',
-      'access-token': localStorage.getItem('access-token'),
-      client: localStorage.getItem('client'),
-      uid: localStorage.getItem('uid'),
-    }
-
-    try {
-      // メッセージをサーバーに送信
-      const response = await axios.post(
-        url,
-        { content: messageContent },
-        { headers },
-      )
-
-      // サーバーからのレスポンスをメッセージリストに追加
-      setMessages([...safeMessages, response.data])
-
-      // メッセージ入力欄を空にする
-      setMessageContent('')
-    } catch (error) {
-      console.error('Error sending message:', error)
-    }
-  }
+  const { sendMessage } = useSendMessage(
+    messageContent,
+    setMessageContent,
+    setMessages,
+    safeMessages,
+    id,
+  )
 
   return (
     <div className="flex h-screen flex-col bg-gray-100">

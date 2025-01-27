@@ -1,4 +1,4 @@
-import { NewRegistrationDesiredSchoolTableProps } from '@/types/DesiredSchool/Table/DesiredSchoolTable'
+import { NewRegistrationDesiredSchoolTableProps } from '@/types/DesiredSchool/Table/table'
 
 export const NewRegistrationDesiredSchoolTable: React.FC<
   NewRegistrationDesiredSchoolTableProps

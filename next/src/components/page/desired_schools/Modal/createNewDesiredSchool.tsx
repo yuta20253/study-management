@@ -1,10 +1,7 @@
 import axios, { AxiosResponse, AxiosError } from 'axios'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import {
-  ClickProps,
-  University,
-} from '@/types/DesiredSchool/Modal/DesiredSchoolModalType'
+import { ClickProps, University } from '@/types/DesiredSchool/Modal/modal'
 
 export const CreateNewDesiredSchoolModal = ({
   universityName,

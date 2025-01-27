@@ -1,10 +1,5 @@
 import Link from 'next/link'
-import { University } from '@/types/SearchResult'
-
-type ListProps = {
-  displayUniversities: University[]
-  deviationValuesList: string[]
-}
+import { ListProps } from '@/types/SearchResult'
 
 export const DepartmentSearchResultData = ({
   displayUniversities,

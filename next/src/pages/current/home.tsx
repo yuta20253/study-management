@@ -17,9 +17,18 @@ const Home: NextPage = () => {
   const url = process.env.NEXT_PUBLIC_API_BASE_URL + '/current/home'
   const { data, error } = useSWR(url, fetcher)
 
-  if (error) return <div>An error has occurred.</div>
+  if (error) {
+    return (
+      <div className="flex h-screen w-screen items-center justify-center px-4 sm:px-8">
+        <div className="w-full items-center justify-center text-center sm:w-2/3 md:w-1/2 lg:w-1/3">
+          <h1 className="mb-4 text-3xl font-bold text-red-600">
+            サーバーがSTOPしました
+          </h1>
+        </div>
+      </div>
+    )
+  }
   if (!data) return <LoadingScreen />
-  console.log(data)
   return (
     <div className="w-full">
       <div className="flex h-screen w-screen items-center justify-center">

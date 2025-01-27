@@ -7,6 +7,7 @@ import { TodoProps } from '@/types/Todo'
 export const useFetch = () => {
   const [user] = useUserState()
   const [todo, setTodo] = useState<TodoProps>()
+  const [error, setError] = useState<string | null>(null)
   const router = useRouter()
   const { id } = router.query
   useEffect(() => {
@@ -19,8 +20,17 @@ export const useFetch = () => {
         uid: localStorage.getItem('uid'),
       }
       axios({ method: 'GET', url: url, headers: header })
-        .then((res: AxiosResponse) => setTodo(res.data))
-        .catch((e: AxiosError<{ e: string }>) => console.log(e.message))
+        .then((res: AxiosResponse) => {
+          setTodo(res.data)
+          setError(null)
+        })
+        .catch((e: AxiosError<{ e: string }>) => {
+          if (e.response?.status === 404) {
+            setError('Todoが見つかりません')
+          } else {
+            setError('データ取得に失敗しました')
+          }
+        })
     }
   }, [user.isSignedIn, id])
 
@@ -29,5 +39,6 @@ export const useFetch = () => {
     todo,
     router,
     id,
+    error,
   }
 }

@@ -1,12 +1,9 @@
-type DataStringProps = {
-  theme: string
-  props: string
-}
+import { ScheduledStudyTimeProps } from '@/types/Todo/Form/form'
 
 export const TodoEditScheduledStudyTime = ({
   theme,
   props,
-}: DataStringProps) => {
+}: ScheduledStudyTimeProps) => {
   return (
     <tr className="w-full">
       <th className="mt-2 h-12 w-1/2">{theme}</th>

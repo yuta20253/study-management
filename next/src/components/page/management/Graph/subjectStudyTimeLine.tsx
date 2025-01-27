@@ -1,5 +1,3 @@
-//////これ絶対のこす！！！
-
 import {
   Chart as ChartJS,
   ArcElement,

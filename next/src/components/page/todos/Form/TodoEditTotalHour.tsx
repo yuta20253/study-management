@@ -1,9 +1,6 @@
-type DataStringProps = {
-  theme: string
-  props: number
-}
+import { TotalHourProps } from '@/types/Todo/Form/form'
 
-export const TodoEditTotalHour = ({ theme, props }: DataStringProps) => {
+export const TodoEditTotalHour = ({ theme, props }: TotalHourProps) => {
   return (
     <tr className="w-full">
       <th className="mt-2 h-12 w-1/2">{theme}</th>

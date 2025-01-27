@@ -1,9 +1,5 @@
 import Link from 'next/link'
-
-type LinkButtonProps = {
-  href: string
-  text: string
-}
+import { LinkButtonProps } from '@/types/User/Button/button'
 
 const LinkButton = ({ href, text }: LinkButtonProps) => {
   return (

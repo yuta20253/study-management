@@ -2,10 +2,7 @@ import React, { useState } from 'react'
 import { FacultyAccordion } from '@/components/page/desired_schools/Search/search/Accordion/FacultyAccordion'
 import { DepartmentArr } from '@/const/departmentArr'
 import { FacultySystem } from '@/const/facultySystem'
-
-type FacultySystemAccordionProps = {
-  handleClearFacultySystem: () => void
-}
+import { FacultySystemAccordionProps } from '@/types/DesiredSchool/Accordion/Accordion'
 
 export const FacultySystemAccordion: React.FC<FacultySystemAccordionProps> = ({
   handleClearFacultySystem,

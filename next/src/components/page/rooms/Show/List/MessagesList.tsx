@@ -1,4 +1,4 @@
-import { MessageProps, MessagesListProps } from '@/types/Room/Show/List'
+import { MessageProps, MessagesListProps } from '@/types/Room/Show/List/list'
 
 export const MessagesList = ({ messages, user }: MessagesListProps) => (
   <div className="flex grow items-center justify-center border-slate-500 bg-slate-200 p-4 ">
