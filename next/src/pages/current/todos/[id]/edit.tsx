@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Link from 'next/link'
 import { FormProvider } from 'react-hook-form'
 import { LoadingScreen } from '@/components/Loading'
+import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import { TodoEditThemeTable } from '@/components/page/todos/Form/TodoEditThemeTiitle'
 import { TodoInfoEdit } from '@/components/page/todos/Form/TodoInfoEdit'
 import { DataState } from '@/hooks/todos/Edit/DataState'
@@ -34,6 +35,7 @@ const EditTodo: NextPage = () => {
     description,
     setDescription,
     handleChangeHours,
+    error,
   } = DataState()
 
   const { methods, handleSubmit, onSubmit, handleOnError, errors } =
@@ -56,6 +58,16 @@ const EditTodo: NextPage = () => {
 
   if (!todo || Object.keys(todo).length === 0) {
     return <LoadingScreen />
+  }
+
+  if (error) {
+    return (
+      <ErrorTemplate
+        error={error}
+        href={`/current/todos/${id}`}
+        text={'Todo詳細へ'}
+      />
+    )
   }
 
   return (

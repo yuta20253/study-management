@@ -13,7 +13,7 @@ jest.mock('../src/hooks/useGlobalState', () => ({
   useUserState: jest.fn(),
 }))
 
-jest.mock('../src/hooks/ui/todos/DataState', () => ({
+jest.mock('../src/hooks/todos/DataState', () => ({
   DataState: jest.fn().mockReturnValue({
     todos: [
       { id: 1, title: 'Todo 1', status: 'incomplete' },
@@ -111,7 +111,7 @@ describe('Create New Todo Modal', () => {
     render(<Todos />)
 
     // Find the button and simulate the click event
-    const addButton = screen.getByText('新規追加(Open Modal)')
+    const addButton = screen.getByText('新規追加')
     fireEvent.click(addButton)
 
     // Ensure the modal open function was called

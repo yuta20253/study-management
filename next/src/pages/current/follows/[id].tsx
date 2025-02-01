@@ -1,5 +1,6 @@
 import { NextPage } from 'next'
 import { LoadingScreen } from '@/components/Loading'
+import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import LinkButton from '@/components/page/Common/LinkButton'
 import { FollowsUserInfo } from '@/components/page/follows/TableRow/FollowsInfoTr'
 import { DataState } from '@/hooks/follows/Show/DataState'
@@ -7,9 +8,19 @@ import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 const FollowsUserDetail: NextPage = () => {
   useRequireSignedIn()
-  const { showUser } = DataState()
+  const { showUser, error } = DataState()
   if (!showUser) {
     return <LoadingScreen />
+  }
+
+  if (error) {
+    return (
+      <ErrorTemplate
+        error={error}
+        href={'/current/user/relationships'}
+        text={'フォロー関係へ'}
+      />
+    )
   }
 
   const birth = new Date(showUser.birthday)

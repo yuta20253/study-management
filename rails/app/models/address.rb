@@ -14,8 +14,11 @@ class Address < ApplicationRecord
   ]
 
   POSTAL_CODE_REGEX = /\A\d{3}[-]?\d{4}\z/
-  validates :postal_code, presence: true, format: { with: POSTAL_CODE_REGEX, message: "is invalid" }
-  validates :prefecture, presence: true
-  validates :city, presence: true
-  validates :address1, presence: true
+
+  with_options presence: true do
+    validates :postal_code, format: { with: POSTAL_CODE_REGEX, message: "郵便番号が無効です" }
+    validates :prefecture
+    validates :city
+    validates :address1
+  end
 end

@@ -9,14 +9,14 @@ const TodoDetail: NextPage = () => {
   useRequireSignedIn()
   const { todo, error } = DataState()
 
-  // エラーがあればエラーメッセージを表示
+  if (!todo) {
+    return <LoadingScreen />
+  }
+
   if (error) {
     return (
       <ErrorTemplate error={error} href="/current/todos" text={'Todo一覧へ'} />
     )
-  }
-  if (!todo) {
-    return <LoadingScreen />
   }
 
   return (

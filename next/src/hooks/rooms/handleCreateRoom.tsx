@@ -46,7 +46,6 @@ export const useCreateRoom = (
         setMessage(res.data.message || '作成に失敗しました')
       }
     } catch (error: unknown) {
-      console.error('予期しないエラーが発生しました:', error)
       setMessage('予期しないエラーが発生しました')
     }
   }

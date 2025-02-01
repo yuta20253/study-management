@@ -1,6 +1,7 @@
 import { NextPage } from 'next'
 import { DataState } from '../../hooks/rooms/DataState'
 import { LoadingScreen } from '@/components/Loading'
+import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import { RoomList } from '@/components/page/rooms/List/RoomList'
 import { UserList } from '@/components/page/rooms/List/UserList'
 import { NoUserDisplay } from '@/components/page/rooms/NoUser'
@@ -10,11 +11,17 @@ import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 const Rooms: NextPage = () => {
   useRequireSignedIn()
-  const { user, rooms, users, createRoom, message } = DataState()
+  const { user, rooms, users, createRoom, message, error } = DataState()
   const { handleRegister } = useHandleRegister(createRoom)
 
   if (!rooms || rooms === undefined) {
     return <LoadingScreen />
+  }
+
+  if (error) {
+    return (
+      <ErrorTemplate error={error} href={'/current/home'} text={'ホームへ'} />
+    )
   }
   // 既にルームに登録されているユーザーを除外する
   const { usersToDisplay } = usersToDisplayHandler(users, rooms, user)
@@ -27,7 +34,6 @@ const Rooms: NextPage = () => {
             {message}
           </div>
         )}
-        {/* Rest of the JSX */}
       </div>
       <div className="min-h-screen bg-gray-50 px-4 py-6 sm:px-6 lg:px-8">
         {rooms.length === 0 ? (

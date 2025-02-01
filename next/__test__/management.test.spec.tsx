@@ -6,7 +6,7 @@ import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 // Mock necessary modules
 jest.mock('@/hooks/useRequireSignIn')
-jest.mock('@/hooks/ui/management/DataState', () => ({
+jest.mock('@/hooks/management/DataState', () => ({
   DataState: jest.fn(),
 }))
 

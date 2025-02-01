@@ -11,7 +11,7 @@ export const DataState = () => {
   const [status, setStatus] = useState<string>('')
   const [isDelete, setIsDelete] = useState<boolean>(false)
 
-  const { todos, setTodos, meta, setMeta, errorMessage } = useFetch()
+  const { todos, setTodos, meta, setMeta, error } = useFetch()
 
   const { handleChangePage } = usePaginationHandler()
 
@@ -43,6 +43,6 @@ export const DataState = () => {
     handleChangeStatusIncomplete,
     handleChangeStatusComplete,
     handleChangeStatusOnTheWay,
-    errorMessage,
+    error,
   }
 }

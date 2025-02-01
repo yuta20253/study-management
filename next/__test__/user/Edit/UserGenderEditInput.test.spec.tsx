@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import React, { useState } from 'react'
+import React from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { UserGenderEditRadio } from '@/components/page/user/Form/UserGenderEditRadio'
 

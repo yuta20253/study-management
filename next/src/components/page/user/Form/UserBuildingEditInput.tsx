@@ -31,7 +31,11 @@ export const UserBuildingEditInput = ({
           `https://zipcloud.ibsnet.co.jp/api/search?zipcode=${enteredPostalCode}`,
         )
 
-        if (response.data && response.data.results) {
+        if (
+          response.data &&
+          response.data.results &&
+          response.data.results.length > 0
+        ) {
           const { address1, address2, address3 } = response.data.results[0]
           // 住所をフォームにセットする
           setValue('address.prefecture', address1)
@@ -43,7 +47,6 @@ export const UserBuildingEditInput = ({
           throw new Error('住所の取得に失敗しました')
         }
       } catch (error) {
-        console.error('住所の取得に失敗しました:', error)
         // エラーメッセージを表示するための状態を設定
         setIsAddressAutoFilled(false)
         setAddressError(true) // 住所取得エラーを設定

@@ -7,7 +7,7 @@ export const onSubmitHandler = (
   data: DesiredSchoolProps,
   jsonUniversity: University[][],
   router: NextRouter,
-  setError: Dispatch<SetStateAction<string | undefined>>,
+  setError: Dispatch<SetStateAction<string | null>>,
 ) => {
   const submitUniversity = data.university + '大学'
 

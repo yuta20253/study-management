@@ -1,5 +1,4 @@
 import { NextPage } from 'next'
-import { useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { LoadingScreen } from '@/components/Loading'
 import LinkButton from '@/components/page/Common/LinkButton'
@@ -23,8 +22,10 @@ const DesiredSchools: NextPage = () => {
     router,
     isValid,
     handleChangeInputValue,
+    error,
+    setError,
   } = DataState()
-  const [error, setError] = useState<string | undefined>(undefined)
+  //const [error, setError] = useState<string | undefined>(undefined)
   const { register, handleSubmit } = useForm<DesiredSchoolProps>()
 
   const onSubmit: SubmitHandler<DesiredSchoolProps> = (data) => {
@@ -57,7 +58,7 @@ const DesiredSchools: NextPage = () => {
               検索
             </button>
           </form>
-          {error !== undefined && <p className="mt-2 text-red-500">{error}</p>}
+          {error !== null && <p className="mt-2 text-red-500">{error}</p>}
 
           {!isValid && (
             <p className="mt-2 text-red-500">
@@ -81,8 +82,6 @@ const DesiredSchools: NextPage = () => {
           </DesiredSchoolDeleteContext.Provider>
         </div>
       </div>
-
-      {/* ボタンエリア */}
       <div className="mt-5 flex flex-col justify-center gap-4 sm:flex-row">
         <LinkButton href={'/current/desired_schools/new'} text={'新規追加'} />
         <LinkButton href={'/current/home'} text={'ホームへ'} />

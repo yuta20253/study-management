@@ -1,5 +1,6 @@
 import { NextPage } from 'next'
 import { LoadingScreen } from '@/components/Loading'
+import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import LinkButton from '@/components/page/Common/LinkButton'
 import { UserInfoTr } from '@/components/page/user/TableRow/UserInfoTr'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
@@ -7,9 +8,15 @@ import { DataState } from '@/hooks/user/DataState'
 
 const User: NextPage = () => {
   useRequireSignedIn()
-  const { user, age, year, month, day } = DataState()
+  const { user, age, year, month, day, error } = DataState()
   if (!user || !age) {
     return <LoadingScreen />
+  }
+
+  if (error) {
+    return (
+      <ErrorTemplate error={error} href={'/current/home'} text={'ホームへ'} />
+    )
   }
 
   return (

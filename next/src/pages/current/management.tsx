@@ -48,16 +48,12 @@ const Management: NextPage = () => {
     handleClickStudy,
     handleSelectSubjectName,
     handleSelectGraph,
-    errorMessage,
+    error,
   } = DataState()
 
-  if (errorMessage) {
+  if (error) {
     return (
-      <ErrorTemplate
-        error={errorMessage}
-        href={'/current/home'}
-        text={'ホームへ'}
-      />
+      <ErrorTemplate error={error} href={'/current/home'} text={'ホームへ'} />
     )
   }
 
@@ -68,7 +64,6 @@ const Management: NextPage = () => {
   return (
     <div className="mt-10 w-full px-4 sm:px-6 lg:px-8">
       <div className="relative flex flex-col items-center justify-center gap-6 sm:grid sm:grid-cols-1 lg:grid-cols-2">
-        {/* StudyPieGraphBlock */}
         <div className="w-full sm:w-full lg:w-full">
           <StudyPieGraphBlock
             studyHours={studyHours}
@@ -78,8 +73,6 @@ const Management: NextPage = () => {
             setForModalSubject={setForModalSubject}
           />
         </div>
-
-        {/* Conditional Graph rendering */}
         {graph === '学習タイプ別割合' && (
           <div className="w-full sm:w-full lg:w-full">
             <StudyTypePieGraphBlock
@@ -88,7 +81,6 @@ const Management: NextPage = () => {
             />
           </div>
         )}
-
         {graph === '学習時間比較' && (
           <div className="w-full sm:w-full lg:w-full">
             <StudyComparisonWithPeopleBarBlock
@@ -98,7 +90,6 @@ const Management: NextPage = () => {
             />
           </div>
         )}
-
         {graph === '科目別学習時間推移' && (
           <div className="w-full sm:w-full lg:w-full">
             <SubjectStudyTimeLineBlock
@@ -110,8 +101,6 @@ const Management: NextPage = () => {
           </div>
         )}
       </div>
-
-      {/* ChangesInStudytTimeBySubjectBlock (Conditional rendering) */}
       {graph === '科目別学習時間推移' && (
         <ChangesInStudytTimeBySubjectBlock
           subjectName={subjectName}
@@ -119,8 +108,6 @@ const Management: NextPage = () => {
           handleSelectSubjectName={handleSelectSubjectName}
         />
       )}
-
-      {/* SelectedItemsListsBlock */}
       <SelectedItemsListsBlock
         handleSelectGraph={handleSelectGraph}
         subjectName={subjectName}
@@ -134,8 +121,6 @@ const Management: NextPage = () => {
         handleChangeStudyType={handleChangeStudyType}
         selectStudyType={SelectStudyType}
       />
-
-      {/* Modals for Study History and Subject History */}
       <div className="mt-2 flex flex-col items-center justify-center space-y-6">
         {isOpen && (
           <div className="absolute top-40 z-10 flex w-full items-center justify-center sm:w-11/12 md:w-1/2 lg:w-1/3">
@@ -157,8 +142,6 @@ const Management: NextPage = () => {
           </div>
         )}
       </div>
-
-      {/* Management List */}
       <div className="mt-2 flex w-full items-center justify-center">
         <ManagementList
           studyHours={studyHours}

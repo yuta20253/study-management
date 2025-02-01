@@ -10,6 +10,7 @@ export const useFetch = () => {
   const [messages, setMessages] = useState<MessageProps[] | undefined>(
     undefined,
   )
+  const [error, setError] = useState<string | null>(null)
   const router = useRouter()
   const { id } = router.query
   useEffect(() => {
@@ -27,7 +28,7 @@ export const useFetch = () => {
           setMessages(res.data.messages)
         })
         .catch((e: AxiosError<{ error: string }>) => {
-          console.log(e.message)
+          setError(e.response?.data.error || '予期しないエラーが発生しました')
         })
     }
   }, [id, user.isSignedIn])
@@ -37,5 +38,6 @@ export const useFetch = () => {
     room,
     messages,
     setMessages,
+    error,
   }
 }

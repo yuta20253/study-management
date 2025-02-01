@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import FacultyDetails from '../../../src/pages/current/schools/[school_id]/details/[id]'
-import { DataState } from '@/hooks/schools/Edit/DataState'
+import { DataState } from '@/hooks/schools/details/DataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 import '@testing-library/jest-dom'
 
@@ -9,7 +9,7 @@ jest.mock('@/hooks/useRequireSignIn', () => ({
   useRequireSignedIn: jest.fn(),
 }))
 
-jest.mock('@/hooks/ui/schools/Edit/DataState', () => ({
+jest.mock('@/hooks/schools/details/DataState', () => ({
   DataState: jest.fn(),
 }))
 

@@ -1,16 +1,25 @@
 import { NextPage } from 'next'
 import Link from 'next/link'
 import { ErrorToFetchData } from '@/components/ErrorToFetchData'
+import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import { SchoolDataTable } from '@/components/page/schools/SchoolId/DataTable/SchoolDataTable'
 import { DataState } from '@/hooks/schools/DataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 const ShowUniversityData: NextPage = () => {
   useRequireSignedIn()
-  const { university, school_id } = DataState()
+  const { university, school_id, error } = DataState()
 
   if (!university) return <ErrorToFetchData />
-
+  if (error) {
+    return (
+      <ErrorTemplate
+        error={error}
+        href={'/current/desired_schools/search'}
+        text={'検索方法へ'}
+      />
+    )
+  }
   const showUniversity = university['uni']['school']
   const universityLength: number = university['uni']['data'].length
 

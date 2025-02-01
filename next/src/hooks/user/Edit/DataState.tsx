@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { useFetch } from './handleUseFetch'
 
 export const DataState = () => {
-  const { user, setUser, selected, setSelected } = useFetch()
+  const { user, setUser, selected, setSelected, error } = useFetch()
   const router = useRouter()
 
   const birth = new Date(user.birthday)
@@ -19,5 +19,6 @@ export const DataState = () => {
     setSelected,
     birth,
     age,
+    error,
   }
 }

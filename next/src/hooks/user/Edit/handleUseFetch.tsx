@@ -5,6 +5,7 @@ import { useUserState } from '@/hooks/useGlobalState'
 export const useFetch = () => {
   const [user, setUser] = useUserState()
   const [selected, setSelected] = useState<string>('')
+  const [error, setError] = useState<string | null>(null)
   useEffect(() => {
     if (user.isSignedIn) {
       console.log('サインインしています')
@@ -24,6 +25,7 @@ export const useFetch = () => {
         })
         .catch((e: AxiosError<{ error: string }>) => {
           console.log(e.message)
+          setError(e.response?.data.error || '予期しないエラーが発生しました')
         })
     }
   }, [user.isSignedIn])
@@ -32,5 +34,6 @@ export const useFetch = () => {
     setUser,
     selected,
     setSelected,
+    error,
   }
 }

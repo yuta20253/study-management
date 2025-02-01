@@ -7,7 +7,7 @@ import { useUserState } from '@/hooks/useGlobalState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 // Mocking hooks and router
-jest.mock('@/hooks/ui/schools/DataState')
+jest.mock('@/hooks/schools/DataState')
 jest.mock('@/hooks/useRequireSignIn', () => ({
   useRequireSignedIn: jest.fn(),
 }))

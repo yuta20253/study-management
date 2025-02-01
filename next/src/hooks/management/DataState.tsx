@@ -10,7 +10,7 @@ export const DataState = () => {
     studyLists,
     allStudyHours,
     selectSubjectProps,
-    errorMessage,
+    error,
   } = useFetch()
   const { isOpen, onOpen, onClose } = useModal()
   const [, setDate] = useState<string>('')
@@ -87,6 +87,6 @@ export const DataState = () => {
     handleClickStudy,
     handleSelectSubjectName,
     handleSelectGraph,
-    errorMessage,
+    error,
   }
 }

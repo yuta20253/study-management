@@ -6,7 +6,7 @@ import { useFetch } from './handleUseFetch'
 export const DataState = () => {
   const router = useRouter()
 
-  const { user, users, followedIdsArr } = useFetch()
+  const { user, users, followedIdsArr, error } = useFetch()
 
   const { handleClickUnfollowUser } = useClickUnFollowUserHandlers(router)
 
@@ -18,5 +18,6 @@ export const DataState = () => {
     followedIdsArr,
     handleClickUnfollowUser,
     handleClickFollowUser,
+    error,
   }
 }

@@ -7,7 +7,7 @@ import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 jest.mock('next/router', () => ({
   useRouter: jest.fn(),
 }))
-jest.mock('@/hooks/ui/todos/Show/DataState', () => ({
+jest.mock('@/hooks/todos/Show/DataState', () => ({
   DataState: jest.fn(),
 }))
 

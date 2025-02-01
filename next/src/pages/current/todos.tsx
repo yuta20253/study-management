@@ -37,7 +37,7 @@ const Todos: NextPage = () => {
     handleChangeStatusIncomplete,
     handleChangeStatusComplete,
     handleChangeStatusOnTheWay,
-    errorMessage,
+    error,
   } = DataState()
   if (!todos || !meta) {
     return <LoadingScreen />
@@ -49,8 +49,8 @@ const Todos: NextPage = () => {
         {isOpen && <CreateNewTodoModal onClose={onClose} />}
         <div className="w-full">
           {/* エラーメッセージ表示 */}
-          {errorMessage && (
-            <div className="mb-4 bg-red-500 p-4 text-white">{errorMessage}</div>
+          {error && (
+            <div className="mb-4 bg-red-500 p-4 text-white">{error}</div>
           )}
           <div className="relative items-center justify-center">
             {todoDetail !== undefined ? (

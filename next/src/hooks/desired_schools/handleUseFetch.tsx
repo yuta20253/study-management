@@ -50,5 +50,6 @@ export const useFetch = () => {
     universities,
     setUniversities,
     error,
+    setError,
   }
 }

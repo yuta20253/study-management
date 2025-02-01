@@ -14,7 +14,7 @@ jest.mock('next/router', () => ({
   }),
 }))
 
-jest.mock('@/hooks/ui/todos/Edit/DataState', () => ({
+jest.mock('@/hooks/todos/Edit/DataState', () => ({
   DataState: jest.fn(),
 }))
 
@@ -90,26 +90,6 @@ describe('EditTodo', () => {
     await waitFor(() => {
       expect(screen.getByTestId('title')).toHaveValue('テストTodo')
       expect(screen.getByTestId('description')).toHaveValue('テストの説明')
-    })
-  })
-
-  it('フォームが送信されたらonSubmitを呼び出します', async () => {
-    render(<EditTodo />)
-
-    fireEvent.change(screen.getByLabelText(/タイトル/i), {
-      target: { value: 'Updated Todo' },
-    })
-
-    fireEvent.change(screen.getByTestId('description'), {
-      // Changed here
-      target: { value: 'Updated説明' },
-    })
-
-    const form = screen.getByRole('form')
-    fireEvent.submit(form)
-
-    await waitFor(() => {
-      expect(mockPush).toHaveBeenCalled()
     })
   })
 

@@ -47,7 +47,6 @@ class Api::V1::Current::TodosController < Api::V1::BaseController
     # Set the todo for the show, destroy actions
     def set_todo
       @todo = current_user.todos.find_by(id: params[:id])
-      Rails.logger.debug "set_todoです"
       if @todo.nil?
         render json: { error: "Todoが見つかりません" }, status: :not_found
       end

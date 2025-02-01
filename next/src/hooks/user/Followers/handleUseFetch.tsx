@@ -6,6 +6,7 @@ import { FollowerUser } from '@/types/User'
 export const useFetch = () => {
   const [user] = useUserState()
   const [users, setUsers] = useState<FollowerUser[]>([])
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     if (user.isSignedIn) {
@@ -20,9 +21,12 @@ export const useFetch = () => {
       }
       axios({ method: 'GET', url: url, headers: headers })
         .then((res: AxiosResponse) => setUsers(res.data))
-        .catch((e: AxiosError<{ error: string }>) => console.log(e.message))
+        .catch((e: AxiosError<{ error: string }>) => {
+          console.log(e.message)
+          setError(e.response?.data.error || '予期しないエラーが発生しました')
+        })
     }
   }, [user.isSignedIn])
 
-  return { users }
+  return { users, error }
 }
