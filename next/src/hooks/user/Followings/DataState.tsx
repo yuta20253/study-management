@@ -1,7 +1,7 @@
 import { useFetch } from './handleUseFetch'
 
 export const DataState = () => {
-  const { users } = useFetch()
+  const { users, error } = useFetch()
 
-  return { users }
+  return { users, error }
 }

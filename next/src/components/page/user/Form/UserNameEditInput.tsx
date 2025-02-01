@@ -23,7 +23,6 @@ export const UserNameEditInput = ({
         </p>
       </th>
       <td className="border border-slate-500">
-        {/* First Name Input */}
         <div className="flex">
           <div className="">
             <label htmlFor={registerFirstProps} className="sr-only">
@@ -40,7 +39,6 @@ export const UserNameEditInput = ({
               <p className="mt-1 text-xs text-red-500">{errorFirst.message}</p>
             )}
           </div>
-          {/* Last Name Input */}
           <div>
             <label htmlFor={registerSecondProps} className="sr-only">
               {label_second}

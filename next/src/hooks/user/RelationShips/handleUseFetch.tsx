@@ -7,6 +7,8 @@ export const useFetch = () => {
   const [user] = useUserState()
   const [users, setUsers] = useState<RelationShipUser[]>([])
   const [followedIdsArr, setFollowedIdsArr] = useState<number[]>([])
+  const [error, setError] = useState<string | null>(null)
+
   useEffect(() => {
     if (user.isSignedIn) {
       const url =
@@ -27,7 +29,10 @@ export const useFetch = () => {
 
           setFollowedIdsArr([...aaa])
         })
-        .catch((e: AxiosError<{ error: string }>) => console.log(e.message))
+        .catch((e: AxiosError<{ error: string }>) => {
+          console.log(e.message)
+          setError(e.response?.data.error || '予期しないエラーが発生しました')
+        })
     }
   }, [user.followers, user.isSignedIn])
 
@@ -35,5 +40,6 @@ export const useFetch = () => {
     user,
     users,
     followedIdsArr,
+    error,
   }
 }

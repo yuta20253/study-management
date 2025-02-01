@@ -1,7 +1,7 @@
 import { useFetch } from './handleUseFetch'
 
 export const DataState = () => {
-  const { user } = useFetch()
+  const { user, error } = useFetch()
   const birth = new Date(user.birthday)
   const today = new Date()
   const age = today.getFullYear() - birth.getFullYear()
@@ -15,5 +15,6 @@ export const DataState = () => {
     year,
     month,
     day,
+    error,
   }
 }

@@ -20,11 +20,13 @@ class Todo < ApplicationRecord
   enum :importance, { low: 0, medium: 10, high: 20 }, validate: true
   enum :study_type, { preparation: 0, lesson: 10, review: 20 }, validate: true
 
-  validates :title, presence: true
-  validates :user_id, presence: true
-  validates :subject, presence: true
-  validates :description, allow_blank: true, length: { miximum: 1, maximum: 200 }
-  validates :star_rating, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }
+  with_options presence: true do
+    validates :title
+    validates :user_id
+    validates :subject
+    validates :description, allow_blank: true, length: { miximum: 1, maximum: 200 }
+    validates :star_rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }
+  end
 
   validate :due_date_cannot_register_in_the_past
 

@@ -2,6 +2,7 @@ import { NextPage } from 'next'
 import Link from 'next/link'
 import { FormProvider } from 'react-hook-form'
 import { LoadingScreen } from '@/components/Loading'
+import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import { UserEditTitle } from '@/components/page/user/Form/UserEditTitle'
 import { UserInfoEdit } from '@/components/page/user/Form/UserInfoEdit'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
@@ -10,12 +11,23 @@ import { useHandleSubmit } from '@/hooks/user/Edit/useHandleSubmit'
 
 const EditUser: NextPage = () => {
   useRequireSignedIn()
-  const { user, setUser, router, selected, setSelected, age } = DataState()
+  const { user, setUser, router, selected, setSelected, age, error } =
+    DataState()
   const { handleSubmit, handleOnSubmit, handleOnError, methods, errors } =
     useHandleSubmit(user, setUser, router)
 
   if (!user || !age) {
     return <LoadingScreen />
+  }
+
+  if (error) {
+    return (
+      <ErrorTemplate
+        error={error}
+        href={'/current/user'}
+        text={'ユーザー情報へ'}
+      />
+    )
   }
 
   return (

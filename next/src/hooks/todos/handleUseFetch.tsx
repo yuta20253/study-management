@@ -8,7 +8,7 @@ export const useFetch = () => {
   const [user] = useUserState()
   const [todos, setTodos] = useState<TodoProps[] | undefined>([])
   const [meta, setMeta] = useState<Meta>()
-  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null)
   const router = useRouter()
   const page = 'page' in router.query ? Number(router.query.page) : 1
   useEffect(() => {
@@ -29,11 +29,7 @@ export const useFetch = () => {
         })
         .catch((e: AxiosError<{ error: string }>) => {
           console.log(e.message)
-          if (e.response?.data.error) {
-            setErrorMessage(e.response.data.error)
-          } else {
-            setErrorMessage('予期せぬエラーが発生しました')
-          }
+          setError(e.response?.data.error || '予期せぬエラーが発生しました')
         })
     }
   }, [user, setTodos, page])
@@ -43,6 +39,6 @@ export const useFetch = () => {
     setTodos,
     meta,
     setMeta,
-    errorMessage,
+    error,
   }
 }

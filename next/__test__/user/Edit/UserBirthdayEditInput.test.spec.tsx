@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import { useForm, FormProvider, FieldError } from 'react-hook-form'
+import { useForm, FormProvider } from 'react-hook-form'
 import { UserBirthdayEditInput } from '@/components/page/user/Form/UserBirthdayEditInput' // パスは適宜変更してください
 
 type TestProps = {

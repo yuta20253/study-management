@@ -7,6 +7,7 @@ import { FollowsUser } from '@/types/User'
 export const useFetch = () => {
   const [user] = useUserState()
   const [showUser, setShowUser] = useState<FollowsUser>()
+  const [error, setError] = useState<string | null>(null)
   const router = useRouter()
   const { id } = router.query
   useEffect(() => {
@@ -24,10 +25,14 @@ export const useFetch = () => {
           console.log(res.data)
           setShowUser(res.data.user)
         })
-        .catch((e: AxiosError<{ error: string }>) => console.log(e.message))
+        .catch((e: AxiosError<{ error: string }>) => {
+          console.log(e.message)
+          setError(e.response?.data.error || '予期しないエラーが発生しました')
+        })
     }
   }, [id, user.isSignedIn])
   return {
     showUser,
+    error,
   }
 }

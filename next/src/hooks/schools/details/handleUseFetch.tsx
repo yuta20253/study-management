@@ -8,6 +8,7 @@ export const useFetch = () => {
   const [user] = useUserState()
   //const [details, setDetails] = useState<University[]>([])
   const [facultyData, setFacultyData] = useState<Faculty>()
+  const [error, setError] = useState<string | null>(null)
   const router = useRouter()
   const { school_id, id } = router.query
   //console.log(school_id, id)
@@ -34,12 +35,16 @@ export const useFetch = () => {
           //setDetails(res.data)
           setFacultyData(res.data)
         })
-        .catch((e: AxiosError<{ error: string }>) => console.log(e.message))
+        .catch((e: AxiosError<{ error: string }>) => {
+          console.log(e.message)
+          setError(e.response?.data.error || '予期しないエラーが発生しました')
+        })
     }
   }, [user.isSignedIn, school_id, id])
   return {
     facultyData,
     school_id,
     id,
+    error,
   }
 }

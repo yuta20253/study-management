@@ -44,9 +44,11 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :family_name, :given_name
     validates :family_name_kana, :given_name_kana, format: { with: KATAKANA_REGEXP }
-    # deviseで「valid_email2」は使えるのか？config/initializers/devise.rbは触っていない
-    # validates :email, 'valid_email_2/email': true
+    validates :birthday
+    validates :gender
   end
+
+  validate :not_after_today_birthday
 
   # フォローをした、されたの関係
   has_many :followers, class_name: "RelationShip", foreign_key: "follower_id", dependent: :destroy, inverse_of: :follower
@@ -70,4 +72,12 @@ class User < ApplicationRecord
   def following(user)
     following_users.include?(user)
   end
+
+  private
+
+    def not_after_today_birthday
+      if birthday.present? && birthday > Time.zone.today
+        errors.add(:birthday, "は今日より後の日付にできません")
+      end
+    end
 end

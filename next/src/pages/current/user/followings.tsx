@@ -2,16 +2,27 @@ import Person from '@mui/icons-material/Person'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import { LoadingScreen } from '@/components/Loading'
+import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import LinkButton from '@/components/page/user/Button/LinkButton'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 import { DataState } from '@/hooks/user/Followings/DataState'
 
 const Followings: NextPage = () => {
   useRequireSignedIn()
-  const { users } = DataState()
+  const { users, error } = DataState()
 
   if (!users) {
     return <LoadingScreen />
+  }
+
+  if (error) {
+    return (
+      <ErrorTemplate
+        error={error}
+        href={'/current/user/relationships'}
+        text={'フォロー関係へ'}
+      />
+    )
   }
 
   return (

@@ -7,6 +7,7 @@ import { University } from '@/types/Schools/schoolId'
 export const useFetch = () => {
   const [user] = useUserState()
   const [university, setUniversity] = useState<University>()
+  const [error, setError] = useState<string | null>(null)
   const router = useRouter()
   const { school_id } = router.query
   useEffect(() => {
@@ -25,12 +26,16 @@ export const useFetch = () => {
           console.log(res.data)
           setUniversity(res.data)
         })
-        .catch((e: AxiosError<{ error: string }>) => console.log(e.message))
+        .catch((e: AxiosError<{ error: string }>) => {
+          console.log(e.message)
+          setError(e.response?.data.error || '予期しないエラーが発生しました')
+        })
     }
   }, [school_id, user.isSignedIn])
 
   return {
     university,
     school_id,
+    error,
   }
 }

@@ -28,6 +28,31 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of :given_name }
     it { is_expected.to validate_presence_of :family_name_kana }
     it { is_expected.to validate_presence_of :given_name_kana }
+    it { is_expected.to validate_presence_of :birthday }
+    it { is_expected.to validate_presence_of :gender }
+
+    context "誕生日が未来の日付の場合" do
+      it "エラーが出る" do
+        user.birthday = Date.tomorrow
+        expect(user).to be_invalid
+        expect(user.errors[:birthday]).to include("は今日より後の日付にできません")
+      end
+    end
+
+    context "誕生日が今日の日付の場合" do
+      it "エラーが出ない" do
+        user.birthday = Time.zone.today
+
+        expect(user).to be_valid
+      end
+    end
+
+    context "誕生日が過去の日付の場合" do
+      it "エラーが出ない" do
+        user.birthday = Date.yesterday
+        expect(user).to be_valid
+      end
+    end
   end
 
   describe "follow/unfollow" do

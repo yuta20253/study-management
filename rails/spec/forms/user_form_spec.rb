@@ -148,7 +148,7 @@ RSpec.describe UserForm, type: :model do
         # Trigger validation
         user_form.user.address.valid?
         # 住所の郵便番号が不正な場合はエラーが出るはず
-        expect(user_form.user.address.errors[:postal_code]).to include("is invalid")
+        expect(user_form.user.address.errors[:postal_code]).to include("郵便番号が無効です")
       end
     end
 

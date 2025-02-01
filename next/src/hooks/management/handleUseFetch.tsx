@@ -13,7 +13,7 @@ export const useFetch = () => {
   const [selectSubjectProps, setSelectSubjectProps] = useState<
     StudyHoursProps[]
   >([])
-  const [errorMessage, setErrorMessage] = useState<string>('')
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     if (user.isSignedIn) {
@@ -35,15 +35,13 @@ export const useFetch = () => {
         })
         .catch((e: AxiosError<{ error: string }>) => {
           if (e.response) {
-            setErrorMessage(
-              e.response.data.error || '予期しないエラーが発生しました',
-            )
+            setError(e.response.data.error || '予期しないエラーが発生しました')
           } else if (e.request) {
-            setErrorMessage(
+            setError(
               'サーバーからの応答がありません。ネットワーク接続を確認してください。',
             )
           } else {
-            setErrorMessage('エラーが発生しました: ' + e.message)
+            setError('エラーが発生しました: ' + e.message)
           }
         })
     }
@@ -59,6 +57,6 @@ export const useFetch = () => {
     studyType,
     setStudyType,
     selectSubjectProps,
-    errorMessage,
+    error,
   }
 }

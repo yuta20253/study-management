@@ -1,6 +1,7 @@
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import { ChatFooter } from '@/components/page/rooms/Show/ChatFooter'
 import { ChatHeader } from '@/components/page/rooms/Show/ChatHeader'
 import { MessageInputForm } from '@/components/page/rooms/Show/Form/MessageInputForm'
@@ -11,10 +12,9 @@ import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 const RoomDetail: NextPage = () => {
   useRequireSignedIn()
-  const { user, room, messages, setMessages } = DataState()
+  const { user, room, messages, setMessages, error } = DataState()
   const [messageContent, setMessageContent] = useState<string>('')
 
-  // messages が undefined の場合は空の配列に初期化
   const safeMessages = messages || []
 
   const router = useRouter()
@@ -26,6 +26,16 @@ const RoomDetail: NextPage = () => {
     safeMessages,
     id,
   )
+
+  if (error) {
+    return (
+      <ErrorTemplate
+        error={error}
+        href={'/current/rooms'}
+        text={'ルーム一覧へ'}
+      />
+    )
+  }
 
   return (
     <div className="flex h-screen flex-col bg-gray-100">

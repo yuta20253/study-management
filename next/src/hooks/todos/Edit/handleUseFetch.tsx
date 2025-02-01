@@ -20,6 +20,7 @@ export const useFetch = () => {
   const [selectedStars, setSelectedStars] = useState<number>(0)
   const [dueDate, setDueDate] = useState<string>('')
   const [description, setDescription] = useState<string>('')
+  const [error, setError] = useState<string | null>(null)
   const url = process.env.NEXT_PUBLIC_API_BASE_URL + `/current/todos/${id}/edit`
   useEffect(() => {
     if (user.isSignedIn) {
@@ -46,7 +47,10 @@ export const useFetch = () => {
           setSelectedStars(res.data.star_rating)
           setDescription(res.data.description)
         })
-        .catch((e: AxiosError<{ error: string }>) => console.log(e.message))
+        .catch((e: AxiosError<{ error: string }>) => {
+          console.log(e.message)
+          setError(e.response?.data.error || '予期しないエラーが発生しました')
+        })
     }
   }, [id, user.isSignedIn, url])
 
@@ -79,5 +83,6 @@ export const useFetch = () => {
     description,
     setDescription,
     url,
+    error,
   }
 }

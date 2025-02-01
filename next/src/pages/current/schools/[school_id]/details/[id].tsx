@@ -1,15 +1,24 @@
 import { NextPage } from 'next'
 import { ErrorToFetchData } from '@/components/ErrorToFetchData'
+import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import LinkButton from '@/components/page/Common/LinkButton'
 import { ScoreOfExam } from '@/components/page/schools/faculty/score_of_exam'
-import { DataState } from '@/hooks/schools/Edit/DataState'
+import { DataState } from '@/hooks/schools/details/DataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 const FacultyDetails: NextPage = () => {
   useRequireSignedIn()
-  const { facultyData, school_id } = DataState()
+  const { facultyData, school_id, error } = DataState()
   if (!facultyData) return <ErrorToFetchData />
-
+  if (error) {
+    return (
+      <ErrorTemplate
+        error={error}
+        href={`/current/schools/${school_id}`}
+        text={'学部一覧へ'}
+      />
+    )
+  }
   return (
     <div className="w-full">
       <div className="mt-5 flex items-center justify-center">

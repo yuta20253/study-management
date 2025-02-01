@@ -2,6 +2,7 @@ import Person from '@mui/icons-material/Person'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import { LoadingScreen } from '@/components/Loading'
+import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import LinkButton from '@/components/page/Common/LinkButton'
 //import OnClickFollowOrUnFollowButton from '@/components/page/user/Button/handleOnClickFollowOrUnFollowButton'
 import RelationStatusLink from '@/components/page/user/Link/RelationStatusLink'
@@ -16,11 +17,17 @@ const Relationships: NextPage = () => {
     followedIdsArr,
     handleClickUnfollowUser,
     handleClickFollowUser,
+    error,
   } = DataState()
 
-  console.log(followedIdsArr)
   if (!users) {
     return <LoadingScreen />
+  }
+
+  if (error) {
+    return (
+      <ErrorTemplate error={error} href={'/current/home'} text={'ホームへ'} />
+    )
   }
 
   return (

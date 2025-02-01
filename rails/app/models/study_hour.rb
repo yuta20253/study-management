@@ -4,10 +4,13 @@ class StudyHour < ApplicationRecord
 
   enum :study_type, { preparation: 0, lesson: 10, review: 20 }
 
-  validates :title, presence: true
-  validates :todo_id, presence: true
-  validates :subject, presence: true
-  validates :study_type, presence: true
+  with_options presence: true do
+    validates :title
+    validates :todo_id
+    validates :subject
+    validates :study_type
+  end
+
   validates :actual_learning_time, length: { miximum: 0, maximum: 24 }
 
   scope :except_first_study_hours, -> { where("actual_learning_time > ?", 0).includes([:todo]) }

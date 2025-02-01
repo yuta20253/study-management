@@ -1,7 +1,7 @@
 import { useFetch } from './handleUseFetch'
 
 export const DataState = () => {
-  const { user, room, messages, setMessages } = useFetch()
+  const { user, room, messages, setMessages, error } = useFetch()
   console.log('messages', messages)
 
   return {
@@ -9,5 +9,6 @@ export const DataState = () => {
     room,
     messages,
     setMessages,
+    error,
   }
 }

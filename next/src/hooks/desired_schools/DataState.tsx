@@ -5,7 +5,8 @@ import { useInputDesiredSchoolName } from './handleChangeInputValue'
 import { useFetch } from './handleUseFetch'
 
 export const DataState = () => {
-  const { jsonUniversity, universities, setUniversities, error } = useFetch()
+  const { jsonUniversity, universities, setUniversities, error, setError } =
+    useFetch()
   const [deleteId, setDeleteId] = useState<number | undefined>(undefined)
   const [isDelete, setIsDelete] = useState<boolean>(false)
   const router = useRouter()
@@ -30,5 +31,6 @@ export const DataState = () => {
     isValidJapanese,
     handleChangeInputValue,
     error,
+    setError,
   }
 }

@@ -32,6 +32,7 @@ export const DataState = () => {
     description,
     setDescription,
     url,
+    error,
   } = useFetch()
 
   const { handleChangeHours } = useChangeHoursHandlers(
@@ -75,5 +76,6 @@ export const DataState = () => {
     setDescription,
     url,
     handleChangeHours,
+    error,
   }
 }
