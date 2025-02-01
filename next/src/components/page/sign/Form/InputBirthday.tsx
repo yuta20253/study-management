@@ -1,6 +1,11 @@
 import { birthdayProps } from '@/types/SignUp/form'
 
-export const BirthdayInput = ({ theme, register, error, setDate }: birthdayProps) => {
+export const BirthdayInput = ({
+  theme,
+  register,
+  error,
+  setDate,
+}: birthdayProps) => {
   return (
     <>
       <tr>

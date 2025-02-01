@@ -7,7 +7,7 @@ export const NameInput = ({
   registerFirst,
   registerSecond,
   errorFirst,
-  errorSecond
+  errorSecond,
 }: NameProps) => {
   return (
     <>
@@ -22,9 +22,9 @@ export const NameInput = ({
             className="w-full rounded border border-slate-300 p-2"
             {...registerFirst}
           />
-            {errorFirst && (
-              <p className="mt-1 text-xs text-red-500">{errorFirst.message}</p>
-            )}          
+          {errorFirst && (
+            <p className="mt-1 text-xs text-red-500">{errorFirst.message}</p>
+          )}
           <input
             type="text"
             placeholder={placeholderSecond}
