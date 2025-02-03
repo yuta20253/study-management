@@ -14,7 +14,7 @@ RSpec.describe "Api::V1::Current::Users", type: :request do
         subject
         res = JSON.parse(response.body)
         expect(res.keys).to eq ["id", "family_name", "family_name_kana", "given_name", "given_name_kana", "age", "gender", "birthday", "email", "password",
-                                "address", "telephone", "followers", "followeds"]
+                                "address", "telephone"]
         expect(response).to have_http_status(:ok)
         expect(res["family_name"]).to eq current_user.family_name
         expect(todos.size).to eq 100

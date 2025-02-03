@@ -45,10 +45,9 @@ const Todos: NextPage = () => {
 
   return (
     <div className="w-full">
-      <div className="relative flex w-full items-center justify-center">
+      <div className="relative mt-14 flex w-full items-center justify-center">
         {isOpen && <CreateNewTodoModal onClose={onClose} />}
         <div className="w-full">
-          {/* エラーメッセージ表示 */}
           {error && (
             <div className="mb-4 bg-red-500 p-4 text-white">{error}</div>
           )}
