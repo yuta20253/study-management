@@ -1,5 +1,5 @@
 export const Subjects: string[] = [
-  '選択してください',
+  '未選択',
   '英語',
   '現代文',
   '古文',

@@ -27,13 +27,11 @@ const Followings: NextPage = () => {
 
   return (
     <div className="w-full px-4">
-      {/* フォローしていない場合のメッセージ */}
       {users.length == 0 ? (
         <div className="mx-auto flex max-w-4xl flex-col items-center justify-center py-10">
           <div className="items-center border p-4 text-center">
             誰もフォローしていません
           </div>
-          {/* フォロー関係へボタン */}
           <div className="mt-6 flex w-full justify-end sm:w-auto">
             <LinkButton
               href={'/current/user/relationships'}
@@ -43,7 +41,6 @@ const Followings: NextPage = () => {
         </div>
       ) : (
         <div className="mt-10">
-          {/* ユーザーリスト */}
           <div className="mx-auto flex max-w-4xl flex-col space-y-4">
             {users.map((user, i: number) => (
               <div
@@ -61,7 +58,6 @@ const Followings: NextPage = () => {
                 </Link>
               </div>
             ))}
-            {/* フォロー関係へボタン (PC版では右端に表示) */}
             <div className="mt-6 flex justify-end">
               <LinkButton
                 href={'/current/user/relationships'}

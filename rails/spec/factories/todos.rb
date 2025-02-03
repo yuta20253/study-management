@@ -10,6 +10,7 @@ FactoryBot.define do
     star_rating { 1 }
     total_hour { 0 }
     study_type { :preparation }
+    created_at { Time.zone.now.beginning_of_day }
     association :user
 
     factory :todo_with_study_hours do

@@ -6,7 +6,7 @@ const Header = () => {
   const fullName = user.family_name + user.given_name
 
   return (
-    <header className="sticky top-0 h-14 w-full bg-sky-600">
+    <header className="sticky top-0 z-10 h-14 w-full bg-sky-600">
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
         <div className="rounded bg-sky-700 px-2 py-1">
           <h1>

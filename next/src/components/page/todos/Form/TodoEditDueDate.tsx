@@ -16,7 +16,6 @@ export const TodoEditDueDate = ({
     <tr className="w-full">
       <th className="mt-2 h-12 w-1/2">{theme}</th>
       <td className="h-8 w-1/2">
-        {/* Label added here */}
         <label htmlFor={registerDueDate} className="sr-only">
           締切
         </label>

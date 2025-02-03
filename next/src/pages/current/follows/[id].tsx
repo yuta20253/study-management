@@ -3,12 +3,24 @@ import { LoadingScreen } from '@/components/Loading'
 import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import LinkButton from '@/components/page/Common/LinkButton'
 import { FollowsUserInfo } from '@/components/page/follows/TableRow/FollowsInfoTr'
+import { StudyHoursHistoryInfo } from '@/components/page/follows/TableRow/StudyHoursHistoryInfoTr'
+import { TotalHoursInfoTr } from '@/components/page/follows/TableRow/TotalHoursInfoTr'
 import { DataState } from '@/hooks/follows/Show/DataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 const FollowsUserDetail: NextPage = () => {
   useRequireSignedIn()
-  const { showUser, error } = DataState()
+  const {
+    showUser,
+    allStudyHours,
+    oneDayStudyHours,
+    oneWeekStudyHours,
+    oneMonthStudyHours,
+    totalHoursWithinOneDay,
+    totalHoursWithinOneWeek,
+    totalHoursWithinOneMonth,
+    error,
+  } = DataState()
   if (!showUser) {
     return <LoadingScreen />
   }
@@ -57,6 +69,22 @@ const FollowsUserDetail: NextPage = () => {
                   four="月"
                   five={day}
                   six="日"
+                />
+                <StudyHoursHistoryInfo studyHours={allStudyHours} />
+                <TotalHoursInfoTr
+                  theme="日別学習時間"
+                  totalHours={totalHoursWithinOneDay}
+                  studyHours={oneDayStudyHours}
+                />
+                <TotalHoursInfoTr
+                  theme="週別学習時間"
+                  totalHours={totalHoursWithinOneWeek}
+                  studyHours={oneWeekStudyHours}
+                />
+                <TotalHoursInfoTr
+                  theme="月別学習時間"
+                  totalHours={totalHoursWithinOneMonth}
+                  studyHours={oneMonthStudyHours}
                 />
               </tbody>
             </table>

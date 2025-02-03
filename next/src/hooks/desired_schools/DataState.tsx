@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { universityLength } from '../todos/universityLength'
 import { useInputDesiredSchoolName } from './handleChangeInputValue'
 import { useFetch } from './handleUseFetch'
+import { universityLength } from './universityLength'
 
 export const DataState = () => {
   const { jsonUniversity, universities, setUniversities, error, setError } =

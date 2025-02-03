@@ -34,7 +34,6 @@ const Relationships: NextPage = () => {
     <div className="mt-10 flex items-center justify-center">
       <div className="w-full items-center justify-center px-4 sm:w-1/3">
         <div>
-          {/* モバイルでも横並びになるように修正 */}
           <div className="mb-5 flex flex-row space-x-4">
             <RelationStatusLink
               href={'/current/user/followings'}

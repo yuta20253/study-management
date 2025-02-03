@@ -15,6 +15,7 @@ class User < ApplicationRecord
 
   has_many :todos, dependent: :destroy
   has_many :study_hours, through: :todos
+
   has_many :aspirations, dependent: :destroy
   has_many :desired_schools, through: :aspirations
 

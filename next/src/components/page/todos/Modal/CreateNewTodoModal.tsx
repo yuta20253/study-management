@@ -1,85 +1,20 @@
-import axios, { AxiosError } from 'axios'
 import { useEffect, useState } from 'react'
-import { useForm, SubmitHandler } from 'react-hook-form'
+import { SelectSubject } from './Option/selectSubject'
 import { StarRating } from '@/components/page/todos/Rating/StarRating'
-import { Subjects } from '@/const/subject'
-import { TodoProps, ClickProps } from '@/types/Todo/createNewTodo/newTodo'
+import { useHandleSubmit } from '@/hooks/todos/Modal/useHandleSubmit'
+import { ClickProps } from '@/types/Todo/createNewTodo/newTodo'
 
 export const CreateNewTodoModal = ({ onClose }: ClickProps) => {
   const [selectedStars, setSelectedStars] = useState<number>(0)
+  const [dueDate, setDueDate] = useState<string>()
 
-  const { handleSubmit, register } = useForm<TodoProps>({
-    defaultValues: {
-      subject: '',
-      title: '',
-      description: '',
-      progress: 'incomplete',
-      study_type: 'preparation',
-      scheduled_study_time: 0,
-      actual_learning_time: 0,
-      due_date: new Date(),
-      importance: 0,
-      star_rating: 1,
-    },
-  })
-
+  const { handleSubmit, register, onSubmit } = useHandleSubmit(String(dueDate))
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     return () => {
       document.body.style.overflow = ''
     }
   }, [])
-
-  const onSubmit: SubmitHandler<TodoProps> = async (data) => {
-    console.log(data)
-    const url = process.env.NEXT_PUBLIC_API_BASE_URL + '/current/todos'
-    const header = {
-      'Content-Type': 'application/json',
-      'access-token': localStorage.getItem('access-token'),
-      client: localStorage.getItem('client'),
-      uid: localStorage.getItem('uid'),
-    }
-
-    const postStudyType =
-      data.study_type === '予習'
-        ? 'preparation'
-        : data.study_type === '授業'
-          ? 'lesson'
-          : 'review'
-
-    const postData = {
-      ...data,
-      study_type: postStudyType,
-    }
-
-    try {
-      const response = await axios({
-        method: 'POST',
-        url: url,
-        headers: header,
-        data: postData,
-      })
-      console.log('Todoを追加しました', response.data)
-      window.location.reload()
-    } catch (error) {
-      const axiosError = error as AxiosError
-      if (axiosError.response) {
-        alert('エラーが発生しました。もう一度お試しください。')
-      } else if (axiosError.request) {
-        alert('ネットワークエラーです。確認してください。')
-      } else {
-        alert('予期しないエラーが発生しました。')
-      }
-    }
-  }
-
-  const SelectSubject = Subjects.map((subject: string, i: number) => {
-    return (
-      <option value={subject} key={i}>
-        {subject}
-      </option>
-    )
-  })
 
   return (
     <div className="fixed inset-0 z-10 flex items-center justify-center bg-black">
@@ -153,6 +88,7 @@ export const CreateNewTodoModal = ({ onClose }: ClickProps) => {
                     className="h-8 w-full sm:w-full md:w-3/4"
                     type="date"
                     defaultValue={String(new Date())}
+                    onChange={(e) => setDueDate(e.target.value)}
                   />
                 </td>
               </tr>

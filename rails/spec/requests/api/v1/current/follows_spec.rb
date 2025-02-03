@@ -10,10 +10,10 @@ RSpec.describe "Api::V1::Current::Follows", type: :request do
     context "ユーザーが正常に存在する場合" do
       it "another_userのデータが返される" do
         subject
-        res = JSON.parse(response.body)["user"]
+        res = JSON.parse(response.body)
         puts res
-        expect(res["id"]).to eq(another_user.id)
-        expect(res["family_name"]).to eq(another_user.family_name)
+        expect(res["another_user"]["id"]).to eq(another_user.id)
+        expect(res["another_user"]["family_name"]).to eq(another_user.family_name)
       end
     end
 
