@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 import EditTodo from '../../../src/pages/current/todos/[id]/edit'
 
-import { DataState } from '@/hooks/todos/Edit/useDataState'
+import { useDataState } from '@/hooks/todos/Edit/useDataState'
 
 // Mocking necessary modules
 jest.mock('next/router', () => ({
@@ -14,8 +14,8 @@ jest.mock('next/router', () => ({
   }),
 }))
 
-jest.mock('@/hooks/todos/Edit/DataState', () => ({
-  DataState: jest.fn(),
+jest.mock('@/hooks/todos/Edit/useDataState', () => ({
+  useDataState: jest.fn(),
 }))
 
 describe('EditTodo', () => {
@@ -27,7 +27,7 @@ describe('EditTodo', () => {
       query: { id: '1' }, 
     }))
 
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       todo: { title: 'テストTodo', description: 'テストの説明' },
       router: { push: mockPush },
       id: '1',
@@ -58,7 +58,7 @@ describe('EditTodo', () => {
   })
 
   it('todoが読み込まれていない場合は「読み込み中...」と表示する必要があります', () => {
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       todo: null,
       router: { push: mockPush },
       id: '1',
@@ -73,7 +73,7 @@ describe('EditTodo', () => {
   })
 
   it('todoが読み込まれたらフォームフィールドをレンダリングする必要があります', async () => {
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       todo: { title: 'テストTodo', description: 'テストの説明' },
       router: { push: mockPush },
       id: '1',

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import FacultyDetails from '../../../src/pages/current/schools/[school_id]/details/[id]'
-import { DataState } from '@/hooks/schools/details/useDataState'
+import { useDataState } from '@/hooks/schools/details/useDataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 import '@testing-library/jest-dom'
 
@@ -9,8 +9,8 @@ jest.mock('@/hooks/useRequireSignIn', () => ({
   useRequireSignedIn: jest.fn(),
 }))
 
-jest.mock('@/hooks/schools/details/DataState', () => ({
-  DataState: jest.fn(),
+jest.mock('@/hooks/schools/details/useDataState', () => ({
+  useDataState: jest.fn(),
 }))
 
 describe('FacultyDetails', () => {
@@ -24,7 +24,7 @@ describe('FacultyDetails', () => {
       },
     }
     ;(useRequireSignedIn as jest.Mock).mockReturnValue(true)
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       facultyData: mockFacultyData,
       school_id: 1,
       id: 2,
@@ -42,7 +42,7 @@ describe('FacultyDetails', () => {
 
   it('学部データがない場合、詳細が表示されないこと', () => {
     ;(useRequireSignedIn as jest.Mock).mockReturnValue(true)
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       facultyData: null,
       school_id: 1,
       id: 2,

@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
-import { DataState } from '@/hooks/desired_schools/useDataState'
+import { useDataState } from '@/hooks/desired_schools/useDataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 import DesiredSchools from '@/pages/current/desired_schools'
 
@@ -11,8 +11,8 @@ jest.mock('next/router', () => require('next-router-mock'))
 
 jest.mock('axios')
 
-jest.mock('@/hooks/desired_schools/DataState', () => ({
-  DataState: jest.fn(),
+jest.mock('@/hooks/desired_schools/useDataState', () => ({
+  useDataState: jest.fn(),
 }))
 
 describe('DesiredSchools Component', () => {
@@ -25,7 +25,7 @@ describe('DesiredSchools Component', () => {
 
     mockRouter.push = jest.fn()
 
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       universities: undefined,
       jsonUniversity: [
         {
@@ -48,7 +48,7 @@ describe('DesiredSchools Component', () => {
   })
 
   it('searchformとbuttonが表示される', async () => {
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       universities: mockUniversities,
       jsonUniversity: [
         {
@@ -82,7 +82,7 @@ describe('DesiredSchools Component', () => {
   })
 
   it('universityが見つからなかったらError', async () => {
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       universities: mockUniversities,
       jsonUniversity: [
         {
@@ -120,7 +120,7 @@ describe('DesiredSchools Component', () => {
   })
 
   it('universitiesがundefinedの時、Loading...が表示される', async () => {
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       universities: undefined,
       jsonUniversity: [],
       setUniversities: jest.fn(),

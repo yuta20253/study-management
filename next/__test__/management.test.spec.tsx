@@ -1,12 +1,12 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { useRouter } from 'next/router'
 import Management from '../src/pages/current/management'
-import { DataState } from '@/hooks/management/useDataState'
+import { useDataState } from '@/hooks/management/useDataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 jest.mock('@/hooks/useRequireSignIn')
-jest.mock('@/hooks/management/DataState', () => ({
-  DataState: jest.fn(),
+jest.mock('@/hooks/management/useDataState', () => ({
+  useDataState: jest.fn(),
 }))
 
 jest.mock('next/router', () => ({
@@ -47,7 +47,7 @@ describe('Management Component', () => {
   beforeEach(() => {
     ;(useRequireSignedIn as jest.Mock).mockReturnValue(true)
 
-    ;(DataState as jest.Mock).mockReturnValue(defaultDataState)
+    ;(useDataState as jest.Mock).mockReturnValue(defaultDataState)
 
     ;(useRouter as jest.Mock).mockReturnValue({
       push: jest.fn(),
@@ -63,7 +63,7 @@ describe('Management Component', () => {
 
   it('graphが選ばれた時、handleSelectGraphが呼ばれる', async () => {
     const handleSelectGraphMock = jest.fn()
-    ;(DataState as jest.Mock).mockReturnValueOnce({
+    ;(useDataState as jest.Mock).mockReturnValueOnce({
       ...defaultDataState,
       handleSelectGraph: handleSelectGraphMock,
     })
@@ -83,7 +83,7 @@ describe('Management Component', () => {
   it('科目が選ばれた時、handleSelectSubjectが呼ばれる', async () => {
     const handleSelectSubjectMock = jest.fn()
 
-    ;(DataState as jest.Mock).mockReturnValueOnce({
+    ;(useDataState as jest.Mock).mockReturnValueOnce({
       ...defaultDataState,
       handleSelectSubject: handleSelectSubjectMock,
     })
