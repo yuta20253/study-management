@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { useRouter } from 'next/router'
-import { DataState } from '../src/hooks/todos/useDataState'
+import { useDataState } from '../src/hooks/todos/useDataState'
 import { useUserState } from '../src/hooks/useGlobalState' 
 import Todos from '../src/pages/current/todos' 
 
@@ -12,7 +12,7 @@ jest.mock('../src/hooks/useGlobalState', () => ({
   useUserState: jest.fn(),
 }))
 
-jest.mock('../src/hooks/todos/DataState', () => ({
+jest.mock('../src/hooks/todos/useDataState', () => ({
   DataState: jest.fn().mockReturnValue({
     todos: [
       { id: 1, title: 'Todo 1', status: 'incomplete' },
@@ -75,7 +75,7 @@ describe('Create New Todo Modal', () => {
       { isFetched: true, isSignedIn: true },
     ])
 
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       todos: [
         { id: 1, title: 'Todo 1', status: 'incomplete' },
         { id: 2, title: 'Todo 2', status: 'complete' },
@@ -113,7 +113,7 @@ describe('Pagination', () => {
   it('paginationがクリックされたら、ページが変わる', () => {
     const mockHandleChangePage = jest.fn()
 
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       todos: [
         { id: 1, title: 'Todo 1', status: 'incomplete' },
         { id: 2, title: 'Todo 2', status: 'complete' },
@@ -151,7 +151,7 @@ describe('Todo Status Change', () => {
   it('Allが選ばれた時、handleChangeStatusAllが呼ばれる', () => {
     const mockHandleChangeStatusAll = jest.fn()
 
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       todos: [
         { id: 1, title: 'Todo 1', status: 'incomplete' },
         { id: 2, title: 'Todo 2', status: 'complete' },
@@ -187,7 +187,7 @@ describe('Todo Status Change', () => {
   it('Incompliteが選ばれた時、handleChangeStatusIncompleteが呼ばれる', () => {
     const mockHandleChangeStatusIncomplete = jest.fn()
 
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       todos: [
         { id: 1, title: 'Todo 1', status: 'incomplete' },
         { id: 2, title: 'Todo 2', status: 'complete' },
@@ -223,7 +223,7 @@ describe('Todo Status Change', () => {
   it('フィルターボタンがクリックされたときに、ステータスでTodoをフィルタリングされる', () => {
     const mockHandleChangeStatusIncomplete = jest.fn()
 
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       todos: [
         { id: 1, title: 'Todo 1', status: 'incomplete' },
         { id: 2, title: 'Todo 2', status: 'complete' },

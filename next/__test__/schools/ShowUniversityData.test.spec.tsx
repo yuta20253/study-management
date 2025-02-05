@@ -2,11 +2,11 @@ import { render, screen, waitFor } from '@testing-library/react'
 import axios from 'axios'
 import { useRouter } from 'next/router' 
 import ShowUniversityData from '../../src/pages/current/schools/[school_id]'
-import { DataState } from '@/hooks/schools/useDataState'
+import { useDataState } from '@/hooks/schools/useDataState'
 import { useUserState } from '@/hooks/useGlobalState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
-jest.mock('@/hooks/schools/DataState')
+jest.mock('@/hooks/schools/useDataState')
 jest.mock('@/hooks/useRequireSignIn', () => ({
   useRequireSignedIn: jest.fn(),
 }))
@@ -28,7 +28,7 @@ describe('ShowUniversityData', () => {
     ;(useUserState as jest.Mock).mockReturnValue([mockUser])
 
     // DataStateフックのモック
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       university: {
         uni: {
           school: 'モック大学',
@@ -60,7 +60,7 @@ describe('ShowUniversityData', () => {
     const mockUser = { isSignedIn: true }
     ;(useRequireSignedIn as jest.Mock).mockReturnValue([mockUser])
 
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       university: null,
       school_id: '123',
     })
@@ -90,7 +90,7 @@ describe('ShowUniversityData', () => {
     const mockUser = { isSignedIn: true }
     ;(useUserState as jest.Mock).mockReturnValue([mockUser])
 
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       university: null, 
       school_id: '123',
     })
@@ -102,7 +102,7 @@ describe('ShowUniversityData', () => {
   it('SchoolDataTableに正しいリンクが表示されること', async () => {
     const mockUser = { isSignedIn: true }
     ;(useUserState as jest.Mock).mockReturnValue([mockUser])
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       university: {
         uni: {
           school: 'モック大学',
@@ -143,7 +143,7 @@ describe('ShowUniversityData', () => {
     const mockError = new Error('API Error')
     ;(axios.get as jest.Mock).mockRejectedValueOnce(mockError) 
 
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       university: null, 
       school_id: '123',
     })

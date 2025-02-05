@@ -4,7 +4,7 @@ import { useStatusHandlers } from './handleChangeStatus'
 import { useFetch } from './handleUseFetch'
 import { useModal } from '@/hooks/todos/Modal/useModal'
 import { TodoProps } from '@/types/Todo'
-export const DataState = () => {
+export const useDataState = () => {
   const [todoDetail, setTodoDetail] = useState<TodoProps | undefined>(undefined)
   const [deleteId, setDeleteId] = useState<number | undefined>(undefined)
   const { isOpen, onOpen, onClose } = useModal()

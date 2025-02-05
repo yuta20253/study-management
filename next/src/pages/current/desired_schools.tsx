@@ -4,7 +4,7 @@ import { LoadingScreen } from '@/components/Loading'
 import LinkButton from '@/components/page/Common/LinkButton'
 import { UserDesiredSchoolTable } from '@/components/page/desired_schools/Table/UserDesiredSchoolTable'
 import { onSubmitHandler } from '@/hooks/desired_schools/handleOnSubmit'
-import { DataState } from '@/hooks/desired_schools/useDataState'
+import { useDataState } from '@/hooks/desired_schools/useDataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 import { DesiredSchoolProps } from '@/types/DesiredSchool'
 import { DesiredSchoolDeleteContext } from '@/types/DesiredSchool/Context/desired_school_context'
@@ -24,7 +24,7 @@ const DesiredSchools: NextPage = () => {
     handleChangeInputValue,
     error,
     setError,
-  } = DataState()
+  } = useDataState()
   //const [error, setError] = useState<string | undefined>(undefined)
   const { register, handleSubmit } = useForm<DesiredSchoolProps>()
 

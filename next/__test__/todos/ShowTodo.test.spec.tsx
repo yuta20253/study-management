@@ -1,14 +1,14 @@
 import { screen, render } from '@testing-library/react'
 import { useRouter } from 'next/router'
 import TodoDetail from '../../src/pages/current/todos/[id]' // Adjust path based on your file structure
-import { DataState } from '@/hooks/todos/Show/useDataState'
+import { useDataState } from '@/hooks/todos/Show/useDataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 jest.mock('next/router', () => ({
   useRouter: jest.fn(),
 }))
-jest.mock('@/hooks/todos/Show/DataState', () => ({
-  DataState: jest.fn(),
+jest.mock('@/hooks/todos/Show/useDataState', () => ({
+  useDataState: jest.fn(),
 }))
 
 jest.mock('@/hooks/useRequireSignIn', () => ({
@@ -27,7 +27,7 @@ describe('TodoDetail', () => {
   })
 
   it('Todoやidが利用できない時、Loading...が表示', () => {
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       todo: null,
       id: null,
     })
@@ -40,7 +40,7 @@ describe('TodoDetail', () => {
   it('Todoやidが利用できる時、TodoDetailTableが表示される', async () => {
     const mockTodo = { title: 'Test Todo', description: 'テストです' }
     const mockId = 1
-    ;(DataState as jest.Mock).mockReturnValue({
+    ;(useDataState as jest.Mock).mockReturnValue({
       todo: mockTodo,
       id: mockId,
     })
