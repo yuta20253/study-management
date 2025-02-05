@@ -9,7 +9,6 @@ export const DeviationValueAccordion = ({
   const [isActive, setIsActive] = useState<boolean>(false)
   return (
     <div className="w-full">
-      {/* Accordion Header */}
       <div
         onClick={() => setIsActive(!isActive)}
         className="flex cursor-pointer items-center justify-between border bg-slate-100 px-4 py-3 text-xl sm:px-6 sm:py-4"
@@ -53,12 +52,9 @@ export const DeviationValueAccordion = ({
           )}
         </span>
       </div>
-
-      {/* Accordion Body */}
       {isActive && (
         <div className="mx-auto my-5 w-full sm:w-5/6">
           <div className="w-full">
-            {/* Clear button */}
             <button
               className="mb-4 rounded bg-red-500 px-4 py-2 text-sm text-white sm:text-base"
               type="button"
@@ -66,8 +62,6 @@ export const DeviationValueAccordion = ({
             >
               <b>条件をクリア</b>
             </button>
-
-            {/* Table */}
             <div className="overflow-x-auto">
               <table className="w-full table-auto border-collapse">
                 <colgroup>
@@ -75,7 +69,6 @@ export const DeviationValueAccordion = ({
                   <col className="w-2/3" />
                 </colgroup>
                 <tbody className="border border-gray-500">
-                  {/* 2nd Exam Row */}
                   <tr>
                     <th className="bg-sky-500 p-4 text-sm text-white sm:text-base">
                       <span>2次試験・個別学力検査</span>

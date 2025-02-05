@@ -3,12 +3,12 @@ import { ErrorToFetchData } from '@/components/ErrorToFetchData'
 import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import LinkButton from '@/components/page/Common/LinkButton'
 import { ScoreOfExam } from '@/components/page/schools/faculty/score_of_exam'
-import { DataState } from '@/hooks/schools/details/DataState'
+import { useDataState } from '@/hooks/schools/details/useDataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 const FacultyDetails: NextPage = () => {
   useRequireSignedIn()
-  const { facultyData, school_id, error } = DataState()
+  const { facultyData, school_id, error } = useDataState()
   if (!facultyData) return <ErrorToFetchData />
   if (error) {
     return (

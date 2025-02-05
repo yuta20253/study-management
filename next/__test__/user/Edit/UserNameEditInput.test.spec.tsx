@@ -57,7 +57,6 @@ describe('UserNameEditInput', () => {
     const input1 = screen.getByLabelText('氏名カナ（姓)') as HTMLInputElement
     const input2 = screen.getByLabelText('氏名カナ（名)') as HTMLInputElement
 
-    // 初期値がレンダリングされているか確認
     expect(input1).toHaveValue('タナカ')
     expect(input2).toHaveValue('タロウ')
   })
@@ -87,13 +86,10 @@ describe('UserNameEditInput', () => {
       </TestWrapper>,
     )
 
-    //const input = screen.getByLabelText('氏名カナ（姓)') as HTMLInputElement
-    // 氏名カナ（姓）の入力欄を空にする
     fireEvent.change(screen.getByLabelText('氏名カナ（姓)'), {
       target: { value: '' },
     })
 
-    // 「必須項目です」のエラーメッセージが表示されること
     await waitFor(() => {
       expect(screen.queryByText('入力必須です')).toBeInTheDocument()
     })
@@ -125,10 +121,8 @@ describe('UserNameEditInput', () => {
     )
 
     const input = screen.getByLabelText('氏名カナ（姓)') as HTMLInputElement
-    // 氏名カナ（姓）にカタカナ以外の値を入力する
     fireEvent.change(input, { target: { value: '山田' } })
 
-    // 「カタカナで入力してください」のエラーメッセージが表示されること
     await waitFor(() => {
       expect(
         screen.queryByText('カタカナで入力してください'),
@@ -159,7 +153,7 @@ describe('UserNameEditInput', () => {
         <UserNameEditInput {...testProps} />
       </TestWrapper>,
     )
-    // 正しいカタカナを入力する
+
     fireEvent.change(screen.getByLabelText('氏名カナ（姓)'), {
       target: { value: 'ヤマダ' },
     })
@@ -167,7 +161,6 @@ describe('UserNameEditInput', () => {
       target: { value: 'タロウ' },
     })
 
-    // エラーメッセージが表示されないこと
     await waitFor(() => {
       expect(screen.queryByText('入力必須です')).not.toBeInTheDocument()
       expect(

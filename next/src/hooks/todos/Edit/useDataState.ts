@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useChangeHoursHandlers } from './handleChangeHours'
 import { useFetch } from './handleUseFetch'
 
-export const DataState = () => {
+export const useDataState = () => {
   const {
     user,
     todo,

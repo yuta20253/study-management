@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 import EditTodo from '../../../src/pages/current/todos/[id]/edit'
 
-import { DataState } from '@/hooks/todos/Edit/DataState'
+import { DataState } from '@/hooks/todos/Edit/useDataState'
 
 // Mocking necessary modules
 jest.mock('next/router', () => ({
@@ -22,13 +22,11 @@ describe('EditTodo', () => {
   const mockPush = jest.fn()
 
   beforeEach(() => {
-    // Mocking useRouter hook
     ;(useRouter as jest.Mock).mockReturnValue(() => ({
       push: mockPush,
-      query: { id: '1' }, // Simulating router query for ID
+      query: { id: '1' }, 
     }))
 
-    // Mocking DataState hook
     ;(DataState as jest.Mock).mockReturnValue({
       todo: { title: 'テストTodo', description: 'テストの説明' },
       router: { push: mockPush },
@@ -86,7 +84,6 @@ describe('EditTodo', () => {
     })
     render(<EditTodo />)
 
-    // Using getByLabelText to check title and description inputs
     await waitFor(() => {
       expect(screen.getByTestId('title')).toHaveValue('テストTodo')
       expect(screen.getByTestId('description')).toHaveValue('テストの説明')
@@ -96,24 +93,20 @@ describe('EditTodo', () => {
   it('タイトルが更新されると、タイトルが変更されていることを確認します', async () => {
     render(<EditTodo />)
 
-    // Change the title value
     fireEvent.change(screen.getByLabelText(/タイトル/i), {
       target: { value: 'Updated Todo' },
     })
 
-    // Ensure the title input reflects the change
     expect(screen.getByLabelText(/タイトル/i)).toHaveValue('Updated Todo')
   })
 
   it('説明が更新されると、説明が変更されていることを確認します', async () => {
     render(<EditTodo />)
 
-    // Change the description value
     fireEvent.change(screen.getByLabelText(/説明/i), {
       target: { value: 'Updated description' },
     })
 
-    // Ensure the description input reflects the change
     expect(screen.getByLabelText(/説明/i)).toHaveValue('Updated description')
   })
 

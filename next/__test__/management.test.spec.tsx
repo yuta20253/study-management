@@ -1,16 +1,14 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { useRouter } from 'next/router'
 import Management from '../src/pages/current/management'
-import { DataState } from '@/hooks/management/DataState'
+import { DataState } from '@/hooks/management/useDataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
-// Mock necessary modules
 jest.mock('@/hooks/useRequireSignIn')
 jest.mock('@/hooks/management/DataState', () => ({
   DataState: jest.fn(),
 }))
 
-// Ensure correct mocking for `useRouter` from next/router
 jest.mock('next/router', () => ({
   useRouter: jest.fn(),
 }))
@@ -47,13 +45,10 @@ describe('Management Component', () => {
   }
 
   beforeEach(() => {
-    // Mock `useRequireSignedIn` to return true
     ;(useRequireSignedIn as jest.Mock).mockReturnValue(true)
 
-    // Mock DataState to return the defaultDataState
     ;(DataState as jest.Mock).mockReturnValue(defaultDataState)
 
-    // Mock `useRouter` to return a custom router object
     ;(useRouter as jest.Mock).mockReturnValue({
       push: jest.fn(),
       query: {},
@@ -66,7 +61,7 @@ describe('Management Component', () => {
     })
   })
 
-  it('should call handleSelectGraph when a graph is selected', async () => {
+  it('graphが選ばれた時、handleSelectGraphが呼ばれる', async () => {
     const handleSelectGraphMock = jest.fn()
     ;(DataState as jest.Mock).mockReturnValueOnce({
       ...defaultDataState,
@@ -75,11 +70,9 @@ describe('Management Component', () => {
 
     render(<Management />)
 
-    // Simulate changing the selected graph
     const selectElement = screen.getByLabelText(/表示グラフ変更/i)
     fireEvent.change(selectElement, { target: { value: '学習タイプ別割合' } })
 
-    // Ensure that the handler was called with the correct argument
     expect(handleSelectGraphMock).toHaveBeenCalledWith(
       expect.objectContaining({
         target: expect.objectContaining({ value: '学習タイプ別割合' }),
@@ -87,11 +80,9 @@ describe('Management Component', () => {
     )
   })
 
-  it('should call handleSelectSubject when a subject is selected', async () => {
-    // Create a mock function to track calls to handleSelectSubject
+  it('科目が選ばれた時、handleSelectSubjectが呼ばれる', async () => {
     const handleSelectSubjectMock = jest.fn()
 
-    // Override DataState to return the mock handler for handleSelectSubject
     ;(DataState as jest.Mock).mockReturnValueOnce({
       ...defaultDataState,
       handleSelectSubject: handleSelectSubjectMock,
@@ -99,13 +90,10 @@ describe('Management Component', () => {
 
     render(<Management />)
 
-    // Simulate selecting a subject from the dropdown
     const selectElement = screen.getByLabelText(/科目変更/i)
 
-    // Trigger a change event with the correct value
     fireEvent.change(selectElement, { target: { value: '英語' } })
 
-    // Ensure that handleSelectSubject was called with the event object
     expect(handleSelectSubjectMock).toHaveBeenCalledWith(
       expect.objectContaining({
         target: expect.objectContaining({ value: '英語' }),

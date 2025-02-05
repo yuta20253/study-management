@@ -1,5 +1,5 @@
 import { SubjectHistoryProps } from '@/types/Management/Modal/modal'
-import { formatDate } from '@/utils/formatDate'
+import { formatDate } from '@/utils/Common/formatDate'
 
 export const SubjectHistoryDetail = ({
   subjectLists,

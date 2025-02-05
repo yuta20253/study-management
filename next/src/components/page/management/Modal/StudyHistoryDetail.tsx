@@ -1,5 +1,5 @@
 import { StudyHistoryProps } from '@/types/Management/Modal/modal'
-import { formatDate } from '@/utils/formatDate'
+import { formatDate } from '@/utils/Common/formatDate'
 
 export const StudyHistoryDetail = ({
   studyLists,
@@ -16,7 +16,6 @@ export const StudyHistoryDetail = ({
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800">
-      {/* モーダルコンテナ */}
       <div className="w-full max-w-lg overflow-hidden rounded-lg bg-white shadow-lg sm:max-w-3xl">
         <div className="bg-sky-700 p-4">
           <p className="text-center text-lg text-white">{title}</p>

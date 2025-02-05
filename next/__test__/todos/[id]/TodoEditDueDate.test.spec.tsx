@@ -2,10 +2,8 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { TodoEditDueDate } from '@/components/page/todos/Form/TodoEditDueDate'
 
-// setDueDate のモック
 const setDueDate = jest.fn()
 
-// TestPropsの型定義
 type TestProps = {
   theme: string
   props: string
@@ -14,7 +12,6 @@ type TestProps = {
   error?: { type: string; message: string }
 }
 
-// テスト用のカスタムラッパーコンポーネント
 const TestWrapper = ({
   children,
 }: {
@@ -25,7 +22,6 @@ const TestWrapper = ({
   return <FormProvider {...methods}>{children}</FormProvider>
 }
 
-// customRender関数の定義
 const customRender = (component: React.ReactNode) => {
   return render(component)
 }
@@ -45,7 +41,7 @@ describe('TodoEditDueDate', () => {
     )
 
     const input = screen.getByLabelText('締切') as HTMLInputElement
-    expect(input).toHaveValue('2024-12-31') // 初期日付値を確認
+    expect(input).toHaveValue('2024-12-31') 
   })
 
   it('日付が変更されたときに setDueDate を呼び出す必要があります', async () => {
@@ -66,7 +62,7 @@ describe('TodoEditDueDate', () => {
     fireEvent.change(input, { target: { value: '2025-01-01' } })
 
     await waitFor(() => {
-      expect(setDueDate).toHaveBeenCalledWith('2025-01-01') // setDueDate が呼び出されているかどうかを確認する新しい日付を使用して
+      expect(setDueDate).toHaveBeenCalledWith('2025-01-01')
     })
   })
 
@@ -89,7 +85,7 @@ describe('TodoEditDueDate', () => {
     fireEvent.change(input, { target: { value: '2023-01-01' } })
 
     await waitFor(() => {
-      expect(screen.getByText('過去日は登録できません')).toBeInTheDocument() // 検証エラーが表示されるかどうかを確認します
+      expect(screen.getByText('過去日は登録できません')).toBeInTheDocument() 
     })
   })
 
@@ -112,7 +108,7 @@ describe('TodoEditDueDate', () => {
     fireEvent.change(input, { target: { value: '' } })
 
     await waitFor(() => {
-      expect(screen.getByText('締切は必須です。')).toBeInTheDocument() // 必須の検証エラーが表示されているかどうかを確認します
+      expect(screen.getByText('締切は必須です。')).toBeInTheDocument() 
     })
   })
 })

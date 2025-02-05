@@ -1,19 +1,16 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
-import { DataState } from '@/hooks/desired_schools/DataState'
+import { DataState } from '@/hooks/desired_schools/useDataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 import DesiredSchools from '@/pages/current/desired_schools'
 
-// Mocking the hook and router
 jest.mock('@/hooks/useRequireSignIn', () => ({
   useRequireSignedIn: jest.fn(),
 }))
 jest.mock('next/router', () => require('next-router-mock'))
 
-// Mocking the API call
 jest.mock('axios')
 
-// Mocking DataState hook
 jest.mock('@/hooks/desired_schools/DataState', () => ({
   DataState: jest.fn(),
 }))
@@ -24,13 +21,10 @@ describe('DesiredSchools Component', () => {
   ]
 
   beforeEach(() => {
-    // Mocking useRequireSignedIn hook to return true
     ;(useRequireSignedIn as jest.Mock).mockReturnValue(true)
 
-    // Mocking router push as jest.fn() so we can track calls
     mockRouter.push = jest.fn()
 
-    // Mocking universities data in the DataState hook
     ;(DataState as jest.Mock).mockReturnValue({
       universities: undefined,
       jsonUniversity: [
@@ -53,8 +47,7 @@ describe('DesiredSchools Component', () => {
     })
   })
 
-  it('renders the search form and buttons', async () => {
-    // Mocking universities data in the DataState hook
+  it('searchformとbuttonが表示される', async () => {
     ;(DataState as jest.Mock).mockReturnValue({
       universities: mockUniversities,
       jsonUniversity: [
@@ -77,12 +70,10 @@ describe('DesiredSchools Component', () => {
     })
     render(<DesiredSchools />)
 
-    // Wait for the "Loading..." text to disappear
     await waitFor(() => {
       expect(screen.queryByText('Loading...')).toBeNull()
     })
 
-    // Ensure the form and buttons are rendered
     expect(screen.getByPlaceholderText('大学名を入力')).toBeInTheDocument()
     expect(screen.getByText('検索')).toBeInTheDocument()
     expect(screen.getByText('新規追加')).toBeInTheDocument()
@@ -90,8 +81,7 @@ describe('DesiredSchools Component', () => {
     expect(screen.getByText('検索ページへ移動')).toBeInTheDocument()
   })
 
-  it('displays an error message if university is not found', async () => {
-    // Mocking universities data in the DataState hook
+  it('universityが見つからなかったらError', async () => {
     ;(DataState as jest.Mock).mockReturnValue({
       universities: mockUniversities,
       jsonUniversity: [
@@ -115,7 +105,6 @@ describe('DesiredSchools Component', () => {
     })
     render(<DesiredSchools />)
 
-    // Wait for the "Loading..." text to disappear
     await waitFor(() => {
       expect(screen.queryByText('Loading...')).toBeNull()
     })
@@ -130,8 +119,7 @@ describe('DesiredSchools Component', () => {
     expect(errorMessage).toBeInTheDocument()
   })
 
-  it('shows the loading state when universities are undefined', async () => {
-    // Mocking the DataState hook to return undefined universities
+  it('universitiesがundefinedの時、Loading...が表示される', async () => {
     ;(DataState as jest.Mock).mockReturnValue({
       universities: undefined,
       jsonUniversity: [],
@@ -148,9 +136,8 @@ describe('DesiredSchools Component', () => {
 
     render(<DesiredSchools />)
 
-    // Check if some kind of loading indicator is present (e.g., a spinner or a loading message)
     await waitFor(() => {
-      const loadingElement = screen.queryByText('Loading...') // or adjust to match the actual element
+      const loadingElement = screen.queryByText('Loading...') 
 
       expect(loadingElement).toBeInTheDocument()
     })

@@ -1,6 +1,6 @@
 import { useFetch } from './handleUseFetch'
 
-export const DataState = () => {
+export const useDataState = () => {
   const { user, room, messages, setMessages, error } = useFetch()
   console.log('messages', messages)
 

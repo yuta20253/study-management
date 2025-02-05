@@ -26,7 +26,6 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
 
   return (
     <div className="mx-auto mt-5 w-full sm:w-5/6">
-      {/* Accordion Header */}
       <div
         onClick={() => setOpenEntranceType(!openEntranceType)}
         className="flex cursor-pointer items-center justify-between border bg-slate-100 px-4 py-2 text-xl sm:px-6 sm:py-3"
@@ -70,8 +69,6 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
           )}
         </span>
       </div>
-
-      {/* Accordion Body */}
       {openEntranceType && (
         <div className="mx-auto my-5 w-full sm:w-5/6">
           <div className="mb-1">
@@ -83,8 +80,6 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
               <b>条件をクリア</b>
             </button>
           </div>
-
-          {/* Table */}
           <div className="overflow-x-auto">
             <table className="w-full table-auto border-collapse">
               <colgroup>
@@ -92,7 +87,6 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                 <col className="w-2/3" />
               </colgroup>
               <tbody className="border border-gray-500">
-                {/* Foreign Language */}
                 <tr>
                   <th className="mr-10 border border-gray-500 bg-sky-500">
                     <span className="text-white">外国語</span>
@@ -115,8 +109,6 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                     </div>
                   </td>
                 </tr>
-
-                {/* Math */}
                 <tr>
                   <th className="mr-10 border border-gray-500 bg-sky-500">
                     <span className="text-white">数学</span>
@@ -139,8 +131,6 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                     </div>
                   </td>
                 </tr>
-
-                {/* National Language */}
                 <tr>
                   <th className="mr-10 border border-gray-500 bg-sky-500">
                     <span className="text-white">国語</span>
@@ -163,8 +153,6 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                     </div>
                   </td>
                 </tr>
-
-                {/* Science */}
                 <tr>
                   <th className="mr-10 border border-gray-500 bg-sky-500">
                     <span className="text-white">理科</span>
@@ -187,8 +175,6 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                     </div>
                   </td>
                 </tr>
-
-                {/* Geographical History & Civics */}
                 <tr>
                   <th className="mr-10 border border-gray-500 bg-sky-500">
                     <span className="text-white">地歴・公民</span>
@@ -211,8 +197,6 @@ export const CommonEntranceExaminationSubjectsAccordion: React.FC<
                     </div>
                   </td>
                 </tr>
-
-                {/* Other Subjects */}
                 <tr>
                   <th className="mr-10 border border-gray-500 bg-sky-500">
                     <span className="text-white">その他</span>

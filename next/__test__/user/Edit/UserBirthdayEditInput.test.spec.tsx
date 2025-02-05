@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { useForm, FormProvider } from 'react-hook-form'
-import { UserBirthdayEditInput } from '@/components/page/user/Form/UserBirthdayEditInput' // パスは適宜変更してください
+import { UserBirthdayEditInput } from '@/components/page/user/Form/UserBirthdayEditInput' 
 
 type TestProps = {
   theme: string
@@ -79,7 +79,6 @@ describe('UserBirthdayEditInput', () => {
     // 誕生日欄を空にする
     fireEvent.change(input, { target: { value: '' } })
 
-    // 「誕生日は必須です。」のエラーメッセージが表示されること
     await waitFor(() => {
       expect(screen.getByText('誕生日は必須です。')).toBeInTheDocument()
     })
@@ -99,7 +98,6 @@ describe('UserBirthdayEditInput', () => {
     const input = screen.getByLabelText('生年月日') as HTMLInputElement
     fireEvent.change(input, { target: { value: '2005-05-18' } })
 
-    // エラーメッセージが表示されないこと
     await waitFor(() => {
       expect(screen.queryByText('誕生日は必須です。')).not.toBeInTheDocument()
       expect(

@@ -1,6 +1,6 @@
 import { useFetch } from './handleUseFetch'
 
-export const DataState = () => {
+export const useDataState = () => {
   const { user, error } = useFetch()
   const birth = new Date(user.birthday)
   const today = new Date()

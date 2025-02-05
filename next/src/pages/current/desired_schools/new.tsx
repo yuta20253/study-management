@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import { LoadingScreen } from '@/components/Loading'
 import { CreateNewDesiredSchoolModal } from '@/components/page/desired_schools/Modal/createNewDesiredSchool'
 import { NewRegistrationDesiredSchoolTable } from '@/components/page/desired_schools/Table/NewRegistrationDesiredSchoolTable'
-import { DataState } from '@/hooks/desired_schools/New/DataState'
+import { useDataState } from '@/hooks/desired_schools/New/useDataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 const NewDesiredSchool: NextPage = () => {
@@ -15,7 +15,7 @@ const NewDesiredSchool: NextPage = () => {
     onClose,
     isValid,
     handleChangeInputValue,
-  } = DataState()
+  } = useDataState()
 
   if (!jsonUniversity) {
     return <LoadingScreen />

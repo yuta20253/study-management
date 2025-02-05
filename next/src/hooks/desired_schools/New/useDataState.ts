@@ -3,7 +3,7 @@ import { useModal } from '../../todos/Modal/useModal'
 import { useFetch } from './handleUseFetch'
 import { useChangeInputValueHandler } from './useChangeInputValueHandler'
 
-export const DataState = () => {
+export const useDataState = () => {
   const { user, jsonUniversity, setJsonUniversity, router } = useFetch()
   const [input, setInput] = useState<string>('')
   const { isOpen, onOpen, onClose } = useModal()

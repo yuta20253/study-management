@@ -10,7 +10,6 @@ export const RegionSystemAccordion: React.FC<RegionProps> = ({
 
   return (
     <div className="w-full">
-      {/* Accordion Header */}
       <div
         onClick={() => setIsActive(!isActive)}
         className="flex cursor-pointer items-center justify-between border bg-sky-200 px-4 py-3 text-xl sm:px-6 sm:py-4"
@@ -54,8 +53,6 @@ export const RegionSystemAccordion: React.FC<RegionProps> = ({
           )}
         </span>
       </div>
-
-      {/* Accordion Body */}
       {isActive && (
         <div className="px-4 py-3 sm:px-6 sm:py-4">
           {prefectures.map((prefecture: string, i: number) => (

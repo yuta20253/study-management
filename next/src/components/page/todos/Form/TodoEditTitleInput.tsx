@@ -17,12 +17,11 @@ export const TodoEditTitle = ({
         {theme}
       </th>
       <td className="h-8 w-1/2">
-        {/* Label added here */}
         <label htmlFor={registerTitle} className="sr-only">
           タイトル
         </label>
         <input
-          id={registerTitle} // Matching id with the label's htmlFor
+          id={registerTitle}
           data-testid="title"
           type="text"
           defaultValue={title}
@@ -30,7 +29,6 @@ export const TodoEditTitle = ({
           onChange={(e) => setTitle(e.target.value)}
         />
         {error && <p className="text-xs text-red-500">{error.message}</p>}{' '}
-        {/* エラー表示 */}
       </td>
     </tr>
   )

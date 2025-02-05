@@ -1,6 +1,6 @@
 import { useFetch } from './handleUseFetch'
 
-export const DataState = () => {
+export const useDataState = () => {
   const {
     showUser,
     allStudyHours,

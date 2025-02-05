@@ -10,7 +10,7 @@ import useSWR from 'swr'
 import { LoadingScreen } from '@/components/Loading'
 import IconLink from '@/components/page/home/Link/IconLink'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
-import { fetcher } from '@/utils'
+import { fetcher } from '@/utils/Common'
 
 const Home: NextPage = () => {
   useRequireSignedIn()

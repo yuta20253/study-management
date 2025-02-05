@@ -13,7 +13,7 @@ import {
   HoursOfDate,
   StudyTimesProps,
 } from '@/types/Management/Graph/SubjectStudyTimeLine'
-import { formatDate } from '@/utils/formatDate'
+import { formatDate } from '@/utils/Common/formatDate'
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title)
 

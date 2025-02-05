@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { DataState } from '../../hooks/rooms/DataState'
+import { useDataState } from '../../hooks/rooms/useDataState'
 import { LoadingScreen } from '@/components/Loading'
 import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import { RoomList } from '@/components/page/rooms/List/RoomList'
@@ -11,7 +11,7 @@ import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 const Rooms: NextPage = () => {
   useRequireSignedIn()
-  const { user, rooms, users, createRoom, message, error } = DataState()
+  const { user, rooms, users, createRoom, message, error } = useDataState()
   const { handleRegister } = useHandleRegister(createRoom)
 
   if (!rooms || rooms === undefined) {
@@ -23,7 +23,7 @@ const Rooms: NextPage = () => {
       <ErrorTemplate error={error} href={'/current/home'} text={'ホームへ'} />
     )
   }
-  // 既にルームに登録されているユーザーを除外する
+  // 既にルームに登録されているユーザーを除外
   const { usersToDisplay } = usersToDisplayHandler(users, rooms, user)
 
   return (

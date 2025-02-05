@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { EditAndReturnLink } from '../Link/EditAndReturnLink'
 import { StarRating } from '@/components/page/todos/Rating/StarRating'
 import { Todo } from '@/types/Todo'
-import { formatDate } from '@/utils/formatDate'
+import { formatDate } from '@/utils/Common/formatDate'
 
 export const TodoDetailTable: React.FC<Todo> = ({ todo }: Todo) => {
   const [, setSelectedStars] = useState<number>(0)

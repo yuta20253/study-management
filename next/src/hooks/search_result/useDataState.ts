@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 import { useFetch } from './handleUseFetch'
 import { University } from '@/types/SearchResult'
 
-export const DataState = () => {
+export const useDataState = () => {
   const [checkedItems] = useState(localStorage.getItem('checkedItems'))
   const [deviationValuesArr] = useState(
     localStorage.getItem('deviationValuesArr'),

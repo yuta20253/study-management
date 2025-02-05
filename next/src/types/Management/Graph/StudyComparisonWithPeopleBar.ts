@@ -12,7 +12,7 @@ export type StudyHoursProps = {
     user_id: number
   }
 }
-export type studyComparisonWithPeopleBarProps = {
+export type StudyComparisonWithPeopleBarProps = {
   studyData: StudyHoursProps[]
   title: string
   followers: number

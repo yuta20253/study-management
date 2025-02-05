@@ -5,7 +5,7 @@ import { LoadingScreen } from '@/components/Loading'
 import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import { TodoEditThemeTable } from '@/components/page/todos/Form/TodoEditThemeTiitle'
 import { TodoInfoEdit } from '@/components/page/todos/Form/TodoInfoEdit'
-import { DataState } from '@/hooks/todos/Edit/DataState'
+import { useDataState } from '@/hooks/todos/Edit/useDataState'
 import { useHandleSubmit } from '@/hooks/todos/Edit/useHandleSubmit'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
@@ -36,7 +36,7 @@ const EditTodo: NextPage = () => {
     setDescription,
     handleChangeHours,
     error,
-  } = DataState()
+  } = useDataState()
 
   const { methods, handleSubmit, onSubmit, handleOnError, errors } =
     useHandleSubmit(

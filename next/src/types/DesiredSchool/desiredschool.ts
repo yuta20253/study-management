@@ -1,12 +1,12 @@
 // University 型の定義例
 export type UniversityData = {
-  university: string // 大学名
-  code: number // 大学のコード（例: 12345）
+  university: string
+  code: number
 }
 
 export type UniversityProp = {
-  school: string // 大学名
-  data: UniversityData[] // 大学データ（複数可）
+  school: string
+  data: UniversityData[]
 }
 
 export type JsonUniversity = UniversityProp[][]

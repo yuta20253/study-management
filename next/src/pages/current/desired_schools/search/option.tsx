@@ -5,8 +5,8 @@ import { DeviationValueAccordion } from '@/components/page/desired_schools/Searc
 import { EntranceExaminationSubjectAndScoreAccordionySystemAccordion } from '@/components/page/desired_schools/Search/search/Accordion/EntranceExaminationSubjectAndScoreAccordion'
 import { FacultySystemAccordion } from '@/components/page/desired_schools/Search/search/Accordion/FacultySystemAccordion'
 import { InstallationCategory } from '@/components/page/desired_schools/Search/search/Accordion/InstallationCategoryAccordion'
-import { DataState } from '@/hooks/desired_schools/Search/Option/DataState'
 import { onSubmitHandler } from '@/hooks/desired_schools/Search/Option/handleOnSubmit'
+import { useDataState } from '@/hooks/desired_schools/Search/Option/useDataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 import {
   CheckBoxContext,
@@ -28,7 +28,7 @@ const OptionPage: NextPage = () => {
     handleClearSecondEntranceExaminationSunjects,
     deviationValuesLists,
     handleClearDeviationValues,
-  } = DataState()
+  } = useDataState()
 
   const { handleSubmit } = useForm<string[]>()
   const onSubmit: SubmitHandler<string[]> = () => {

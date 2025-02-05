@@ -10,7 +10,7 @@ import {
 import { useState, useRef } from 'react'
 import { Bar } from 'react-chartjs-2'
 import { useUserState } from '@/hooks/useGlobalState'
-import { studyComparisonWithPeopleBarProps } from '@/types/Management/Graph/StudyComparisonWithPeopleBar'
+import { StudyComparisonWithPeopleBarProps } from '@/types/Management/Graph/StudyComparisonWithPeopleBar'
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title)
 
@@ -18,7 +18,7 @@ export default function StudyComparisonWithPeopleBar({
   studyData,
   title,
   followers,
-}: studyComparisonWithPeopleBarProps) {
+}: StudyComparisonWithPeopleBarProps) {
   const [user] = useUserState()
   const [isReloaded, setIsReloaded] = useState<boolean>(false)
   const [myPreparationActualLearningTime, setMyPreparationActualLearningTime] =
@@ -115,6 +115,7 @@ export default function StudyComparisonWithPeopleBar({
       width={300}
       ref={chartRef}
       options={options}
+      aria-label={title}
     />
   )
 }

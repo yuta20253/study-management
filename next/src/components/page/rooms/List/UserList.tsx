@@ -2,7 +2,6 @@ import { UserListProps } from '@/types/Room'
 
 export const UserList = ({ usersToDisplay, handleRegister }: UserListProps) => (
   <div className="mt-4 w-full max-w-7xl space-y-4">
-    {/* 縦並びに変更するため、flex-colを使用し、縦のスペースを調整 */}
     <ul className="flex flex-col items-center space-y-4">
       {usersToDisplay.map((u) => (
         <li

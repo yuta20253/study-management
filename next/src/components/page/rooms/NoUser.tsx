@@ -10,7 +10,6 @@ export const NoUserDisplay = ({
       チャットルームが存在しません
     </div>
     <div className="w-full max-w-7xl space-y-4">
-      {/* 親要素に 'flex' と 'justify-center' を追加して中央に配置 */}
       <ul className="flex flex-col items-center justify-center gap-4">
         {users
           .filter((usr) => usr.id !== user.id)

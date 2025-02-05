@@ -26,7 +26,6 @@ export const UserBuildingEditInput = ({
     if (enteredPostalCode.length === 7) {
       setIsLoading(true)
       try {
-        // 郵便番号検索APIを呼び出す
         const response: AxiosResponse = await axios.get(
           `https://zipcloud.ibsnet.co.jp/api/search?zipcode=${enteredPostalCode}`,
         )
@@ -47,7 +46,6 @@ export const UserBuildingEditInput = ({
           throw new Error('住所の取得に失敗しました')
         }
       } catch (error) {
-        // エラーメッセージを表示するための状態を設定
         setIsAddressAutoFilled(false)
         setAddressError(true) // 住所取得エラーを設定
         // 住所取得に失敗した場合、3秒後にエラーメッセージを非表示にする

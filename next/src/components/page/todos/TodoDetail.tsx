@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { TodoInfoTr } from './TableRow/TodoInfoTr'
 import { StarRating } from '@/components/page/todos/Rating/StarRating'
 import { TodoDetailProps } from '@/types/Todo'
-import { formatDate } from '@/utils/formatDate'
+import { formatDate } from '@/utils/Common/formatDate'
 
 export const TodoDetail = ({ todo, setTodoDetail }: TodoDetailProps) => {
   const [, setSelectedStars] = useState<number>(0)

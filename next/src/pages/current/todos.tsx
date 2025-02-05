@@ -8,7 +8,7 @@ import { TodoList } from '@/components/page/todos/List/TodoList'
 import { CreateNewTodoModal } from '@/components/page/todos/Modal/CreateNewTodoModal'
 import { ItemsList } from '@/components/page/todos/TableRow/ItemsList'
 import { TodoDetail } from '@/components/page/todos/TodoDetail'
-import { DataState } from '@/hooks/todos/DataState'
+import { DataState } from '@/hooks/todos/useDataState'
 
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 import {

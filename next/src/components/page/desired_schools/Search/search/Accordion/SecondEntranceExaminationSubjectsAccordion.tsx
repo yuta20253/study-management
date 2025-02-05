@@ -26,7 +26,6 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
 
   return (
     <div className="mx-auto mb-5 w-full sm:w-5/6">
-      {/* Accordion Header */}
       <div
         onClick={() => setOpenEntranceType(!openEntranceType)}
         className="flex cursor-pointer items-center justify-between border bg-slate-100 px-4 py-3 text-xl sm:px-6 sm:py-4"
@@ -81,7 +80,6 @@ export const SecondEntranceExaminationSubjectsAccordion: React.FC<
               <b>条件をクリア</b>
             </button>
           </div>
-          {/* Table */}
           <div className="overflow-x-auto">
             <table className="w-full table-auto border-collapse">
               <colgroup>
