@@ -13,12 +13,10 @@ export const TodoEditActualLearningTime = ({
 }: ActualLearningTimeProps) => {
   const { register, formState } = useFormContext()
 
-  // 入力欄が消された場合、実際の学習時間を引く処理
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newActualLearningTime = e.target.value
     console.log('コンソールが呼ばれた')
 
-    // 値が空ならば totalHour を減らす
     if (newActualLearningTime === '') {
       setTotalHour((prev) => prev - Number(actualLearningTime))
     }
@@ -32,17 +30,13 @@ export const TodoEditActualLearningTime = ({
     const newActualLearningTime = e.target.value
     console.log('newActualLearningTime:::', newActualLearningTime)
 
-    // バリデーションエラーがない場合のみ onBlur を実行
     if (Object.keys(formState.errors).length === 0) {
-      // 空欄のときに current actualLearningTime の値を引く
       if (newActualLearningTime === '') {
         setTotalHour((prev) => prev - Number(actualLearningTime))
       } else {
-        // 空欄でない場合は新しい値を加算
         setTotalHour((prev) => prev + Number(newActualLearningTime))
       }
     } else {
-      // バリデーションエラーがある場合は current actualLearningTime を引く
       setTotalHour((prev) => prev - Number(actualLearningTime))
     }
   }

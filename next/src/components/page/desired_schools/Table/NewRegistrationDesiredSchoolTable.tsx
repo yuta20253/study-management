@@ -22,7 +22,6 @@ export const NewRegistrationDesiredSchoolTable: React.FC<
               <span className="text-base sm:text-lg">大学名:</span>
             </th>
             <td className="flex w-full items-center justify-center px-4 py-2 sm:w-2/3">
-              {/* 入力フィールド */}
               <input
                 type="text"
                 defaultValue={input}

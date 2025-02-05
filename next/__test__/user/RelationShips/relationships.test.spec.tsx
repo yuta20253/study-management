@@ -6,7 +6,6 @@ import { useClickUnFollowUserHandlers } from '@/hooks/user/RelationShips/clickUn
 import { useFetch } from '@/hooks/user/RelationShips/handleUseFetch'
 import Relationships from '@/pages/current/user/relationships'
 
-// モック関数
 jest.mock('@/hooks/user/RelationShips/clickFollowUser', () => ({
   useClickFollowUserHandlers: jest.fn(),
 }))
@@ -19,7 +18,6 @@ jest.mock('@/hooks/user/RelationShips/handleUseFetch', () => ({
   useFetch: jest.fn(),
 }))
 
-// Mocking Next.js router
 jest.mock('next/router', () => ({
   useRouter: jest.fn(),
 }))
@@ -35,12 +33,11 @@ const mockUsers = [
   { id: 3, family_name: '高橋', given_name: '二郎' },
 ]
 
-const mockFollowedIdsArr = [3] // 既にフォローしているユーザーID
+const mockFollowedIdsArr = [3] 
 
 const mockHandleClickFollowUser = jest.fn()
 const mockHandleClickUnfollowUser = jest.fn()
 
-// useFetch とハンドラー関数をモック
 beforeEach(() => {
   ;(useFetch as jest.Mock).mockReturnValue({
     user: mockUser,
@@ -54,9 +51,9 @@ beforeEach(() => {
   ;(useClickUnFollowUserHandlers as jest.Mock).mockReturnValue({
     handleClickUnfollowUser: mockHandleClickUnfollowUser,
   })
-  // Mock the useRouter hook to return a dummy router object
+
   ;(useRouter as jest.Mock).mockReturnValue({
-    push: jest.fn(), // You can mock other methods if needed
+    push: jest.fn(), 
     query: {},
     pathname: '/',
     asPath: '/',
@@ -65,28 +62,21 @@ beforeEach(() => {
 
 describe('Relationships', () => {
   test('Relationshipsコンポーネントの動作を検証する', async () => {
-    // コンポーネントをレンダリング
     render(<Relationships />)
 
-    // フォローボタンとフォロー解除ボタンを取得
     const followButtons = screen.getAllByText('フォロー')
     const unfollowButtons = screen.getAllByText('フォロー解除')
 
-    // フォローボタンがクリックされた場合
     fireEvent.click(followButtons[0])
 
-    // フォロー処理が呼ばれたか確認
     expect(mockHandleClickFollowUser).toHaveBeenCalledTimes(1)
     expect(mockHandleClickFollowUser).toHaveBeenCalledWith(mockUsers[0].id)
 
-    // フォロー解除ボタンがクリックされた場合
     fireEvent.click(unfollowButtons[0])
 
-    // フォロー解除処理が呼ばれたか確認
     expect(mockHandleClickUnfollowUser).toHaveBeenCalledTimes(1)
     expect(mockHandleClickUnfollowUser).toHaveBeenCalledWith(mockUsers[1].id)
 
-    // エラーが発生した場合
     ;(useFetch as jest.Mock).mockReturnValue({
       user: mockUser,
       users: null,
@@ -94,10 +84,8 @@ describe('Relationships', () => {
       error: 'ネットワークエラー',
     })
 
-    // コンポーネントを再レンダリング
     render(<Relationships />)
 
-    // エラーメッセージが表示されることを確認
     expect(screen.getByText('ホームへ')).toBeInTheDocument()
   })
 })

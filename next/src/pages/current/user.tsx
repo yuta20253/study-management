@@ -4,11 +4,11 @@ import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import LinkButton from '@/components/page/Common/LinkButton'
 import { UserInfoTr } from '@/components/page/user/TableRow/UserInfoTr'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
-import { DataState } from '@/hooks/user/DataState'
+import { useDataState } from '@/hooks/user/useDataState'
 
 const User: NextPage = () => {
   useRequireSignedIn()
-  const { user, age, year, month, day, error } = DataState()
+  const { user, age, year, month, day, error } = useDataState()
   if (!user || !age) {
     return <LoadingScreen />
   }

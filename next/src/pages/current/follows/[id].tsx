@@ -5,7 +5,7 @@ import LinkButton from '@/components/page/Common/LinkButton'
 import { FollowsUserInfo } from '@/components/page/follows/TableRow/FollowsInfoTr'
 import { StudyHoursHistoryInfo } from '@/components/page/follows/TableRow/StudyHoursHistoryInfoTr'
 import { TotalHoursInfoTr } from '@/components/page/follows/TableRow/TotalHoursInfoTr'
-import { DataState } from '@/hooks/follows/Show/DataState'
+import { useDataState } from '@/hooks/follows/Show/useDataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 const FollowsUserDetail: NextPage = () => {
@@ -20,7 +20,7 @@ const FollowsUserDetail: NextPage = () => {
     totalHoursWithinOneWeek,
     totalHoursWithinOneMonth,
     error,
-  } = DataState()
+  } = useDataState()
   if (!showUser) {
     return <LoadingScreen />
   }

@@ -3,7 +3,6 @@ import { useForm, FormProvider } from 'react-hook-form'
 import { TodoEditDescription } from '@/components/page/todos/Form/TodoEditDescription'
 import { descriptionRules } from '@/validations/todos/validation'
 
-// mock useFormContext from react-hook-form
 jest.mock('react-hook-form', () => ({
   ...jest.requireActual('react-hook-form'),
   useFormContext: jest.fn(() => ({
@@ -65,7 +64,7 @@ describe('TodoEditDescription', () => {
       props: '',
       registerDescription: 'description',
       setDescription: jest.fn(),
-      rules: descriptionRules, // maxLength バリデーションを適用
+      rules: descriptionRules,
       error,
     }
 
@@ -75,12 +74,11 @@ describe('TodoEditDescription', () => {
       </TestWrapper>,
     )
 
-    // 200文字を超える入力をシミュレート
+    // 200文字を超える入力
     const textarea = screen.getByRole('textbox') as HTMLTextAreaElement
     fireEvent.change(textarea, { target: { value: 'A'.repeat(201) } })
 
     await waitFor(() => {
-      // エラーメッセージが表示されることを確認
       expect(screen.getByText('200字まで入力は可能です')).toBeInTheDocument()
     })
   })
@@ -91,7 +89,7 @@ describe('TodoEditDescription', () => {
       props: '',
       registerDescription: 'description',
       setDescription: jest.fn(),
-      rules: descriptionRules, // maxLength バリデーションを適用
+      rules: descriptionRules, 
       error: undefined,
     }
 
@@ -101,12 +99,11 @@ describe('TodoEditDescription', () => {
       </TestWrapper>,
     )
 
-    // 有効な入力（200文字未満）をシミュレート
+    // 有効な入力（200文字未満）
     const textarea = screen.getByRole('textbox') as HTMLTextAreaElement
     fireEvent.change(textarea, { target: { value: '有効な説明' } })
 
     await waitFor(() => {
-      // エラーメッセージが表示されていないことを確認
       expect(
         screen.queryByText('200字まで入力は可能です'),
       ).not.toBeInTheDocument()

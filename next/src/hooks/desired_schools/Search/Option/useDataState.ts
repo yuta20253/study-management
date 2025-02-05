@@ -4,7 +4,7 @@ import { deviationValuesLists } from './deviationValuesLists'
 import { useChangeCheckboxesHandler } from './useChangeCheckboxesHandler'
 import { useClearSelectCheckBoxesHandlers } from './useClearSelectCheckBoxesHandlers'
 
-export const DataState = () => {
+export const useDataState = () => {
   const [checkedItems, setCheckedItems] = useState<string[]>([])
   const [deviationValues, setDeviationValues] = useState<number[]>([35.0, 75.0])
 

@@ -1,12 +1,11 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import axios from 'axios'
-import { useRouter } from 'next/router' // 修正: useRouter をインポート
+import { useRouter } from 'next/router' 
 import ShowUniversityData from '../../src/pages/current/schools/[school_id]'
-import { DataState } from '@/hooks/schools/DataState'
+import { DataState } from '@/hooks/schools/useDataState'
 import { useUserState } from '@/hooks/useGlobalState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
-// Mocking hooks and router
 jest.mock('@/hooks/schools/DataState')
 jest.mock('@/hooks/useRequireSignIn', () => ({
   useRequireSignedIn: jest.fn(),
@@ -18,10 +17,9 @@ jest.mock('next/router', () => ({
   useRouter: jest.fn(),
 }))
 
-// モックのセットアップ
 jest.mock('axios', () => ({
-  ...jest.requireActual('axios'), // axiosの実際の機能を保持
-  get: jest.fn(), // `axios.get`をモック
+  ...jest.requireActual('axios'),
+  get: jest.fn(), 
 }))
 
 describe('ShowUniversityData', () => {
@@ -44,7 +42,6 @@ describe('ShowUniversityData', () => {
       school_id: '123',
     })
 
-    // useRouterフックのモック
     ;(useRouter as jest.Mock).mockReturnValue({
       query: { school_id: '123' },
       push: jest.fn(),
@@ -53,7 +50,6 @@ describe('ShowUniversityData', () => {
 
     render(<ShowUniversityData />)
 
-    // データが取得されて表示されることを確認
     await waitFor(() => screen.getByText(/モック大学/i))
     expect(screen.getByText(/学部 1/i)).toBeInTheDocument()
     expect(screen.getByText(/学部 2/i)).toBeInTheDocument()
@@ -64,7 +60,6 @@ describe('ShowUniversityData', () => {
     const mockUser = { isSignedIn: true }
     ;(useRequireSignedIn as jest.Mock).mockReturnValue([mockUser])
 
-    // DataStateをモックしてリクエストが失敗した場合をシミュレート
     ;(DataState as jest.Mock).mockReturnValue({
       university: null,
       school_id: '123',
@@ -72,7 +67,6 @@ describe('ShowUniversityData', () => {
 
     render(<ShowUniversityData />)
 
-    // データがない場合にエラーメッセージが表示されることを確認
     await waitFor(() => screen.getByText(/データの取得に失敗しました/i))
   })
 
@@ -80,7 +74,6 @@ describe('ShowUniversityData', () => {
     const mockUser = { isSignedIn: false }
     ;(useUserState as jest.Mock).mockReturnValue([mockUser])
 
-    // useRequireSignedInがリダイレクトをトリガーする仮定で、モックを返す
     const mockNavigate = jest.fn()
     ;(useRequireSignedIn as jest.Mock).mockImplementation(() => {
       if (!mockUser.isSignedIn) {
@@ -90,8 +83,6 @@ describe('ShowUniversityData', () => {
 
     render(<ShowUniversityData />)
 
-    // サインインしていない場合にリダイレクトが発生することを確認
-    // ここではリダイレクト先がサインインページだと仮定
     expect(mockNavigate).toHaveBeenCalledWith('/sign_in')
   })
 
@@ -99,14 +90,12 @@ describe('ShowUniversityData', () => {
     const mockUser = { isSignedIn: true }
     ;(useUserState as jest.Mock).mockReturnValue([mockUser])
 
-    // DataStateフックをモックして、データ取得が失敗した場合をシミュレート
     ;(DataState as jest.Mock).mockReturnValue({
-      university: null, // データが取得できないシナリオ
+      university: null, 
       school_id: '123',
     })
 
     render(<ShowUniversityData />)
-    // エラーメッセージが表示されることを確認
     expect(screen.getByText(/データの取得に失敗しました/i)).toBeInTheDocument()
   })
 
@@ -138,7 +127,6 @@ describe('ShowUniversityData', () => {
 
     const links = screen.getAllByRole('link')
 
-    // リンクが正しい href を持っていることを確認
     expect(links[0].getAttribute('href')).toBe(
       '/current/schools/123/details/F1',
     )
@@ -153,20 +141,17 @@ describe('ShowUniversityData', () => {
     ;(useUserState as jest.Mock).mockReturnValue([mockUser])
 
     const mockError = new Error('API Error')
-    ;(axios.get as jest.Mock).mockRejectedValueOnce(mockError) // Axiosのモック
+    ;(axios.get as jest.Mock).mockRejectedValueOnce(mockError) 
 
-    // DataStateがエラーレスポンスを返すようシミュレート
     ;(DataState as jest.Mock).mockReturnValue({
-      university: null, // 失敗シナリオ
+      university: null, 
       school_id: '123',
     })
 
     render(<ShowUniversityData />)
 
-    // エラーメッセージを待機
     await waitFor(() => screen.findByText(/データの取得に失敗しました/i))
 
-    // エラーメッセージが表示されることを確認
     expect(screen.getByText(/データの取得に失敗しました/i)).toBeInTheDocument()
   })
 })

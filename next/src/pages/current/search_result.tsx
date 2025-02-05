@@ -4,13 +4,13 @@ import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import LinkButton from '@/components/page/Common/LinkButton'
 import { DepartmentSearchResultData } from '@/components/page/searchResult/TableRow/DepartmentSearchResultData'
 import { Head } from '@/components/page/searchResult/TableRow/Head'
-import { DataState } from '@/hooks/search_result/DataState'
 import { displayMixUniversities } from '@/hooks/search_result/displayMixUniversities'
 import { selectDepartmentSystem } from '@/hooks/search_result/selectDepartmentSystem'
 import { selectDivision } from '@/hooks/search_result/selectDivision'
 import { selectExamSubject } from '@/hooks/search_result/selectExamSubject'
 import { selectFirstExamSubjects } from '@/hooks/search_result/selectFirstExamSubjects'
 import { selectSecondExamSubjects } from '@/hooks/search_result/selectSecondExamSubjects'
+import { useDataState } from '@/hooks/search_result/useDataState'
 
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 import { University } from '@/types/SearchResult'
@@ -25,7 +25,7 @@ const SearchResult: NextPage = () => {
     selectableUniversities,
     firstTrueOrFalse,
     secondTrueOrFalse,
-  } = DataState()
+  } = useDataState()
 
   if (!checkedItems || !deviationValuesArr || !jsonUniversity) {
     return <LoadingScreen />
@@ -49,7 +49,6 @@ const SearchResult: NextPage = () => {
       .split(',')
   }
 
-  // universitiesが無い場合はエラー画面を表示
   if (!universities) {
     const error: string = '大学情報が取得できませんでした'
     return (

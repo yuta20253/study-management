@@ -2,12 +2,12 @@ import type { NextPage } from 'next'
 import { LoadingScreen } from '@/components/Loading'
 import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import { TodoDetailTable } from '@/components/page/todos/Table/TodoDetailTable'
-import { DataState } from '@/hooks/todos/Show/DataState'
+import { useDataState } from '@/hooks/todos/Show/useDataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 const TodoDetail: NextPage = () => {
   useRequireSignedIn()
-  const { todo, error } = DataState()
+  const { todo, error } = useDataState()
 
   if (!todo) {
     return <LoadingScreen />

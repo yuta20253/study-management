@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import useSWR from 'swr'
-import { fetcher } from '@/utils'
+import { fetcher } from '@/utils/Common'
 
 const Index: NextPage = () => {
   const url = process.env.NEXT_PUBLIC_API_BASE_URL + '/current'

@@ -3,7 +3,7 @@ import { useModal } from '../todos/Modal/useModal'
 import { useFunction } from './handleFunction'
 import { useFetch } from './handleUseFetch'
 
-export const DataState = () => {
+export const useDataState = () => {
   const {
     user,
     studyHours,

@@ -20,7 +20,6 @@ export const UserEmailEditInput = ({
           defaultValue={email}
           {...register(`${registerProps}`, {
             required: true,
-            //pattern: /^[a-z\d][\w.-]*@[\w.-]+\.[a-z\d]+$/i,
           })}
         />
       </td>

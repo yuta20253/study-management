@@ -6,13 +6,13 @@ import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import { UserEditTitle } from '@/components/page/user/Form/UserEditTitle'
 import { UserInfoEdit } from '@/components/page/user/Form/UserInfoEdit'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
-import { DataState } from '@/hooks/user/Edit/DataState'
+import { useDataState } from '@/hooks/user/Edit/useDataState'
 import { useHandleSubmit } from '@/hooks/user/Edit/useHandleSubmit'
 
 const EditUser: NextPage = () => {
   useRequireSignedIn()
   const { user, setUser, router, selected, setSelected, age, error } =
-    DataState()
+    useDataState()
   const { handleSubmit, handleOnSubmit, handleOnError, methods, errors } =
     useHandleSubmit(user, setUser, router)
 

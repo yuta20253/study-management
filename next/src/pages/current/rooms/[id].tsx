@@ -6,13 +6,13 @@ import { ChatFooter } from '@/components/page/rooms/Show/ChatFooter'
 import { ChatHeader } from '@/components/page/rooms/Show/ChatHeader'
 import { MessageInputForm } from '@/components/page/rooms/Show/Form/MessageInputForm'
 import { MessagesList } from '@/components/page/rooms/Show/List/MessagesList'
-import { DataState } from '@/hooks/rooms/Show/DataState'
 import { useSendMessage } from '@/hooks/rooms/Show/sendMessage'
+import { useDataState } from '@/hooks/rooms/Show/useDataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 const RoomDetail: NextPage = () => {
   useRequireSignedIn()
-  const { user, room, messages, setMessages, error } = DataState()
+  const { user, room, messages, setMessages, error } = useDataState()
   const [messageContent, setMessageContent] = useState<string>('')
 
   const safeMessages = messages || []

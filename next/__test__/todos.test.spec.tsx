@@ -1,10 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { useRouter } from 'next/router'
-import { DataState } from '../src/hooks/todos/DataState'
-import { useUserState } from '../src/hooks/useGlobalState' // Adjust the path as needed
-import Todos from '../src/pages/current/todos' // Adjust the path as needed
+import { DataState } from '../src/hooks/todos/useDataState'
+import { useUserState } from '../src/hooks/useGlobalState' 
+import Todos from '../src/pages/current/todos' 
 
-// Mocking next/router and useUserState correctly
 jest.mock('next/router', () => ({
   useRouter: jest.fn(),
 }))
@@ -41,48 +40,41 @@ jest.mock('../src/hooks/todos/DataState', () => ({
 }))
 
 describe('DataState Component', () => {
-  it('should correctly read query parameters and handle page', () => {
+  it('クエリパラメータを正しく読み取り、ページを適切に処理', () => {
     const push = jest.fn()
 
-    // Mock useRouter to simulate the query object
     ;(useRouter as jest.Mock).mockReturnValue({
-      query: { page: '2' }, // Mock router.query with a page parameter
-      push, // Mock push for redirection calls
+      query: { page: '2' }, 
+      push, 
     })
 
-    // Mock useUserState to simulate a signed-in user
     ;(useUserState as jest.Mock).mockReturnValue([
-      { isFetched: true, isSignedIn: true }, // Simulate user state as signed in
+      { isFetched: true, isSignedIn: true },
     ])
 
-    // Render the Todos page (or the relevant component)
     render(<Todos />)
 
-    // Ensure that router.query.page is correctly processed as 2
-    expect(push).not.toHaveBeenCalled() // If page handling works, push should not be called
+    expect(push).not.toHaveBeenCalled()
   })
 })
 
 describe('Todo List Rendering', () => {
-  it('should render the correct number of todos', () => {
+  it('正しい数のTodoをレンダリング', () => {
     render(<Todos />)
 
-    // Ensure the todos are rendered
     expect(screen.getByText('Todo 1')).toBeInTheDocument()
     expect(screen.getByText('Todo 2')).toBeInTheDocument()
   })
 })
 
 describe('Create New Todo Modal', () => {
-  it('should open the modal when "新規追加(Open Modal)" button is clicked', () => {
+  it('「新規追加」ボタンがクリックされたとき、モーダルを開く', () => {
     const mockOnOpen = jest.fn()
 
-    // Mock useUserState to simulate a signed-in user
     ;(useUserState as jest.Mock).mockReturnValue([
       { isFetched: true, isSignedIn: true },
     ])
 
-    // Mock DataState to return mock values, passing the mock `onOpen`
     ;(DataState as jest.Mock).mockReturnValue({
       todos: [
         { id: 1, title: 'Todo 1', status: 'incomplete' },
@@ -94,7 +86,7 @@ describe('Create New Todo Modal', () => {
       deleteId: undefined,
       setDeleteId: jest.fn(),
       isOpen: false,
-      onOpen: mockOnOpen, // Ensure `mockOnOpen` is passed here
+      onOpen: mockOnOpen, 
       onClose: jest.fn(),
       status: '',
       isDelete: false,
@@ -110,20 +102,17 @@ describe('Create New Todo Modal', () => {
 
     render(<Todos />)
 
-    // Find the button and simulate the click event
     const addButton = screen.getByText('新規追加')
     fireEvent.click(addButton)
 
-    // Ensure the modal open function was called
     expect(mockOnOpen).toHaveBeenCalled()
   })
 })
 
 describe('Pagination', () => {
-  it('should change page when pagination is clicked', () => {
+  it('paginationがクリックされたら、ページが変わる', () => {
     const mockHandleChangePage = jest.fn()
 
-    // Mock DataState to pass the mock function for handleChangePage
     ;(DataState as jest.Mock).mockReturnValue({
       todos: [
         { id: 1, title: 'Todo 1', status: 'incomplete' },
@@ -151,20 +140,17 @@ describe('Pagination', () => {
 
     render(<Todos />)
 
-    // Find the pagination and simulate a click on the next page button
-    const nextPageButton = screen.getByLabelText('Go to next page') // Ensure the correct aria-label is used
+    const nextPageButton = screen.getByLabelText('Go to next page') 
     fireEvent.click(nextPageButton)
 
-    // Ensure handleChangePage was called with the expected page number
     expect(mockHandleChangePage).toHaveBeenCalledWith(expect.anything(), 2)
   })
 })
 
 describe('Todo Status Change', () => {
-  it('should call handleChangeStatusAll when "All" is selected', () => {
+  it('Allが選ばれた時、handleChangeStatusAllが呼ばれる', () => {
     const mockHandleChangeStatusAll = jest.fn()
 
-    // Mock DataState with the mock function for handleChangeStatusAll
     ;(DataState as jest.Mock).mockReturnValue({
       todos: [
         { id: 1, title: 'Todo 1', status: 'incomplete' },
@@ -192,18 +178,15 @@ describe('Todo Status Change', () => {
 
     render(<Todos />)
 
-    // Simulate clicking the "All" status filter button
     const allButton = screen.getByText('全て')
     fireEvent.click(allButton)
 
-    // Verify that the handleChangeStatusAll function was called
     expect(mockHandleChangeStatusAll).toHaveBeenCalled()
   })
 
-  it('should call handleChangeStatusIncomplete when "Incomplete" is selected', () => {
+  it('Incompliteが選ばれた時、handleChangeStatusIncompleteが呼ばれる', () => {
     const mockHandleChangeStatusIncomplete = jest.fn()
 
-    // Mock DataState with the mock function for handleChangeStatusIncomplete
     ;(DataState as jest.Mock).mockReturnValue({
       todos: [
         { id: 1, title: 'Todo 1', status: 'incomplete' },
@@ -231,15 +214,13 @@ describe('Todo Status Change', () => {
 
     render(<Todos />)
 
-    // Simulate clicking the "Incomplete" status filter button
     const incompleteButton = screen.getByText('未完了')
     fireEvent.click(incompleteButton)
 
-    // Verify that the handleChangeStatusIncomplete function was called
     expect(mockHandleChangeStatusIncomplete).toHaveBeenCalled()
   })
 
-  it('should filter todos by status when filter buttons are clicked', () => {
+  it('フィルターボタンがクリックされたときに、ステータスでTodoをフィルタリングされる', () => {
     const mockHandleChangeStatusIncomplete = jest.fn()
 
     ;(DataState as jest.Mock).mockReturnValue({
@@ -269,10 +250,8 @@ describe('Todo Status Change', () => {
 
     render(<Todos />)
 
-    // Simulate clicking on the "Incomplete" filter
     fireEvent.click(screen.getByText('未完了'))
 
-    // Verify that the appropriate status change function was called
     expect(mockHandleChangeStatusIncomplete).toHaveBeenCalled()
   })
 })

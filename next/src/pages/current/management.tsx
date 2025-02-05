@@ -14,7 +14,7 @@ import { SubjectHistoryDetail } from '@/components/page/management/Modal/Subject
 import { SelectPeriodLists } from '@/components/page/management/Option/SelectPeriodLists'
 import { SelectStudyType } from '@/components/page/management/Option/SelectStudyType'
 import { SelectSubject } from '@/components/page/management/Option/SelectSubject'
-import { DataState } from '@/hooks/management/DataState'
+import { useDataState } from '@/hooks/management/useDataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 const Management: NextPage = () => {
@@ -49,7 +49,7 @@ const Management: NextPage = () => {
     handleSelectSubjectName,
     handleSelectGraph,
     error,
-  } = DataState()
+  } = useDataState()
 
   if (error) {
     return (
@@ -64,7 +64,7 @@ const Management: NextPage = () => {
   return (
     <div className="mt-10 w-full px-4 sm:px-6 lg:px-8">
       <div className="relative flex flex-col items-center justify-center gap-6 sm:grid sm:grid-cols-1 lg:grid-cols-2">
-        <div className="w-full sm:w-full lg:w-full">
+        <div className="w-full">
           <StudyPieGraphBlock
             studyHours={studyHours}
             title="教科別学習割合(時間)"
@@ -74,7 +74,7 @@ const Management: NextPage = () => {
           />
         </div>
         {graph === '学習タイプ別割合' && (
-          <div className="w-full sm:w-full lg:w-full">
+          <div className="w-full">
             <StudyTypePieGraphBlock
               title="学習タイプ別割合"
               studyHours={studyHours}
@@ -82,7 +82,7 @@ const Management: NextPage = () => {
           </div>
         )}
         {graph === '学習時間比較' && (
-          <div className="w-full sm:w-full lg:w-full">
+          <div className="w-full">
             <StudyComparisonWithPeopleBarBlock
               studyData={allStudyHours}
               title="学習時間比較(対ライバル)"
@@ -91,7 +91,7 @@ const Management: NextPage = () => {
           </div>
         )}
         {graph === '科目別学習時間推移' && (
-          <div className="w-full sm:w-full lg:w-full">
+          <div className="w-full">
             <SubjectStudyTimeLineBlock
               studyData={selectSubjectProps}
               title="科目別学習時間推移"
@@ -152,7 +152,7 @@ const Management: NextPage = () => {
           handleClickStudy={handleClickStudy}
         />
       </div>
-      <div className="mt-4 flex h-12 w-2/3 flex-col items-center justify-end gap-2 sm:mt-6 sm:flex-row sm:gap-4">
+      <div className="mt-4 flex h-12 w-full flex-col items-center justify-end gap-2 sm:mt-6 sm:w-2/3 sm:flex-row sm:gap-4">
         <div>
           <LinkButton href={'/current/home'} text={'ホームへ'} />
         </div>

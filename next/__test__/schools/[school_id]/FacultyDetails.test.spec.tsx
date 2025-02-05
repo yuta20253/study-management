@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import FacultyDetails from '../../../src/pages/current/schools/[school_id]/details/[id]'
-import { DataState } from '@/hooks/schools/details/DataState'
+import { DataState } from '@/hooks/schools/details/useDataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 import '@testing-library/jest-dom'
 
@@ -50,7 +50,6 @@ describe('FacultyDetails', () => {
 
     render(<FacultyDetails />)
 
-    // 学部データがない場合、"地域区分"のテキストは表示されないはず
     expect(screen.queryByText('地域区分')).toBeNull()
   })
 })

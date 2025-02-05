@@ -5,11 +5,8 @@ import { getResponse, http, HttpResponse } from 'msw'
 import { setupServer } from 'msw/node'
 import User from '../src/pages/current/user'
 
-// APIのモックサーバーを立てる
 const handlers = [
-  // Intercept "GET https://example.com/user" requests...
   http.get('http://localhost:3000/api/v1/current/user', () => {
-    // ...and respond to them using this JSON response.
     return HttpResponse.json([
       {
         id: 1,
@@ -85,20 +82,15 @@ jest.mock('@/hooks/useRequireSignIn')
 //jest.mock('@/hooks/useGlobalState')
 
 describe('User page with axios / Success+Error', () => {
-  // Success時
-  test(' get a userInfo when the axios get response  ', async () => {
+  test('axiosが正しくresponseを返した時、UserInfoが変える', async () => {
     const { debug } = render(<User />)
     debug()
     await waitFor(async () => {
       const request = new Request('http://localhost:3000/api/v1/current/user')
       const response = await getResponse(handlers, request)
       const data = await response?.json()
-      //console.log(data)
       expect(data[0].family_name).toBe('長澤')
       expect(data[0].given_name).toBe('まさみ')
-      //console.log(data[0].family_name)
-      //console.log(data[0].given_name)
-      //console.log(data[0].birthday)
       debug(undefined, Infinity)
       expect(screen.getByText('個人情報編集')).toBeInTheDocument()
       expect(screen.getByText('ホームへ')).toBeInTheDocument()

@@ -3,7 +3,6 @@ import React from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { UserGenderEditRadio } from '@/components/page/user/Form/UserGenderEditRadio'
 
-// テスト用ラップコンポーネント
 const TestWrapper = ({ children }: { children: React.ReactNode }) => {
   const methods = useForm()
   return <FormProvider {...methods}>{children}</FormProvider>
@@ -13,7 +12,7 @@ describe('UserGenderEditRadio', () => {
   it('性別が初期値で表示されること', () => {
     const testProps = {
       theme: '性別',
-      gender: '男', // 初期値は「男」
+      gender: '男', 
       registerProps: 'gender',
       selected: '男',
       setSelected: jest.fn(),
@@ -28,7 +27,6 @@ describe('UserGenderEditRadio', () => {
     const maleRadio = screen.getByLabelText('男') as HTMLInputElement
     const femaleRadio = screen.getByLabelText('女') as HTMLInputElement
 
-    // 初期状態で「男」が選択されていることを確認
     expect(maleRadio.checked).toBe(true)
     expect(femaleRadio.checked).toBe(false)
   })
@@ -50,10 +48,8 @@ describe('UserGenderEditRadio', () => {
 
     const femaleRadio = screen.getByLabelText('女') as HTMLInputElement
 
-    // 「女」を選択
     fireEvent.click(femaleRadio)
 
-    // setSelectedが正しい引数で呼ばれたことを確認
     expect(testProps.setSelected).toHaveBeenCalledWith('female')
   })
 
@@ -74,10 +70,8 @@ describe('UserGenderEditRadio', () => {
 
     const femaleRadio = screen.getByLabelText('女') as HTMLInputElement
 
-    // 「女」を選択
     fireEvent.click(femaleRadio)
 
-    // フォームの値が正しく更新されたことを確認
     expect(femaleRadio.checked).toBe(true)
   })
 
@@ -99,11 +93,10 @@ describe('UserGenderEditRadio', () => {
     const maleRadio = getByLabelText('男') as HTMLInputElement
     const femaleRadio = getByLabelText('女') as HTMLInputElement
 
-    // いずれかのラジオボタンを選択しない場合はエラーになる
-    fireEvent.click(maleRadio) // 男性を選択
+    fireEvent.click(maleRadio) 
     expect(maleRadio.checked).toBe(true)
 
-    fireEvent.click(femaleRadio) // 女性を選択
+    fireEvent.click(femaleRadio)
     expect(femaleRadio.checked).toBe(true)
   })
 })

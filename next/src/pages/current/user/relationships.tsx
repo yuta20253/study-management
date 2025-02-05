@@ -7,7 +7,7 @@ import LinkButton from '@/components/page/Common/LinkButton'
 //import OnClickFollowOrUnFollowButton from '@/components/page/user/Button/handleOnClickFollowOrUnFollowButton'
 import RelationStatusLink from '@/components/page/user/Link/RelationStatusLink'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
-import { DataState } from '@/hooks/user/RelationShips/DataState'
+import { useDataState } from '@/hooks/user/RelationShips/useDataState'
 
 const Relationships: NextPage = () => {
   useRequireSignedIn()
@@ -18,7 +18,7 @@ const Relationships: NextPage = () => {
     handleClickUnfollowUser,
     handleClickFollowUser,
     error,
-  } = DataState()
+  } = useDataState()
 
   if (!users) {
     return <LoadingScreen />

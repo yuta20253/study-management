@@ -3,12 +3,12 @@ import { SelectUniversityList } from '@/components/page/desired_schools/Search/P
 import { RegionSystemAccordion } from '@/components/page/desired_schools/Search/search/Accordion/RegionSystemAccordion'
 import { PrefectureArr } from '@/const/prefectureArr'
 import { regions } from '@/const/regions'
-import { DataState } from '@/hooks/desired_schools/Search/PrefectureSearch/DataState'
+import { useDataState } from '@/hooks/desired_schools/Search/PrefectureSearch/useDataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 const PrefectureSearch: NextPage = () => {
   useRequireSignedIn()
-  const { checkedItems, setCheckedItems, universities } = DataState()
+  const { checkedItems, setCheckedItems, universities } = useDataState()
   console.log(`checkedItems:::::${checkedItems}`)
 
   return (

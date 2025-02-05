@@ -21,7 +21,7 @@ export const DeviationValueRangeSlider = () => {
         valueLabelDisplay="auto"
         valueLabelFormat={(value) => `${value.toFixed(1)}`}
         sx={{
-          width: '100%', // Ensure the slider takes up 100% of its container width
+          width: '100%',
         }}
       />
     </div>

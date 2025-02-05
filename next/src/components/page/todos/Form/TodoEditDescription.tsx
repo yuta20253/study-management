@@ -27,7 +27,6 @@ export const TodoEditDescription = ({
           data-testid="description"
         />
         {error && <p className="text-xs text-red-500">{error.message}</p>}
-        {/* エラー表示 */}
       </td>
     </tr>
   )

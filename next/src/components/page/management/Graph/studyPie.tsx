@@ -146,14 +146,12 @@ export default function StudyPieGraph({
   }
 
   return (
-    <div>
-      <Pie
-        data={data}
-        height={280}
-        width={280}
-        ref={chartRef}
-        options={options}
-      />
-    </div>
+    <Pie
+      data={data}
+      height={280}
+      width={280}
+      ref={chartRef}
+      options={options}
+    />
   )
 }

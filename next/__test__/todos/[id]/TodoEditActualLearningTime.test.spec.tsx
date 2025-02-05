@@ -2,7 +2,6 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { TodoEditActualLearningTime } from '@/components/page/todos/Form/TodoEditActualLearningTimeInput'
 
-// Mock useForm properly
 jest.mock('react-hook-form', () => ({
   ...jest.requireActual('react-hook-form'),
   useForm: jest.fn(() => ({
@@ -64,7 +63,7 @@ describe('TodoEditActualLearningTime', () => {
     fireEvent.change(input, { target: { value: '3' } })
 
     await waitFor(() => {
-      expect(setActualLearningTime).toHaveBeenCalledWith('3') // setActualLearningTime should be called
+      expect(setActualLearningTime).toHaveBeenCalledWith('3') 
     })
   })
 
@@ -93,7 +92,7 @@ describe('TodoEditActualLearningTime', () => {
     )
 
     const input = screen.getByRole('spinbutton') as HTMLInputElement
-    fireEvent.change(input, { target: { value: '' } }) // Empty value, should trigger error
+    fireEvent.change(input, { target: { value: '' } }) 
 
     await waitFor(() => {
       expect(screen.getByText('最小値は1時間です。')).toBeInTheDocument()
@@ -120,10 +119,10 @@ describe('TodoEditActualLearningTime', () => {
 
     const input = screen.getByRole('spinbutton') as HTMLInputElement
 
-    fireEvent.blur(input) // Trigger the blur event
+    fireEvent.blur(input) 
 
     await waitFor(() => {
-      expect(setTotalHour).toHaveBeenCalledWith(expect.any(Function)) // Ensure totalHour is updated onBlur
+      expect(setTotalHour).toHaveBeenCalledWith(expect.any(Function)) 
     })
   })
 
@@ -146,10 +145,10 @@ describe('TodoEditActualLearningTime', () => {
     )
 
     const input = screen.getByRole('spinbutton') as HTMLInputElement
-    fireEvent.change(input, { target: { value: '' } }) // Clear the field
+    fireEvent.change(input, { target: { value: '' } }) 
 
     await waitFor(() => {
-      expect(setTotalHour).toHaveBeenCalledWith(expect.any(Function)) // Ensure totalHour is updated correctly after clearing the input
+      expect(setTotalHour).toHaveBeenCalledWith(expect.any(Function)) 
     })
   })
 })

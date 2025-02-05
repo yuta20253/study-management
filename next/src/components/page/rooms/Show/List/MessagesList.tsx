@@ -7,13 +7,13 @@ export const MessagesList = ({ messages, user }: MessagesListProps) => (
         message.user_id === user.id ? (
           <div key={i} className="flex justify-end">
             <div className="rounded-lg bg-green-200 p-3 shadow-md">
-              <div>{message.content}</div> {/* メッセージの内容を表示 */}
+              <div>{message.content}</div>
             </div>
           </div>
         ) : (
           <div key={i} className="flex justify-start">
             <div className=" rounded-lg bg-white p-3 shadow-md">
-              <div>{message.content}</div> {/* メッセージの内容を表示 */}
+              <div>{message.content}</div>
             </div>
           </div>
         ),

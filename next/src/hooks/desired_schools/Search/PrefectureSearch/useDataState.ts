@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useFetch } from './handleUseFetch'
 
-export const DataState = () => {
+export const useDataState = () => {
   const { user, universities, setUniversities } = useFetch()
   const [checkedItems, setCheckedItems] = useState<string>('')
 

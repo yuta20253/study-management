@@ -3,7 +3,7 @@ import { useClickFollowUserHandlers } from './clickFollowUser'
 import { useClickUnFollowUserHandlers } from './clickUnFollowUser'
 import { useFetch } from './handleUseFetch'
 
-export const DataState = () => {
+export const useDataState = () => {
   const router = useRouter()
 
   const { user, users, followedIdsArr, error } = useFetch()

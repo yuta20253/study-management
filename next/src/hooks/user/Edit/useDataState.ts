@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useFetch } from './handleUseFetch'
 
-export const DataState = () => {
+export const useDataState = () => {
   const { user, setUser, selected, setSelected, error } = useFetch()
   const router = useRouter()
 

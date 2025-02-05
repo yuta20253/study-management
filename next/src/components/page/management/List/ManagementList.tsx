@@ -1,5 +1,5 @@
 import { Management } from '@/types/Management/List/list'
-import { formatDate } from '@/utils/formatDate'
+import { formatDate } from '@/utils/Common/formatDate'
 
 export const ManagementList: React.FC<Management> = ({
   studyHours,
@@ -11,24 +11,20 @@ export const ManagementList: React.FC<Management> = ({
 }: Management) => {
   if (!studyHours) return null
 
-  // デフォルトのstudyTypeが未選択の場合は'all'に設定
   const filteredStudyHours = studyHours
     .filter((study) => {
-      // selectedPeriodが未選択ならフィルタリングしない
       if (selectedPeriod && new Date(study.created_at) < selectedPeriod) {
         return false
       }
       return true
     })
     .filter((study) => {
-      // selectedSubjectが未選択ならフィルタリングしない
       if (selectedSubject && study.subject !== selectedSubject) {
         return false
       }
       return true
     })
     .filter((study) => {
-      // studyTypeが未選択ならすべてのstudyTypeを表示
       if (studyType === 'all') {
         return true
       }

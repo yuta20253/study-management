@@ -1,7 +1,7 @@
 import { screen, render } from '@testing-library/react'
 import { useRouter } from 'next/router'
 import TodoDetail from '../../src/pages/current/todos/[id]' // Adjust path based on your file structure
-import { DataState } from '@/hooks/todos/Show/DataState'
+import { DataState } from '@/hooks/todos/Show/useDataState'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
 
 jest.mock('next/router', () => ({
@@ -11,7 +11,6 @@ jest.mock('@/hooks/todos/Show/DataState', () => ({
   DataState: jest.fn(),
 }))
 
-// If `useRequireSignedIn` is a named export, mock it like this:
 jest.mock('@/hooks/useRequireSignIn', () => ({
   useRequireSignedIn: jest.fn(),
 }))
@@ -27,8 +26,7 @@ describe('TodoDetail', () => {
     jest.clearAllMocks()
   })
 
-  it('should render loading state when todo and id are not available', () => {
-    // Mock DataState hook to return undefined for todo and id
+  it('Todoやidが利用できない時、Loading...が表示', () => {
     ;(DataState as jest.Mock).mockReturnValue({
       todo: null,
       id: null,
@@ -39,8 +37,8 @@ describe('TodoDetail', () => {
     expect(screen.getByText(/Loading.../)).toBeInTheDocument()
   })
 
-  it('should render TodoDetailTable when todo and id are available', async () => {
-    const mockTodo = { title: 'Test Todo', description: 'This is a test todo' }
+  it('Todoやidが利用できる時、TodoDetailTableが表示される', async () => {
+    const mockTodo = { title: 'Test Todo', description: 'テストです' }
     const mockId = 1
     ;(DataState as jest.Mock).mockReturnValue({
       todo: mockTodo,
@@ -53,17 +51,11 @@ describe('TodoDetail', () => {
     expect(await screen.getByText(mockTodo.description)).toBeInTheDocument()
   })
 
-  it('should call useRequireSignedIn and redirect if not signed in', () => {
-    // Simulate the user not being signed in
+  it('useRequireSignedInを呼び出し、サインインしていない場合はリダイレクト', () => {
     ;(useRequireSignedIn as jest.Mock).mockImplementation(() => {
-      // Here, you can mock what happens when the user isn't signed in.
-      // You could check if the user is redirected or sign-in modal shows up, etc.
-      //Example behavior when not signed in
       mockPush('/sign-in')
     })
     render(<TodoDetail />)
-
-    // Verify that the sign-in redirect happens
     expect(mockPush).toHaveBeenCalledWith('/sign-in')
   })
 })

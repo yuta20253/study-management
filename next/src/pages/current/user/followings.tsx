@@ -5,11 +5,11 @@ import { LoadingScreen } from '@/components/Loading'
 import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import LinkButton from '@/components/page/user/Button/LinkButton'
 import { useRequireSignedIn } from '@/hooks/useRequireSignIn'
-import { DataState } from '@/hooks/user/Followings/DataState'
+import { useDataState } from '@/hooks/user/Followings/useDataState'
 
 const Followings: NextPage = () => {
   useRequireSignedIn()
-  const { users, error } = DataState()
+  const { users, error } = useDataState()
 
   if (!users) {
     return <LoadingScreen />

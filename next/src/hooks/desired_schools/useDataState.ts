@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { universityLength } from '../../utils/DesiredSchool/universityLength'
 import { useInputDesiredSchoolName } from './handleChangeInputValue'
 import { useFetch } from './handleUseFetch'
-import { universityLength } from './universityLength'
 
-export const DataState = () => {
+export const useDataState = () => {
   const { jsonUniversity, universities, setUniversities, error, setError } =
     useFetch()
   const [deleteId, setDeleteId] = useState<number | undefined>(undefined)

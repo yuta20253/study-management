@@ -25,7 +25,6 @@ export const UserPhoneEditInput = ({
           id={registerProps}
           type="tel"
           defaultValue={props}
-          //onChange={(e) => changePhoneNumber(e)}
           {...register(`${registerProps}`, rules)}
         />
         {error && <p className="text-xs text-red-500">{error.message}</p>}

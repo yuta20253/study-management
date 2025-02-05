@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import { ChangeEvent, Dispatch, SetStateAction } from 'react'
 import { StudyHoursProps } from '@/types/Management'
-import { formatDate } from '@/utils/formatDate'
+import { formatDate } from '@/utils/Common/formatDate'
 
 export const useFunction = (
   setSelectedSubject: Dispatch<SetStateAction<string>>,
