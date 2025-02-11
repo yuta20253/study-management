@@ -1,7 +1,7 @@
 # study-management
 
 論理モデル
-![論理モデル](https://github.com/yuta20253/study-management/blob/main/論理モデル.png?raw=true)
+![logic](https://github.com/yuta20253/study-management/blob/main/logic.png?raw=true)
 
 物理モデル
-![物理モデル](https://github.com/yuta20253/study-management/blob/main/物理モデル.png?raw=true)
+![physic](https://github.com/yuta20253/study-management/blob/main/physic.png?raw=true)
