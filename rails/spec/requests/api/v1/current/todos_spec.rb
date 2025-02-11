@@ -133,7 +133,7 @@ RSpec.describe "Api::V1::Current::Todos", type: :request do
                                                  importance: :medium, star_rating: 0, total_hour: 0, study_type: :preparation, user: current_user) }
       }
 
-      it "400エラーが返る" do
+      it "422エラーが返る" do
         subject
         res = JSON.parse(response.body)
         expect(response).to have_http_status(:unprocessable_entity)
