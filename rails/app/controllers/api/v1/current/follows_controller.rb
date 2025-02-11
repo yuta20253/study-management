@@ -3,7 +3,6 @@ class Api::V1::Current::FollowsController < Api::V1::BaseController
 
   def show
     if (another_user = User.find(params[:id]))
-      # 現在のユーザーと見つかったユーザーが違う、または現在のユーザーが見つかったユーザーを登録している
       if current_user != another_user || current_user.following?(another_user)
         study_hours_data = fetch_study_hours(another_user)
         render json: { another_user:, **study_hours_data }, adapter: :json

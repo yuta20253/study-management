@@ -24,7 +24,7 @@ export const useFetch = () => {
         .then((res: AxiosResponse) => {
           console.log('取得成功')
           console.log(res.data)
-          setUniversity(res.data)
+          setUniversity(res.data.university_data)
         })
         .catch((e: AxiosError<{ error: string }>) => {
           console.log(e.message)

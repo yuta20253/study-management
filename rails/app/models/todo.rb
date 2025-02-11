@@ -5,6 +5,17 @@ class Todo < ApplicationRecord
 
   accepts_nested_attributes_for :study_hours, allow_destroy: true, update_only: true
 
+  def self.create_todo_with_rescue(user, params)
+    todo = user.todos.new(params)
+    if todo.save
+      todo
+    else
+      { error: todo.errors.full_messages }
+    end
+  rescue ActiveRecord::RecordInvalid => e
+    { error: e.errors.full_messages }
+  end
+
   # create時に、子モデルのオブジェクトをビルド
   def build_study_hours
     study_hours.build(

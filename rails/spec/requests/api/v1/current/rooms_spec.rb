@@ -53,7 +53,7 @@ RSpec.describe "Api::V1::Current::Rooms", type: :request do
 
     context "自分が相手にLikeしているが、相手が自分をLikeしていない場合" do
       let(:other_user) { create(:user) }
-      it "エラーメッセージ「予期せぬエラーが発生しました」" do
+      it "エラーメッセージ「相手がまだあなたをLikeしていません」" do
         like_params = { from_user_id: current_user.id, to_user_id: other_user.id }
         post(api_v1_current_rooms_path, headers:, params: { like: like_params })
         res = JSON.parse(response.body)

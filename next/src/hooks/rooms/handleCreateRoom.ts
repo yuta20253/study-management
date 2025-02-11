@@ -27,13 +27,13 @@ export const useCreateRoom = (
 
     const data = {
       like: { from_user_id: user.id, to_user_id: user_id },
-      room_name: `${firstName} と ${secondName} のチャットルーム`,
+      room_name: `${firstName}${secondName} のチャットルーム`,
     }
 
     try {
       const res = await axios.post(url, data, { headers: headers })
       console.log(res.data)
-      if (res.data.status === 200) {
+      if (res.data.status === 'ok') {
         setRooms((prevRooms) => [...prevRooms, res.data.chat_room]) // 新しく作成されたチャットルームを追加
         setMessage('チャットルームが作成されました！')
         console.log('message', message)
@@ -46,7 +46,7 @@ export const useCreateRoom = (
         setMessage(res.data.message || '作成に失敗しました')
       }
     } catch (error: unknown) {
-      setMessage('予期しないエラーが発生しました')
+      setMessage('相手がまだいいねしていません')
     }
   }
   return {

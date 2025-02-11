@@ -14,11 +14,12 @@ class Api::V1::Current::TodosController < Api::V1::BaseController
   end
 
   def create
-    # 今これでtodoの子（userから見たら孫）が自動で作成されている
-    todo = current_user.todos.create!(create_todo_params)
-    render json: todo, serializer: TodoSerializer, status: :created
-  rescue ActiveRecord::RecordInvalid => e
-    render json: { error: e.record.errors.full_messages }, status: :unprocessable_entity
+    todo = Todo.create_todo_with_rescue(current_user, create_todo_params)
+    if todo[:error]
+      render json: { error: todo[:error] }, status: :unprocessable_entity
+    else
+      render json: todo, serializer: TodoSerializer, status: :created
+    end
   end
 
   def edit

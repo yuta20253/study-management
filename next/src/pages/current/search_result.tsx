@@ -67,6 +67,7 @@ const SearchResult: NextPage = () => {
   const returnUniversities: University[] = []
   const afterDevisionUniversity: University[] = []
 
+  console.log('jsonUniversity', jsonUniversity)
   selectDivision({ jsonUniversity, checkedItemsArr, afterDevisionUniversity })
 
   selectDepartmentSystem({
