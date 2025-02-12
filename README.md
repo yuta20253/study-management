@@ -1,6 +1,7 @@
 # study-management
 
-使用技術:
+**使用技術:**
+
 ・Ruby 3.1.2
 
 ・Ruby on Rails 7.0.8.4
@@ -24,7 +25,7 @@
 ・ESlint
 
 
-機能一覧
+**機能一覧:**
 
 ・ユーザー登録、ログイン機能(devise)
 
@@ -76,13 +77,13 @@
     
   ⚪︎メッセージ送信機能
 
-テスト
+**テスト:**
 
 ⚪︎単体テスト(model,form,service)
 
 ⚪︎機能テスト(request)
 
-Er図
+**Er図:**
 
 ⚪︎論理モデル
 ![logic](https://github.com/yuta20253/study-management/blob/main/logic.png?raw=true)
