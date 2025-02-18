@@ -73,7 +73,7 @@ Rails.application.configure do
   config.action_cable.url = "ws://localhost:3000/cable"
   # ActionCableの設定
   config.action_cable.disable_request_forgery_protection = false
-  config.action_cable.allowed_request_origins = ["http://localhost:8001", "http://localhost:3000", "ws://localhost:8001", "ws://localhost:3000"]
+  config.action_cable.allowed_request_origins = ["http://localhost:8000", "http://localhost:3000", "ws://localhost:8000", "ws://localhost:3000"]
 
   # 認証メール送信に関する設定
   config.action_mailer.default_options = { from: "no-replay@example.com" }

@@ -20,7 +20,7 @@ services:
     ports:
       - 3000:3000
     depends_on:
-      - dbr
+      - db
     tty: true
     stdin_open: true
   next:
@@ -31,7 +31,7 @@ services:
     volumes:
       - ./next:/app
     ports:
-      - "8001:3000"
+      - "8000:3000"
   redis:
     image: redis
     ports:

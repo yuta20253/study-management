@@ -1,5 +1,5 @@
 import { FaStar } from 'react-icons/fa'
-import { StarProps } from '@/types/Todo/Rating/star'
+import { StarProps } from '@/types/Todo/Rating/Star'
 
 export const Star: React.FC<StarProps> = ({
   selected = false,

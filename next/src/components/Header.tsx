@@ -22,12 +22,12 @@ const Header = () => {
                 <ul className="flex gap-4 md:gap-8">
                   <li className="rounded bg-sky-700 px-4 py-2">
                     <Link href="/sign_in">
-                      <p className="text-lg text-white sm:text-xl">Sign in</p>
+                      <p className="text-lg text-white sm:text-xl">Sign In</p>
                     </Link>
                   </li>
                   <li className="rounded bg-sky-700 px-4 py-2">
                     <Link href="/sign_up">
-                      <p className="text-lg text-white sm:text-xl">Sign up</p>
+                      <p className="text-lg text-white sm:text-xl">Sign Up</p>
                     </Link>
                   </li>
                 </ul>
@@ -38,7 +38,7 @@ const Header = () => {
                   </li>
                   <li className="rounded bg-sky-700 px-4 py-2">
                     <Link href="/sign_out">
-                      <p className="text-lg text-white sm:text-xl">Sign out</p>
+                      <p className="text-lg text-white sm:text-xl">Sign Out</p>
                     </Link>
                   </li>
                 </ul>

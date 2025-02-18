@@ -1,11 +1,11 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useFetch } from './handleUseFetch'
 import { University } from '@/types/SearchResult'
 
 export const useDataState = () => {
-  const [checkedItems] = useState(localStorage.getItem('checkedItems'))
-  const [deviationValuesArr] = useState(
-    localStorage.getItem('deviationValuesArr'),
+  const [checkedItems, setCheckedItems] = useState<string | null>(null)
+  const [deviationValuesArr, setDeviationValuesArr] = useState<string | null>(
+    null,
   )
   const [universities] = useState<University[] | undefined>([])
   const selectableUniversities: string[] = []
@@ -13,6 +13,14 @@ export const useDataState = () => {
   const secondTrueOrFalse = useRef<number | undefined>(null!)
 
   const { jsonUniversity } = useFetch()
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // クライアントサイドでのみ localStorage にアクセス
+      setCheckedItems(localStorage.getItem('checkedItems'))
+      setDeviationValuesArr(localStorage.getItem('deviationValuesArr'))
+    }
+  }, [])
 
   return {
     checkedItems,
