@@ -7,7 +7,7 @@ on:
   push:
     branches-ignore:
       - main  # mainブランチにpushされた際にCIを実行
-  workflows:  
+  workflow_call:  
 
 jobs:
   # 処理① rspec がオールグリーンであることをチェック
