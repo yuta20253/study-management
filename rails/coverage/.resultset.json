@@ -1146,6 +1146,15 @@
           null
         ]
       },
+      "/myapp/app/controllers/api/v1/current/desired_schools/search/map_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/myapp/app/controllers/api/v1/current/desired_schools/search/option_controller.rb": {
         "lines": [
           0,
@@ -1243,6 +1252,16 @@
           0,
           0,
           null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/myapp/app/controllers/top_controller.rb": {
+        "lines": [
           0,
           0,
           0,
@@ -1488,6 +1507,6 @@
         }
       }
     },
-    "timestamp": 1739559164
+    "timestamp": 1739902518
   }
 }

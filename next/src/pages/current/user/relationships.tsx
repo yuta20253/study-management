@@ -1,6 +1,5 @@
 import Person from '@mui/icons-material/Person'
 import { NextPage } from 'next'
-import Link from 'next/link'
 import { LoadingScreen } from '@/components/Loading'
 import { ErrorTemplate } from '@/components/page/Common/ErrorTemplate'
 import LinkButton from '@/components/page/Common/LinkButton'
@@ -55,14 +54,9 @@ const Relationships: NextPage = () => {
                   <div className="flex items-center p-3">
                     <Person className="text-gray-600" />
                     <div className="ml-4">
-                      <Link
-                        href={`/current/follows/${usr.id}`}
-                        className="text-sky-500 hover:underline"
-                      >
-                        <span>
-                          {usr.family_name} {usr.given_name}
-                        </span>
-                      </Link>
+                      <span>
+                        {usr.family_name} {usr.given_name}
+                      </span>
                     </div>
                     <div className="ml-auto">
                       {followedIdsArr.includes(usr.id) ? (

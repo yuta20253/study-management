@@ -1,5 +1,5 @@
 import { Star } from './star'
-import { StarRatingProps } from '@/types/Todo/Rating/star'
+import { StarRatingProps } from '@/types/Todo/Rating/Star'
 
 export const StarRating: React.FC<StarRatingProps> = ({
   totalStars = 5,
