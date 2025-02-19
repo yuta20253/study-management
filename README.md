@@ -86,3 +86,6 @@
 
 ⚪︎物理モデル
 ![physics](https://github.com/yuta20253/study-management/blob/main/physics.png?raw=true)
+
+⚪︎Aws構成図
+![aws-infra](https://github.com/yuta20253/study-management/blob/main/aws-infra.png?raw=true)
