@@ -1,13 +1,14 @@
 import axios, { AxiosError, AxiosResponse } from 'axios'
-import { useRouter } from 'next/router'
+//import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { StarRating } from '@/components/page/todos/Rating/StarRating'
 import { Subjects } from '@/const/subject'
-import { StarRating } from '@/hooks/ui/todos/Rating/StarRating'
+//import { StarRating } from '@/hooks/ui/todos/Rating/StarRating'
 import { TodoProps, ClickProps } from '@/types/Todo/createNewTodo/newTodo'
 
 export const CreateNewTodoModal = ({ onClose }: ClickProps) => {
-  const router = useRouter()
+  //const router = useRouter()
   const [selectedStars, setSelectedStars] = useState<number>(0)
 
   const { handleSubmit, register } = useForm<TodoProps>({
