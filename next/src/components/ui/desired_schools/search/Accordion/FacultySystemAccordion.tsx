@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FacultyAccordion } from '@/components/ui/desired_schools/search/Accordion/FacultyAccordion'
+import { FacultyAccordion } from '@/components/page/desired_schools/Search/search/Accordion/FacultyAccordion'
 import { DepartmentArr } from '@/const/departmentArr'
 import { FacultySystem } from '@/const/facultySystem'
 
