@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { BuildingProps } from '@/types/User/Form/form'
 
@@ -11,52 +11,54 @@ export const UserBuildingEditInput = ({
   error,
 }: BuildingProps) => {
   const { register, setValue } = useFormContext()
-  const [postalCode, setPostalCode] = useState<string>(props || '') // 初期郵便番号
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [, setIsAddressAutoFilled] = useState<boolean>(false) // 住所自動補完の状態を管理
-  const [addressError, setAddressError] = useState<boolean>(false) // 住所取得失敗のエラー管理
-  // 郵便番号入力時に住所を自動補完する関数
-  const handlePostalCodeChange = async (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const enteredPostalCode = e.target.value
-    setPostalCode(enteredPostalCode)
+  const isPostalCodeField = registerProps === 'address.postal_code'
+  const [inputValue, setInputValue] = useState<string>(props || '')
 
-    // 郵便番号が7桁の場合のみ自動補完を行う
-    if (enteredPostalCode.length === 7) {
-      setIsLoading(true)
-      try {
-        const response: AxiosResponse = await axios.get(
-          `https://zipcloud.ibsnet.co.jp/api/search?zipcode=${enteredPostalCode}`,
-        )
+  // propsの初期値があるとき、ハイフン（郵便番号の時だけ）
+  useEffect(() => {
+    if (isPostalCodeField && props?.length === 7) {
+      setInputValue(`${props.slice(0, 3)}-${props.slice(3)}`)
+    } else {
+      setInputValue(props || '')
+    }
+  }, [props, isPostalCodeField])
 
-        if (
-          response.data &&
-          response.data.results &&
-          response.data.results.length > 0
-        ) {
-          const { address1, address2, address3 } = response.data.results[0]
-          // 住所をフォームにセットする
-          setValue('address.prefecture', address1)
-          setValue('address.city', address2)
-          setValue('address.address1', address3)
-          setIsAddressAutoFilled(true) // 住所が自動補完された
-          setAddressError(false)
-        } else {
-          throw new Error('住所の取得に失敗しました')
+  // 郵便番号入力時にハイフンを自動追加＆住所を補完
+  const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    let enteredValue = e.target.value
+
+    // 郵便番号の時のみ、数字以外を削除
+    if (isPostalCodeField) {
+      enteredValue = enteredValue.replace(/[^0-9]/g, '')
+
+      // 7桁になったらフォーマット（例: 123-4567）
+      if (enteredValue.length === 7) {
+        const formattedValue = `${enteredValue.slice(0, 3)}-${enteredValue.slice(3)}`
+        setInputValue(formattedValue)
+        setValue(registerProps, formattedValue) // フォームの値も更新
+
+        // 住所自動補完を実行
+        try {
+          const response: AxiosResponse = await axios.get(
+            `https://zipcloud.ibsnet.co.jp/api/search?zipcode=${enteredValue}`,
+          )
+
+          if (response.data?.results?.length > 0) {
+            const { address1, address2, address3 } = response.data.results[0]
+            setValue('address.prefecture', address1)
+            setValue('address.city', address2)
+            setValue('address.address1', address3)
+          }
+        } catch {
+          console.error('住所の取得に失敗しました')
         }
-      } catch (error) {
-        setIsAddressAutoFilled(false)
-        setAddressError(true) // 住所取得エラーを設定
-        // 住所取得に失敗した場合、3秒後にエラーメッセージを非表示にする
-        setTimeout(() => {
-          setAddressError(false)
-        }, 3000)
-      } finally {
-        setIsLoading(false)
+      } else {
+        setInputValue(enteredValue)
       }
     } else {
-      setIsAddressAutoFilled(false) // 7桁未満の場合、自動補完フラグをリセット
+      // 他の項目（都道府県、市区町村など）は自由に入力可能
+      setInputValue(enteredValue)
+      setValue(registerProps, enteredValue)
     }
   }
 
@@ -74,15 +76,12 @@ export const UserBuildingEditInput = ({
         <input
           id={registerProps}
           type="text"
-          value={postalCode}
+          value={inputValue}
+          placeholder={isPostalCodeField ? 'ハイフンなし' : ''}
           {...register(registerProps, rules)}
-          onChange={handlePostalCodeChange} // 郵便番号変更時に自動補完
-          data-testid="postal-code-input"
+          onChange={handleInputChange}
+          data-testid="building-edit-input"
         />
-        {isLoading && <p className="text-xs text-gray-500">住所を取得中...</p>}
-        {addressError && (
-          <p className="text-xs text-red-500">住所の取得に失敗しました</p>
-        )}
         {error && <p className="text-xs text-red-500">{error.message}</p>}
       </td>
     </tr>

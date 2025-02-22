@@ -124,7 +124,7 @@ const SignUp: NextPage = () => {
                 <Input
                   theme="郵便番号"
                   type="text"
-                  placeholder="郵便番号"
+                  placeholder="ハイフンをつけてください(半角)"
                   register={register('address_attributes.postal_code', {
                     required: '郵便番号は必須です',
                     pattern: {
