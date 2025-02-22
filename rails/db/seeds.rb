@@ -41,10 +41,22 @@ users.each do |user|
     user:,
   )
 
-  Telephone.create!(
-    phone_number: Faker::PhoneNumber.phone_number,
-    user:,
-  )
+  if [true, false].sample
+    phone_number = ["070", "080", "090"].sample + "-" + rand(1000..9999).to_s + "-" + rand(1000..9999).to_s
+    Telephone.create!(
+      phone_number:,
+      landline_phone_number: nil,
+      user:,
+    )
+  else
+    area_code = ["03", "04", "048", "0798"].sample
+    landline_phone_number = area_code + "-" + rand(1000..9999).to_s + "-" + rand(1000..9999).to_s
+    Telephone.create!(
+      phone_number: nil,
+      landline_phone_number:,
+      user:,
+    )
+  end
 end
 
 subjects = ["英語", "現代文", "古文", "漢文", "数学", "日本史", "世界史", "政治経済", "地理", "物理", "化学", "生物", "地学"]
