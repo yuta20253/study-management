@@ -65,7 +65,7 @@ const Index: NextPage = () => {
           <ul className="space-y-4 text-left">
             <li className="flex items-center">
               <span className="mr-2 text-blue-500">✔️</span>
-              メッセージのやり取りができる
+              メッセージのやり取りができる(リアルタイム通信はできていない)
             </li>
           </ul>
         </div>

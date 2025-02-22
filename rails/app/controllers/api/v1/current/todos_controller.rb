@@ -45,7 +45,6 @@ class Api::V1::Current::TodosController < Api::V1::BaseController
 
   private
 
-    # Set the todo for the show, destroy actions
     def set_todo
       @todo = current_user.todos.find_by(id: params[:id])
       if @todo.nil?

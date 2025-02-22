@@ -13,6 +13,7 @@ export const useFetch = () => {
   const [selectSubjectProps, setSelectSubjectProps] = useState<
     StudyHoursProps[]
   >([])
+  const [numberOfUsers, setNumberOfUsers] = useState<number>(0)
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
@@ -32,6 +33,7 @@ export const useFetch = () => {
           setStudyLists(res.data.study_hours)
           setAllStudyHours(res.data.all_study_hours)
           setSelectSubjectProps(res.data.study_hours)
+          setNumberOfUsers(res.data.number_of_users)
         })
         .catch((e: AxiosError<{ error: string }>) => {
           if (e.response) {
@@ -57,6 +59,7 @@ export const useFetch = () => {
     studyType,
     setStudyType,
     selectSubjectProps,
+    numberOfUsers,
     error,
   }
 }

@@ -10,6 +10,7 @@ export const useDataState = () => {
     studyLists,
     allStudyHours,
     selectSubjectProps,
+    numberOfUsers,
     error,
   } = useFetch()
   const { isOpen, onOpen, onClose } = useModal()
@@ -47,6 +48,8 @@ export const useDataState = () => {
     setSentLabels,
     setGraph,
   )
+
+  console.log('numberOfUsers', numberOfUsers)
 
   return {
     isOpen,
@@ -87,6 +90,7 @@ export const useDataState = () => {
     handleClickStudy,
     handleSelectSubjectName,
     handleSelectGraph,
+    numberOfUsers,
     error,
   }
 }
