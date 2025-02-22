@@ -1,5 +1,10 @@
 # study-management
 
+## **既に数名登録しています。よろしければお使いください:**
+・メールアドレス: test1@example.com
+
+・パスワード: password
+
 ## **使用技術:**
 
 ・Ruby 3.1.2
