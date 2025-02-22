@@ -17,7 +17,7 @@ ChartJS.register(ArcElement, Tooltip, Legend, Title)
 export default function StudyComparisonWithPeopleBar({
   studyData,
   title,
-  followers,
+  numberOfUsers,
 }: StudyComparisonWithPeopleBarProps) {
   const [user] = useUserState()
   const [isReloaded, setIsReloaded] = useState<boolean>(false)
@@ -82,11 +82,11 @@ export default function StudyComparisonWithPeopleBar({
         backgroundColor: 'red',
       },
       {
-        label: 'ライバル達',
+        label: 'アプリ利用者',
         data: [
-          otherPreparationActualLearningTime / followers,
-          otherLessonActualLearningTime / followers,
-          otherReviewActualLearningTime / followers,
+          otherPreparationActualLearningTime / numberOfUsers,
+          otherLessonActualLearningTime / numberOfUsers,
+          otherReviewActualLearningTime / numberOfUsers,
         ],
         backgroundColor: 'blue',
       },

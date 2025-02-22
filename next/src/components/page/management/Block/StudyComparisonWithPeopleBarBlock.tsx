@@ -4,7 +4,7 @@ import { StudyComparisonWithPeopleBarBlockProps } from '@/types/Management/Block
 export const StudyComparisonWithPeopleBarBlock = ({
   studyData,
   title,
-  followers,
+  numberOfUsers,
 }: StudyComparisonWithPeopleBarBlockProps) => {
   return (
     <div
@@ -17,7 +17,7 @@ export const StudyComparisonWithPeopleBarBlock = ({
       <StudyComparisonWithPeopleBar
         studyData={studyData}
         title={title}
-        followers={followers}
+        numberOfUsers={numberOfUsers}
       />
     </div>
   )

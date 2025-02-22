@@ -23,7 +23,6 @@ const Management: NextPage = () => {
     isOpen,
     onOpen,
     onClose,
-    user,
     studyHours,
     studyLists,
     allStudyHours,
@@ -48,6 +47,7 @@ const Management: NextPage = () => {
     handleClickStudy,
     handleSelectSubjectName,
     handleSelectGraph,
+    numberOfUsers,
     error,
   } = useDataState()
 
@@ -86,7 +86,7 @@ const Management: NextPage = () => {
             <StudyComparisonWithPeopleBarBlock
               studyData={allStudyHours}
               title="学習時間比較(対ライバル)"
-              followers={user.followers.length}
+              numberOfUsers={numberOfUsers}
             />
           </div>
         )}

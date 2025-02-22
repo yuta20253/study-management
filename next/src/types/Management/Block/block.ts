@@ -24,7 +24,7 @@ export type SelectedItemsListsBlockProps = {
 export type StudyComparisonWithPeopleBarBlockProps = {
   studyData: StudyHoursProps[]
   title: string
-  followers: number
+  numberOfUsers: number
 }
 
 export type StudyPieGraphBlockProps = {

@@ -15,5 +15,5 @@ export type StudyHoursProps = {
 export type StudyComparisonWithPeopleBarProps = {
   studyData: StudyHoursProps[]
   title: string
-  followers: number
+  numberOfUsers: number
 }
