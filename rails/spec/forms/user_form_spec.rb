@@ -64,7 +64,7 @@ RSpec.describe UserForm, type: :model do
         user_form.user.given_name_kana = "タロウ"
         user_form.user.gender = :male
         user_form.user.birthday = "1990-01-01"
-        user_form.user.telephone.phone_number = "09012345678"
+        user_form.user.telephone.phone_number = "090-1234-5678"
         user_form.user.address.prefecture = "東京都"
         user_form.user.address.city = "渋谷区"
 

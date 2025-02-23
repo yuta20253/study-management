@@ -42,7 +42,8 @@ users.each do |user|
   )
 
   if [true, false].sample
-    phone_number = ["070", "080", "090"].sample + "-" + rand(1000..9999).to_s + "-" + rand(1000..9999).to_s
+    # phone_number = ["070", "080", "090"].sample + "-" + rand(1000..9999).to_s + "-" + rand(1000..9999).to_s
+    phone_number = "#{["070", "080", "090"].sample}-#{rand(1000..9999)}-#{rand(1000..9999)}"
     Telephone.create!(
       phone_number:,
       landline_phone_number: nil,
@@ -50,7 +51,8 @@ users.each do |user|
     )
   else
     area_code = ["03", "04", "048", "0798"].sample
-    landline_phone_number = area_code + "-" + rand(1000..9999).to_s + "-" + rand(1000..9999).to_s
+    # landline_phone_number = area_code + "-" + rand(1000..9999).to_s + "-" + rand(1000..9999).to_s
+    landline_phone_number = "#{area_code}-#{rand(1000..9999)}-#{rand(1000..9999)}"
     Telephone.create!(
       phone_number: nil,
       landline_phone_number:,
